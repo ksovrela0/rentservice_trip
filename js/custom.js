@@ -507,3 +507,17 @@ function tagline_vertical_slide() {
 function abortTimer() { // to be called when you want to stop the timer
     clearInterval(tid);
 }
+
+
+
+$(document).on('click', '.add-destination-plus', function(){
+    $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                    <label>მიმართულება(სად)</label>
+                                    <input class="typeahead form-control" placeholder="" type="text" />
+                                    <i class="fa fa-minus add-destination-minus"></i>
+                                </div>`);
+});
+
+$(document).on('click', '.add-destination-minus', function(){
+    $(this).parent().remove();
+});

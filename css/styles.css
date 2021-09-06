@@ -993,6 +993,7 @@ ul.slimmenu {
   margin: 0;
   padding: 0;
   width: 100%;
+  text-align: center;
 }
 ul.slimmenu li {
   position: relative;
@@ -10964,4 +10965,11 @@ img.mfp-img {
   position: absolute;
   right: 10px;
   bottom: 14px;
+  cursor: pointer;
+}
+.add-destination-minus{
+  position: absolute;
+  right: 10px;
+  bottom: 14px;
+  cursor: pointer;
 }
