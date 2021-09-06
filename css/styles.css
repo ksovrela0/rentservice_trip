@@ -10953,3 +10953,15 @@ img.mfp-img {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
+
+@media (min-width: 1200px){
+  .container-transfer {
+      width: 500px!important;
+  }
+}
+
+.add-destination-plus{
+  position: absolute;
+  right: 10px;
+  bottom: 14px;
+}
