@@ -163,7 +163,7 @@ $(document).ready(
     
     function() {
 
-        $("#teest").niceSelect();
+        $("#teest").select2();
 
         // Owl Carousel
         var owlCarousel = $('#owl-carousel'),

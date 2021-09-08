@@ -406,7 +406,8 @@
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
         <script src="js/dropit.js"></script>
-        <script src="js/nice-select.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
         <script src="js/fotorama.js"></script>
@@ -419,8 +420,9 @@
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.2"></script>
+        <script src="js/custom.js?v=1.3"></script>
         <script src="js/switcher.js"></script>
+        
     </div>
 </body>
 
