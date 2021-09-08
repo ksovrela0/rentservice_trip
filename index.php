@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/styles.css?v=1.4">
+    <link rel="stylesheet" href="css/nice-select.css?v=1.4">
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
 
@@ -235,7 +236,7 @@
                                                         <label>თარიღი</label>
                                                         <input class="form-control" name="start" type="text" />
                                                     </div>
-                                                    <select class="form-control">
+                                                    <select class="form-control" id="teest">
                                                         <option selected="selected">1</option>
                                                         <option>2</option>
                                                         <option>3</option>
@@ -405,6 +406,7 @@
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
         <script src="js/dropit.js"></script>
+        <script src="js/nice-select.js"></script>
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
         <script src="js/fotorama.js"></script>
