@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=1.4">
-    <link rel="stylesheet" href="css/nice-select.css?v=1.4">
+    <link rel="stylesheet" href="css/styles.css?v=1.8">
+    <link rel="stylesheet" href="css/nice-select.css?v=1.7">
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
 
@@ -419,7 +419,7 @@
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="js/custom.js?v=1.2"></script>
         <script src="js/switcher.js"></script>
     </div>
 </body>
