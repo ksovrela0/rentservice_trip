@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=1.1">
+    <link rel="stylesheet" href="css/styles.css?v=1.2">
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
 
@@ -41,20 +41,6 @@
 </head>
 
 <body>
-
-    <!-- FACEBOOK WIDGET -->
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "../../../../connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- /FACEBOOK WIDGET -->
     <div class="global-wrap">
         <div class="demo_changer" id="demo_changer">
             <div class="demo-icon fa fa-sliders"></div>
@@ -283,95 +269,6 @@
         </div>
 
 
-
-        <div class="container">
-        </div>
-        <div class="bg-color text-white">
-            <div class="container">
-                <div class="gap"></div>
-                <div class="row row-wrap" data-gutter="120">
-                    <div class="col-md-4">
-                        <div class="thumb">
-                            <header class="thumb-header"><i class="fa fa-thumbs-o-up box-icon-border round box-icon-white box-icon-big"></i>
-                            </header>
-                            <div class="thumb-caption">
-                                <h4 class="thumb-title">Best Travel Agent</h4>
-                                <p class="thumb-desc">Morbi semper fames lobortis ac hac penatibus quisque massa scelerisque proin dignissim est</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="thumb">
-                            <header class="thumb-header"><i class="fa fa-lock box-icon-border round box-icon-white box-icon-big"></i>
-                            </header>
-                            <div class="thumb-caption">
-                                <h4 class="thumb-title">Trust & Safety</h4>
-                                <p class="thumb-desc">Viverra magna gravida accumsan enim integer faucibus velit leo laoreet platea senectus ullamcorper</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="thumb">
-                            <header class="thumb-header"><i class="fa fa-dollar box-icon-border round box-icon-white box-icon-big"></i>
-                            </header>
-                            <div class="thumb-caption">
-                                <h4 class="thumb-title">Best Price Guarantee</h4>
-                                <p class="thumb-desc">At nec sit magnis enim nascetur platea molestie lobortis purus nunc tempor placerat</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gap gap-small"></div>
-            </div>
-        </div>
-        <div class="container">
-        </div>
-        <div class="special-area">
-            <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/el_inevitable_paso_del_tiempo_2048x2048.jpg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
-                            <div class="owl-cap-weather"><span>+35</span><i class="im im-sun"></i>
-                            </div>
-                            <h1 class="owl-cap-title">Budapest</h1>
-                            <div class="owl-cap-price"><small>from</small>
-                                <h5>$700</h5>
-                            </div><a class="btn btn-white btn-ghost" href="#"><i class="fa fa-angle-right"></i> Explore</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/196_365_2048x1365.jpg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
-                            <div class="owl-cap-weather"><span>+26</span><i class="im im-rain"></i>
-                            </div>
-                            <h1 class="owl-cap-title">Paris</h1>
-                            <div class="owl-cap-price"><small>from</small>
-                                <h5>$2800</h5>
-                            </div><a class="btn btn-white btn-ghost" href="#"><i class="fa fa-angle-right"></i> Explore</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/viva_las_vegas_2048x1365.jpg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
-                            <div class="owl-cap-weather"><span>+29</span><i class="im im-sun"></i>
-                            </div>
-                            <h1 class="owl-cap-title">Las Vegas</h1>
-                            <div class="owl-cap-price"><small>from</small>
-                                <h5>$1100</h5>
-                            </div><a class="btn btn-white btn-ghost" href="#"><i class="fa fa-angle-right"></i> Explore</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="gap"></div>
             <h2 class="text-center mb20">Top Travel Destinations</h2>
@@ -507,7 +404,6 @@
         <script src="js/slimmenu.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
-        <script src="js/nicescroll.js"></script>
         <script src="js/dropit.js"></script>
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
