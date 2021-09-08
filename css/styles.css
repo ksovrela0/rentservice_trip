@@ -10908,15 +10908,17 @@ img.mfp-img {
 
 .add-destination-plus{
   position: absolute;
-  right: -18px;
-  bottom: 14px;
+  right: -25px;
+  bottom: 8px;
   cursor: pointer;
   font-size: 18px;
+  padding: 5px;
 }
 .add-destination-minus{
   position: absolute;
-  right: -18px;
-  bottom: 14px;
+  right: -25px;
+  bottom: 8px;
   cursor: pointer;
   font-size: 18px;
+  padding: 5px;
 }
