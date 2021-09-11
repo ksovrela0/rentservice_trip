@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Transfer</title>
+    <title>VipTrip - ტრანსფერი</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=1.9">
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
     <link rel="stylesheet" href="css/select2.css?v=1.2"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -41,7 +41,7 @@
     <link rel="alternate stylesheet" type="text/css" href="css/schemes/scarlet.css" title="scarlet" media="all" />
 </head>
 
-<body>
+<body style="background-image: url('img/patterns/binding_dark.png');" class="boxed">
     <div class="global-wrap">
         <div class="demo_changer" id="demo_changer">
             <div class="demo-icon fa fa-sliders"></div>
@@ -49,7 +49,7 @@
                 <div class="line"></div>
                 <p>Color Scheme</p>
                 <div class="predefined_styles" id="styleswitch_area">
-                    <a class="styleswitch" href="index-4c392.html?default=true" style="background:#ED8323;"></a>
+                    <a class="styleswitch" href="index-4c392.html?default=true" style="background:#ffca18;"></a>
                     <a class="styleswitch" href="#" data-src="bright-turquoise" style="background:#0EBCF2;"></a>
                     <a class="styleswitch" href="#" data-src="turkish-rose" style="background:#B66672;"></a>
                     <a class="styleswitch" href="#" data-src="salem" style="background:#12A641;"></a>
@@ -111,7 +111,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <a class="logo" href="index-2.html">
-                                <img src="img/s.png" alt="Transfer" title="Image Title" />
+                                <img src="img/logo.jpg" alt="Transfer" title="Image Title" />
                             </a>
                         </div>
                         <div class="col-md-3 col-md-offset-2">
@@ -220,6 +220,86 @@
             
         </div>
 
+        <div class="container">
+            <div class="gap"></div>
+            <div class="prepared_states">
+                <h3 class="text-center mb20">პოპულარული მარშრუტები</h3>
+                <div class="category_destination">
+                    <h3 class="text-center mb20 dest_title">ტრანსფერები თბილისის აეროპორტიდან</h3>
+                    <div class="trips">
+                        <div class="destination">
+                            თბილისის აეროპორტი – ბათუმი
+                        </div>
+                        <div class="destination">
+                            თბილისის აეროპორტი – ქუთაისი
+                        </div>
+                        <div class="destination">
+                            თბილისის აეროპორტი – გუდაური
+                        </div>
+                        <div class="destination">
+                            თბილისის აეროპორტი – ბაკურიანი
+                        </div>
+                        <div class="destination">
+                            თბილისის აეროპორტი – მესტია
+                        </div>
+                        <div class="destination">
+                            თბილისის აეროპორტი – სტეფანწმინდა
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="category_destination">
+                    <h3 class="text-center mb20 dest_title">ტრანსფერები ქუთაისის აეროპორტიდან</h3>
+                    <div class="trips">
+                        <div class="destination">
+                            ქუთაისის აეროპორტი – თბილისი
+                        </div>
+                        <div class="destination">
+                            ქუთაისის აეროპორტი – ბათუმი
+                        </div>
+                        <div class="destination">
+                            ქუთაისის აეროპორტი – გუდაური
+                        </div>
+                        <div class="destination">
+                            ქუთაისის აეროპორტი – მესტია
+                        </div>
+                        <div class="destination">
+                            ქუთაისის აეროპორტი – სტეფანწმინდა
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="category_destination">
+                    <h3 class="text-center mb20 dest_title">ტრანსფერები ერევანში</h3>
+                    <h5 class="text-center mb20 dest_alert_title">პანდემიასთან დაკავშირებით ტრანსფერი ხორციელდება საზღვრამდე. სადახლო.</h5> 
+                    <div class="trips">
+                        <div class="destination">
+                            თბილისი – ერევანის აეროპორტი
+                        </div>
+                        <div class="destination">
+                            თბილისი – ერევანი
+                        </div>
+                        <div class="destination">
+                            ქუთაისი – ერევანის აეროპორტი 
+                        </div>
+                        <div class="destination">
+                            ქუთაისი – ერევანი
+                        </div>
+                        <div class="destination">
+                            ბათუმი – ერევანის აეროპორტი ბათუმი – ერევანი
+                        </div>
+                        <div class="destination">
+                            ბათუმი – ერევანი
+                        </div>
+                    </div>
+                    
+                </div>
+            </di?>
+            <div class="gap gap-small"></div>
+        </div>
+
 
         <div class="container">
             <div class="gap"></div>
@@ -283,73 +363,6 @@
 
 
 
-        <footer id="main-footer">
-            <div class="container">
-                <div class="row row-wrap">
-                    <div class="col-md-3">
-                        <a class="logo" href="index-2.html">
-                            <img src="img/logo-invert.png" alt="Image Alternative text" title="Image Title" />
-                        </a>
-                        <p class="mb20">Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
-                        <ul class="list list-horizontal list-space">
-                            <li>
-                                <a class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                            </li>
-                            <li>
-                                <a class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                            </li>
-                            <li>
-                                <a class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                            </li>
-                            <li>
-                                <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                            </li>
-                            <li>
-                                <a class="fa fa-pinterest box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4>Newsletter</h4>
-                        <form>
-                            <label>Enter your E-mail Address</label>
-                            <input type="text" class="form-control">
-                            <p class="mt5"><small>*We Never Send Spam</small>
-                            </p>
-                            <input type="submit" class="btn btn-primary" value="Subscribe">
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <ul class="list list-footer">
-                            <li><a href="#">About US</a>
-                            </li>
-                            <li><a href="#">Press Centre</a>
-                            </li>
-                            <li><a href="#">Best Price Guarantee</a>
-                            </li>
-                            <li><a href="#">Travel News</a>
-                            </li>
-                            <li><a href="#">Jobs</a>
-                            </li>
-                            <li><a href="#">Privacy Policy</a>
-                            </li>
-                            <li><a href="#">Terms of Use</a>
-                            </li>
-                            <li><a href="#">Feedback</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Have Questions?</h4>
-                        <h4 class="text-color">+1-202-555-0173</h4>
-                        <h4><a href="#" class="text-color">support@traveler.com</a></h4>
-                        <p>24/7 Dedicated Customer Support</p>
-                    </div>
-
-                </div>
-            </div>
-        </footer>
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
