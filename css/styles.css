@@ -10964,3 +10964,31 @@ img.mfp-img {
   color: red;
   font-weight: bold;
 }
+
+.car_dest{
+  border: 1px solid #000;
+  padding: 7px;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.car_img_wrapper{
+  position: relative;
+}
+
+.car_img_title{
+  position: absolute;
+  bottom: 0;
+  background-color: #00000085;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  color: #fff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.car_img_thumb{
+  border-radius: 8px;
+}
