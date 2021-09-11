@@ -292,7 +292,7 @@
         </div>
 
 
-        <div class="container">
+        <!-- <div class="container">
             <div class="gap"></div>
             <h2 class="text-center mb20">Top Travel Destinations</h2>
             <div class="row row-wrap">
@@ -350,7 +350,7 @@
                 </div>
             </div>
             <div class="gap gap-small"></div>
-        </div>
+        </div> -->
 
 
 
