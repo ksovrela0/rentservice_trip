@@ -10947,6 +10947,7 @@ img.mfp-img {
   color: #fff;
   font-size: 18px;
   margin: 4px;
+  transition: 0.5s;
 }
 
 .destination:hover{
