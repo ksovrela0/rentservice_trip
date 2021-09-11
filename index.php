@@ -383,7 +383,7 @@
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.3"></script>
+        <script src="js/custom.js?v=1.4"></script>
         <script src="js/switcher.js"></script>
         
     </div>
