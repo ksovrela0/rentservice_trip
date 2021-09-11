@@ -111,7 +111,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <a class="logo" href="index-2.html">
-                                <img src="img/logo-invert.png" alt="Image Alternative text" title="Image Title" />
+                                <!-- <img src="img/logo-invert.png" alt="Image Alternative text" title="Image Title" /> -->
                             </a>
                         </div>
                         <div class="col-md-3 col-md-offset-2">
