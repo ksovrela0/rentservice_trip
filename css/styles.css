@@ -10992,3 +10992,26 @@ img.mfp-img {
 .car_img_thumb{
   border-radius: 8px;
 }
+
+.car_btn_area{
+  position: absolute;
+  right: 6px;
+  bottom: -8px;
+  width: 180px;
+  border: 1px solid black;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  text-align: center;
+  background-color: #b7b7b7;
+  color: #fff;
+  padding: 4px;
+  cursor:pointer;
+  transition: 0.5s;
+}
+.car_btn_area:hover{
+  background-color: #ffca18;
+
+}
+.car_descr{
+  height: 165px;
+}
