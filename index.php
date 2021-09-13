@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.6">
+    <link rel="stylesheet" href="css/styles.css?v=2.7">
     <link rel="stylesheet" href="css/select2.css?v=1.2"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -161,7 +161,7 @@
         <div class="container">
             <div class="gap"></div>
             <div class="prepared_states">
-                <h3 class="text-center mb20">პოპულარული მარშრუტები</h3>
+                <h3 class="text-center mb20 popular_destination">პოპულარული მარშრუტები</h3>
                 <div class="category_destination">
                     <h3 class="text-center mb20 dest_title">ტრანსფერები თბილისის აეროპორტიდან</h3>
                     <div class="trips">
@@ -252,7 +252,17 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-7 car_descr">
-                                sadasdas
+                                <div class="driver_data">
+                                    <div class="driver_name"><p>ირაკლი</p></div>
+                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
+                                </div>
+                                <div class="driver_other_data">
+                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
+                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
+                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
+                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
+                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
+                                </div>
                                 <div class="car_btn_area">
                                     დაჯავშვნა
                                 </div>
@@ -270,7 +280,17 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-7 car_descr">
-                                sadasdas
+                            <div class="driver_data">
+                                    <div class="driver_name"><p>ირაკლი</p></div>
+                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
+                                </div>
+                                <div class="driver_other_data">
+                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
+                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
+                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
+                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
+                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
+                                </div>
                                 <div class="car_btn_area">
                                     დაჯავშვნა
                                 </div>
@@ -288,7 +308,17 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-7 car_descr">
-                                sadasdas
+                            <div class="driver_data">
+                                    <div class="driver_name"><p>ირაკლი</p></div>
+                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
+                                </div>
+                                <div class="driver_other_data">
+                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
+                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
+                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
+                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
+                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
+                                </div>
                                 <div class="car_btn_area">
                                     დაჯავშვნა
                                 </div>
@@ -385,6 +415,7 @@
         <script src="js/gridrotator.js"></script>
         <script src="js/custom.js?v=1.4"></script>
         <script src="js/switcher.js"></script>
+        <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         
     </div>
 </body>
