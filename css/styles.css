@@ -11006,12 +11006,12 @@ img.mfp-img {
 
 .car_btn_area{
   position: absolute;
-  right: 6px;
+  left: 7px;
   bottom: -8px;
   width: 180px;
   border: 1px solid black;
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   text-align: center;
   background-color: #b7b7b7;
   color: #fff;
@@ -11024,7 +11024,7 @@ img.mfp-img {
 
 }
 .car_descr{
-  height: 165px;
+  height: 185px;
 }
 .destination_title{
   background-color: #000;

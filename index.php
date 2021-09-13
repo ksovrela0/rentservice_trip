@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.7">
+    <link rel="stylesheet" href="css/styles.css?v=2.8">
     <link rel="stylesheet" href="css/select2.css?v=1.2"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -238,20 +238,15 @@
             <div class="gap gap-small"></div>
         </div>
 
-        <div class="container">
+        <div class="container" style="border-top: 1px solid black;border-radius: 40px;">
             <div class="gap"></div>
-            <h3 class="text-center mb20">ფასი მოიცავს მგზავრობის სრულ ღირებულებას (და არა ერთი მგზავრის საფასურს)</h3>
+            <h5 class="text-center mb20" style="font-weight:bold;">ფასი მოიცავს მგზავრობის სრულ ღირებულებას (და არა ერთი მგზავრის საფასურს)</h5>
             <div class="row">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <div class="car_dest">
                         <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/3XfjaNXCoasrGuMvrtXz9IlCMjfKPl.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">TOYOTA PRIUS</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-7 car_descr">
+                            
+                            <div class="col-12 col-lg-6 car_descr">
                                 <div class="driver_data">
                                     <div class="driver_name"><p>ირაკლი</p></div>
                                     <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
@@ -267,20 +262,49 @@
                                     დაჯავშვნა
                                 </div>
                             </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="car_img_wrapper">
+                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/3XfjaNXCoasrGuMvrtXz9IlCMjfKPl.jpg&w=400&h=300&zc=1&q=70" />
+                                    <p class="car_img_title">TOYOTA PRIUS</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <div class="car_dest">
                         <div class="row">
-                            <div class="col-12 col-lg-5">
+                            <div class="col-12 col-lg-6 car_descr">
+                                <div class="driver_data">
+                                    <div class="driver_name"><p>ირაკლი</p></div>
+                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
+                                </div>
+                                <div class="driver_other_data">
+                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
+                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
+                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
+                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
+                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
+                                </div>
+                                <div class="car_btn_area">
+                                    დაჯავშვნა
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
                                 <div class="car_img_wrapper">
                                     <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/OugMImVfH2xMi0KH8aJb3SUOEJDLva.jpg&w=400&h=300&zc=1&q=70" />
                                     <p class="car_img_title">TOYOTA PRIUS</p>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-7 car_descr">
-                            <div class="driver_data">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="car_dest">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 car_descr">
+                                <div class="driver_data">
                                     <div class="driver_name"><p>ირაკლი</p></div>
                                     <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
                                 </div>
@@ -295,20 +319,22 @@
                                     დაჯავშვნა
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
+                            <div class="col-12 col-lg-6">
                                 <div class="car_img_wrapper">
                                     <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/t6KTqW2Zc77zws1b5VEKE5MSeMyISc.jpg&w=400&h=300&zc=1&q=70" />
                                     <p class="car_img_title">FORD FUSION</p>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-7 car_descr">
-                            <div class="driver_data">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="car_dest">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 car_descr">
+                                <div class="driver_data">
                                     <div class="driver_name"><p>ირაკლი</p></div>
                                     <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
                                 </div>
@@ -323,6 +349,13 @@
                                     დაჯავშვნა
                                 </div>
                             </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="car_img_wrapper">
+                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/t6KTqW2Zc77zws1b5VEKE5MSeMyISc.jpg&w=400&h=300&zc=1&q=70" />
+                                    <p class="car_img_title">FORD FUSION</p>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
