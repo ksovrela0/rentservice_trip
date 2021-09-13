@@ -337,8 +337,38 @@
                         <div class="row">
                             <div class="col-md-6 col-md-push-6">
                                 <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/t6KTqW2Zc77zws1b5VEKE5MSeMyISc.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">FORD FUSION</p>
+                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/mVxe0V5ha2OFgTd4b0vBw1dUH6wdmP.jpg&w=400&h=300&zc=1&q=70" />
+                                    <p class="car_img_title">HYNDAI ELANTRA</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-md-pull-6 car_descr">
+                                <div class="driver_data">
+                                    <div class="driver_name"><p>ირაკლი</p></div>
+                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
+                                </div>
+                                <div class="driver_other_data">
+                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
+                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
+                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
+                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
+                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
+                                </div>
+                                <div class="car_btn_area">
+                                    დაჯავშვნა
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4">
+                    <div class="car_dest">
+                        <div class="row">
+                            <div class="col-md-6 col-md-push-6">
+                                <div class="car_img_wrapper">
+                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/mVxe0V5ha2OFgTd4b0vBw1dUH6wdmP.jpg&w=400&h=300&zc=1&q=70" />
+                                    <p class="car_img_title">HYNDAI ELANTRA</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-pull-6 car_descr">
