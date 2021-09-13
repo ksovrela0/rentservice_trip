@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.5">
+    <link rel="stylesheet" href="css/styles.css?v=2.6">
     <link rel="stylesheet" href="css/select2.css?v=1.2"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -60,12 +60,12 @@
                                 <ul class="top-user-area-list list list-horizontal list-border">
                                     <li class="top-user-area-lang nav-drop">
                                         <a href="#">
-                                            <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+                                            <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" />GEO<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
                                         </a>
                                         <ul class="list nav-drop-menu">
                                             <li>
-                                                <a title="German" href="#">
-                                                    <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
+                                                <a title="English" href="#">
+                                                    <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" /><span class="right">ENG</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -138,7 +138,7 @@
                                                         <option>რამდენი დღით ჯავშნით</option>
                                                         <?php
                                                             for($i = 1; $i <= 30; $i++){
-                                                                echo '<option value="'.$i.'">რამდენი დღით ჯავშნით: '.$i.'</option>';
+                                                                echo '<option value="'.$i.'">'.$i.'</option>';
                                                             }
                                                         ?>
                                                     </select>
