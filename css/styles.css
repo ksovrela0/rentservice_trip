@@ -10984,6 +10984,7 @@ img.mfp-img {
 .car_img_wrapper{
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .car_img_title{
@@ -11024,7 +11025,7 @@ img.mfp-img {
 
 }
 .car_descr{
-  height: 185px;
+  height: 220px;
 }
 .destination_title{
   background-color: #000;
@@ -11077,3 +11078,23 @@ img.mfp-img {
   font-size: 13px;
 }
 
+.trip_data{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.trip_distance{
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.trip_duration{
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.changable_text{
+  color: red;
+}

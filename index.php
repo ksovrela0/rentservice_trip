@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/bootstrap.css?v=2">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.9">
+    <link rel="stylesheet" href="css/styles.css?v=2.910">
     <link rel="stylesheet" href="css/select2.css?v=1.2"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -239,6 +239,10 @@
         </div>
 
         <div class="container" style="border-top: 1px solid black;border-radius: 40px;">
+            <div class="trip_data">
+                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text">3</span> კმ</div>
+                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text">02:24</span> სთ</div>
+            </div>
             <div class="gap"></div>
             <h5 class="text-center mb20" style="font-weight:bold;">ფასი მოიცავს მგზავრობის სრულ ღირებულებას (და არა ერთი მგზავრის საფასურს)</h5>
             <div class="row">
