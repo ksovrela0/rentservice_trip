@@ -1,5 +1,5 @@
 "use strict";
-
+var aJaxURL = 'php/ajax.php';
 $('ul.slimmenu').slimmenu({
     resizeWidth: '992',
     collapserTitle: 'Main Menu',
@@ -498,11 +498,26 @@ function abortTimer() { // to be called when you want to stop the timer
 
 
 $(document).on('click', '.add-destination-plus', function(){
-    $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                    <label>მიმართულება(სად)</label>
-                                    <input class="typeahead form-control" placeholder="" type="text" />
-                                    <i class="fa fa-minus add-destination-minus"></i>
-                                </div>`);
+    var options;
+    $.ajax({
+        url: aJaxURL,
+        dataType: 'json',
+        data: {
+            act: "get_additional_options",
+            type: 1
+        },
+        success: function(data) {
+            options = data.options;
+            $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                            <label>მიმართულება(სად)</label>
+                                            <select class="form-control location_tos">
+                                                <option>აირჩიეთ ლოკაცია</option>
+                                                `+options+`
+                                            </select>
+                                            <i class="fa fa-minus add-destination-minus"></i>
+                                        </div>`);
+        }
+    });
 });
 
 $(document).on('click', '.add-destination-minus', function(){

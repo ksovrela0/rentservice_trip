@@ -1,8 +1,5 @@
 <?php
-include("class.Mysqli.php");
-$db = new dbClass();
 include("php/func.php");
-
 ?>
 
 <!DOCTYPE HTML>
@@ -515,7 +512,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.5"></script>
+        <script src="js/custom.js?v=1.6"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         

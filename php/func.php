@@ -1,5 +1,7 @@
 <?php
+include("class.Mysqli.php");
 
+$db = new dbClass();
 function getDefaultLocations(){
     GLOBAL $db;
     $db->setQuery(" SELECT  * 
