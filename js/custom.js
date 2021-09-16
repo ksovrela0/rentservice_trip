@@ -505,3 +505,11 @@ $(document).on('click', '.add-destination-plus', function(){
 $(document).on('click', '.add-destination-minus', function(){
     $(this).parent().remove();
 });
+
+
+$(document).on('click', ".car_li", function(){
+    $(".car_li").each(function(){
+        $(this).removeClass('actived');
+    });
+    $(this).addClass('actived')
+})

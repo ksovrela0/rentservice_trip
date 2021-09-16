@@ -11098,3 +11098,38 @@ img.mfp-img {
 .changable_text{
   color: red;
 }
+
+.fleet_filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  float: right;
+}
+
+.car_types{
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+.car_types li{
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.car_types li:hover{
+  color:red;
+}
+
+.car_li img{
+  width: 36px;
+  margin: 0 auto;
+}
+
+.car_types .actived{
+  color:red;
+}
