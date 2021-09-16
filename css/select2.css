@@ -22,7 +22,8 @@
 	padding-right: 20px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap
+	white-space: nowrap;
+	padding-left: 44px;
 }
 
 .select2-container .select2-selection--single .select2-selection__clear {

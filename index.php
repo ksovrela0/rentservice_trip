@@ -1,3 +1,10 @@
+<?php
+include("class.Mysqli.php");
+$db = new dbClass();
+include("php/func.php");
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -18,8 +25,8 @@
     <link rel="stylesheet" href="css/bootstrap.css?v=2">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.924">
-    <link rel="stylesheet" href="css/select2.css?v=1.2"/>
+    <link rel="stylesheet" href="css/styles.css?v=2.93">
+    <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
 
@@ -120,11 +127,21 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>საწყისი ლოკაცია</label>
-                                                        <input class="typeahead form-control" placeholder="" type="text" />
+                                                        <select class="form-control" id="location_from">
+                                                            <option>აირჩიეთ ლოკაცია</option>
+                                                            <?php
+                                                                getDefaultLocations();
+                                                            ?>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>მიმართულება(სად)</label>
-                                                        <input class="typeahead form-control" placeholder="" type="text" />
+                                                        <select class="form-control" id="location_to">
+                                                            <option>აირჩიეთ ლოკაცია</option>
+                                                            <?php
+                                                                getDefaultLocations();
+                                                            ?>
+                                                        </select>
                                                         <i class="fa fa-plus add-destination-plus"></i>
                                                     </div>
                                                     <div id="destinations">
@@ -134,14 +151,17 @@
                                                         <label>თარიღი</label>
                                                         <input class="form-control" name="start" type="text" />
                                                     </div>
-                                                    <select class="form-control" id="teest">
-                                                        <option>რამდენი დღით ჯავშნით</option>
-                                                        <?php
-                                                            for($i = 1; $i <= 30; $i++){
-                                                                echo '<option value="'.$i.'">'.$i.'</option>';
-                                                            }
-                                                        ?>
-                                                    </select>
+                                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fas fa-clock input-icon"></i>
+                                                        <label>რამდენი დღით ჯავშნით</label>
+                                                        <select class="form-control" id="trip_days">
+                                                            <option>აირჩიეთ დღეები ოდენობა</option>
+                                                            <?php
+                                                                for($i = 1; $i <= 30; $i++){
+                                                                    echo '<option value="'.$i.'">'.$i.'</option>';
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 
                                             </div>
@@ -495,7 +515,7 @@
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.4"></script>
+        <script src="js/custom.js?v=1.5"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         

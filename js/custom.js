@@ -80,7 +80,9 @@ $('input.date-pick, .input-daterange, .date-pick-inline').datepicker({
 
 
 
-$('input[name="start"]').datepicker('setDate', 'today');
+$('input[name="start"]').datepicker({
+    startDate: '+0d'
+});
 $('.input-daterange input[name="end"]').datepicker('setDate', '+7d');
 
 $('input.time-pick').timepicker({
@@ -162,8 +164,9 @@ $('div.bg-parallax').each(function() {
 $(document).ready(
     
     function() {
-
-        $("#teest").select2();
+        $("#location_from").select2();
+        $("#location_to").select2();
+        $("#trip_days").select2();
 
         // Owl Carousel
         var owlCarousel = $('#owl-carousel'),
