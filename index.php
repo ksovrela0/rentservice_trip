@@ -398,10 +398,15 @@ include("php/func.php");
                 <div class="col-xs-12 col-lg-4">
                     <div class="car_dest">
                         <div class="row">
-                            <div class="col-md-6 col-md-push-6">
+                            <div class="col-md-6 col-md-push-6 car_descr">
                                 <div class="car_img_wrapper">
                                     <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/mVxe0V5ha2OFgTd4b0vBw1dUH6wdmP.jpg&w=400&h=300&zc=1&q=70" />
                                     <p class="car_img_title">HYNDAI ELANTRA</p>
+                                </div>
+                                <div class="price_area">
+                                    <div class="price_gel">123 GEL</div>
+                                    <div class="price_other">123 $</div>
+                                    <div class="price_other">123 €</div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-pull-6 car_descr">
