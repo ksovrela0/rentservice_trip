@@ -1916,6 +1916,7 @@ h5.thumb-title {
 .bg-holder {
   position: relative;
   overflow: hidden;
+  
 }
 .bg-holder > .bg-mask,
 .bg-holder > .bg-blur,
@@ -1979,10 +1980,9 @@ h5.thumb-title {
   background: #127cdc;
 }
 .bg-holder > .bg-parallax {
-  background-position: 50% 50% !important;
+  
   background-size: auto !important;
-  background-attachment: fixed;
-  background-image: url('../img/backgrounds/viptrip.png');
+  
 }
 @media (max-width:992px) {
   .bg-holder > .bg-parallax {
@@ -10906,6 +10906,9 @@ img.mfp-img {
   width: 100%;
   z-index: 2;
   padding: 40px;
+  background-image: url(../img/backgrounds/viptrip.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 
