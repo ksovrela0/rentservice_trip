@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=2">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=2.93">
+    <link rel="stylesheet" href="css/styles.css?v=2.94">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -125,7 +125,7 @@ include("php/func.php");
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>საწყისი ლოკაცია</label>
                                                         <select class="form-control" id="location_from">
-                                                            <option>აირჩიეთ ლოკაცია</option>
+                                                            <option value="0">აირჩიეთ ლოკაცია</option>
                                                             <?php
                                                                 getDefaultLocations();
                                                             ?>
@@ -134,7 +134,7 @@ include("php/func.php");
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>მიმართულება(სად)</label>
                                                         <select class="form-control" id="location_to">
-                                                            <option>აირჩიეთ ლოკაცია</option>
+                                                            <option value="0">აირჩიეთ ლოკაცია</option>
                                                             <?php
                                                                 getDefaultLocations();
                                                             ?>
@@ -151,7 +151,7 @@ include("php/func.php");
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fas fa-clock input-icon"></i>
                                                         <label>რამდენი დღით ჯავშნით</label>
                                                         <select class="form-control" id="trip_days">
-                                                            <option>აირჩიეთ დღეები ოდენობა</option>
+                                                            <option value="0">აირჩიეთ დღეები ოდენობა</option>
                                                             <?php
                                                                 for($i = 1; $i <= 30; $i++){
                                                                     echo '<option value="'.$i.'">'.$i.'</option>';
@@ -175,7 +175,7 @@ include("php/func.php");
             
         </div>
 
-        <div class="container">
+        <div class="container prepared_trip">
             <div class="gap"></div>
             <div class="prepared_states">
                 <h3 class="text-center mb20 popular_destination">პოპულარული მარშრუტები</h3>
@@ -255,10 +255,10 @@ include("php/func.php");
             <div class="gap gap-small"></div>
         </div>
 
-        <div class="container" style="border-top: 1px solid black;border-radius: 40px;">
+        <div class="container" style="border-top: 1px solid black;border-radius: 40px; margin-top:10px;">
             <div class="trip_data">
-                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text">3</span> კმ</div>
-                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text">02:24</span> სთ</div>
+                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text" id="tripDistance">3</span> კმ</div>
+                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text" id="tripDuration">02:24</span> სთ</div>
             </div>
             <div class="fleet_filter">
                 <div class="fleet_type">
@@ -517,7 +517,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.6"></script>
+        <script src="js/custom.js?v=1.7"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         

@@ -511,17 +511,29 @@ $(document).on('click', '.add-destination-plus', function(){
             $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                             <label>მიმართულება(სად)</label>
                                             <select class="form-control location_tos">
-                                                <option>აირჩიეთ ლოკაცია</option>
+                                                <option value="0">აირჩიეთ ლოკაცია</option>
                                                 `+options+`
                                             </select>
                                             <i class="fa fa-minus add-destination-minus"></i>
                                         </div>`);
         }
     });
+
 });
 
 $(document).on('click', '.add-destination-minus', function(){
     $(this).parent().remove();
+    var origin_base = $("#location_from").val();
+    var destination_base = $("#location_to").val();
+    var trip_days = $("#trip_days").val();
+    var waypoints = [];
+    $(".location_tos").each(function(){
+        waypoints.push($(this).val());
+    })
+
+    if(trip_days > 0 && destination_base > 0 && origin_base > 0){
+        filterCars(origin_base,destination_base,trip_days,waypoints);
+    }
 });
 
 
@@ -531,3 +543,51 @@ $(document).on('click', ".car_li", function(){
     });
     $(this).addClass('actived')
 })
+
+$(document).on('change', '#location_from,#location_to,#trip_days,.location_tos', function(){
+    var origin_base = $("#location_from").val();
+    var destination_base = $("#location_to").val();
+    var trip_days = $("#trip_days").val();
+    var waypoints = [];
+    $(".location_tos").each(function(){
+        waypoints.push($(this).val());
+    })
+
+    if(trip_days > 0 && destination_base > 0 && origin_base > 0){
+        filterCars(origin_base,destination_base,trip_days,waypoints);
+    }
+});
+
+
+
+/* $.ajax({
+    url: aJaxURL,
+    dataType: 'json',
+    data: {
+        act: "calculate_distance_data",
+        type: 1
+    },
+    success: function(data) {
+       
+    }
+}); */
+
+
+function filterCars(origin_base,destination_base,trip_days,waypoints = 0){
+    $(".prepared_trip").hide();
+    $.ajax({
+        url: aJaxURL,
+        dataType: 'json',
+        data: {
+            act: "calculate_distance_data",
+            origin_base: origin_base,
+            destination_base: destination_base,
+            trip_days: trip_days,
+            waypoints: waypoints
+        },
+        success: function(data) {
+           $("#tripDistance").html(data.tripDistanceKM);
+           $("#tripDuration").html(data.tripDuration);
+        }
+    });
+}
