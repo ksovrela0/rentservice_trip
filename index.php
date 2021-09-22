@@ -26,7 +26,6 @@ include("php/func.php");
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
-
     <link rel="stylesheet" href="css/switcher.css" />
     <link rel="alternate stylesheet" type="text/css" href="css/schemes/bright-turquoise.css" title="bright-turquoise" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="css/schemes/turkish-rose.css" title="turkish-rose" media="all" />
@@ -254,11 +253,12 @@ include("php/func.php");
             </div>
             <div class="gap gap-small"></div>
         </div>
-
-        <div class="container" style="border-top: 1px solid black;border-radius: 40px; margin-top:10px;">
+        <div class="container" id="map_area" style="display:none; height:400px; margin-top:10px;">
+        </div>
+        <div class="container cars_area" style="display:none; border-top: 1px solid black;border-radius: 40px; margin-top:10px;">
             <div class="trip_data">
-                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text" id="tripDistance">3</span> კმ</div>
-                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text" id="tripDuration">02:24</span> სთ</div>
+                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text" id="tripDistance">0</span> კმ</div>
+                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text" id="tripDuration">00:00</span> სთ</div>
             </div>
             <div class="fleet_filter">
                 <div class="fleet_type">
@@ -508,7 +508,7 @@ include("php/func.php");
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
         <script src="js/fotorama.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAfnQE12ExP7zZnj5SirrP9qEvNV0XXO0"></script>
         <script src="js/typeahead.js"></script>
         <script src="js/card-payment.js"></script>
         <script src="js/magnific.js"></script>
@@ -517,7 +517,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.7"></script>
+        <script src="js/custom.js?v=1.8"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         

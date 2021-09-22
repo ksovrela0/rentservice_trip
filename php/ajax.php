@@ -24,7 +24,7 @@ switch($act){
         $destination_base = $_REQUEST['destination_base'];
         $waypoints = $_REQUEST['waypoints'];
         $trip_days = $_REQUEST['trip_days'];
-
+        $markers = array();
         $db->setQuery(" SELECT  coordinates
                         FROM    locations
                         WHERE   actived = 1 AND id = '$origin'");
@@ -38,8 +38,12 @@ switch($act){
             'origin' => $originData['result'][0]['coordinates']
         );
         
+        
         $waypointsData = array();
         if($waypoints != ''){
+            $originCoord = explode(',', $originData['result'][0]['coordinates']);
+            array_push($markers, array('latitude' => $originCoord[0], 'longitude' => $originCoord[1]));
+
             array_unshift($waypoints, $destination_base);
             $lastWaypoint = count($waypoints) - 1;
             $db->setQuery(" SELECT  coordinates
@@ -47,6 +51,10 @@ switch($act){
                             WHERE   actived = 1 AND id = '$waypoints[$lastWaypoint]'");
             $lastWaypoint = $db->getResultArray();
             $addr['destination'] = $lastWaypoint['result'][0]['coordinates'];
+
+
+            $destinationCoord = explode(',', $lastWaypoint['result'][0]['coordinates']);
+            
             array_pop($waypoints);
 
             foreach($waypoints AS $point){
@@ -55,14 +63,24 @@ switch($act){
                                 WHERE   actived = 1 AND id = '$point'");
                 $middleData = $db->getResultArray();
                 array_push($waypointsData, $middleData['result'][0]['coordinates']);
+
+                $waypointsCoord = explode(',', $middleData['result'][0]['coordinates']);
+                array_push($markers, array('latitude' => $waypointsCoord[0], 'longitude' => $waypointsCoord[1]));
             }
             $addr['waypoints'] = implode('|', $waypointsData);
+            array_push($markers, array('latitude' => $destinationCoord[0], 'longitude' => $destinationCoord[1]));
         }
         else{
             $addr = array(
                 'origin' => $originData['result'][0]['coordinates'],
                 'destination' => $destinationData['result'][0]['coordinates']
             );
+
+            $originCoord = explode(',', $originData['result'][0]['coordinates']);
+            $destinationCoord = explode(',', $destinationData['result'][0]['coordinates']);
+
+            array_push($markers, array('latitude' => $originCoord[0], 'longitude' => $originCoord[1]));
+            array_push($markers, array('latitude' => $destinationCoord[0], 'longitude' => $destinationCoord[1]));
         }
         //die(var_dump($addr));
         
@@ -79,6 +97,7 @@ switch($act){
         $data['tripDistanceKM'] = floor($tripDistanceKM/1000);
         $data['tripDuration'] = gmdate("H:i", $tripDuration);
 
+        $data['markers'] = $markers;
         break;
 }
 
