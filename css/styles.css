@@ -11045,6 +11045,7 @@ img.mfp-img {
 .car_descr{
   height: 220px;
   color: #ffca18;
+  margin-top: 5px;
 }
 .destination_title{
   background-color: #000;
