@@ -25,7 +25,7 @@ a:hover {
 
 .popular_destination{
   font-weight: bold;
-  color: #000;
+  color: #ffca18;
 }
 h1,
 h2,
@@ -1019,7 +1019,7 @@ ul.slimmenu li a {
   font-size: 15px;
   text-transform: uppercase;
   font-family: 'Roboto', arial, helvetica, sans-serif;
-  color: #737373;
+  color: #fff;
   -webkit-transition: background-color 0.17s ease-out;
   -moz-transition: background-color 0.17s ease-out;
   -o-transition: background-color 0.17s ease-out;
@@ -1856,10 +1856,11 @@ h5.thumb-title {
     margin: 30px auto;
     -webkit-box-shadow: 0 4px 2px rgba(0,0,0,0.2);
     box-shadow: 0 4px 2px rgba(0,0,0,0.2);
+    background-color: #8c8c8c;
   }
 }
 .global-wrap {
-  background: #fff;
+  background-color: #8c8c8c;
   height: 100%;
 }
 .dis-table {
@@ -10950,13 +10951,13 @@ img.mfp-img {
   padding: 12px;
 }
 .destination{
-  border: 1px solid #656565;
+  border: 1px solid #383838;
   width: fit-content;
   padding: 15px;
   border-radius: 50px;
   cursor: pointer;
-  background-color: #656565;
-  color: #fff;
+  background-color: #383838;
+  color: #ffca18;
   font-size: 18px;
   margin: 4px;
   transition: 0.5s;
@@ -10984,7 +10985,8 @@ img.mfp-img {
   border-radius: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
-  box-shadow: 2px 2px 2px 1px;
+  box-shadow: 8px 6px 2px 1px;
+  background-color: #484848;
 }
 
 .car_img_wrapper{
@@ -11016,7 +11018,6 @@ img.mfp-img {
   left: 7px;
   bottom: -8px;
   width: 180px;
-  gap: 12px;
   color: #000;
   padding: 4px;
   justify-content: space-around;
@@ -11043,6 +11044,7 @@ img.mfp-img {
 }
 .car_descr{
   height: 220px;
+  color: #ffca18;
 }
 .destination_title{
   background-color: #000;
@@ -11105,15 +11107,17 @@ img.mfp-img {
 .trip_distance{
   font-size: 17px;
   font-weight: bold;
+  color: #fff;
 }
 
 .trip_duration{
   font-size: 17px;
   font-weight: bold;
+  color: #fff;
 }
 
 .changable_text{
-  color: red;
+  color: #ffca18;
 }
 
 .fleet_filter{
@@ -11136,10 +11140,11 @@ img.mfp-img {
   flex-direction: column;
   text-align: center;
   transition: 0.4s;
+  color: #fff;
 }
 
 .car_types li:hover{
-  color:red;
+  color: #ffca18;
 }
 
 .car_li img{
@@ -11148,5 +11153,22 @@ img.mfp-img {
 }
 
 .car_types .actived{
-  color:red;
+  color: #ffca18;
+}
+.price_gel{
+  font-weight: bold;
+  border: 1px solid #d0d0d0;
+  border-radius: 40px;
+  padding: 3px 5px;
+  padding-top: 4px;
+  color: #fff;
+}
+
+.price_other{
+  font-weight: bold;
+  border: 1px solid #ffca18;
+  border-radius: 40px;
+  padding: 3px 5px;
+  padding-top: 4px;
+  color: #ffca18;
 }
