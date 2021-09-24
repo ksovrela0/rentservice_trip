@@ -227,7 +227,6 @@ include("php/func.php");
 
                 <div class="category_destination">
                     <h3 class="text-center mb20 dest_title">ტრანსფერები ერევანში</h3>
-                    <h5 class="text-center mb20 dest_alert_title">პანდემიასთან დაკავშირებით ტრანსფერი ხორციელდება საზღვრამდე. სადახლო.</h5> 
                     <div class="trips">
                         <div class="destination">
                             თბილისი – ერევანის აეროპორტი
@@ -242,7 +241,7 @@ include("php/func.php");
                             ქუთაისი – ერევანი
                         </div>
                         <div class="destination">
-                            ბათუმი – ერევანის აეროპორტი ბათუმი – ერევანი
+                            ბათუმი – ერევანის აეროპორტი
                         </div>
                         <div class="destination">
                             ბათუმი – ერევანი
