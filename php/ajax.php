@@ -83,8 +83,12 @@ switch($act){
             array_push($markers, array('latitude' => $destinationCoord[0], 'longitude' => $destinationCoord[1]));
         }
         //die(var_dump($addr));
-        
-        $fields = 'units=metric&key=AIzaSyDAfnQE12ExP7zZnj5SirrP9qEvNV0XXO0&mode=driving&'.http_build_query($addr);
+        $db->setQuery(" SELECT  google_api_key
+                        FROM    system
+                        WHERE   id = '1'");
+        $api_key = $db->getResultArray();
+        $api_key = $api_key['result'][0]['google_api_key'];
+        $fields = 'units=metric&key='.$api_key.'&mode=driving&'.http_build_query($addr);
         $tripData = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/directions/json?'.$fields),true);
 
         $tripDistanceKM = 0;
