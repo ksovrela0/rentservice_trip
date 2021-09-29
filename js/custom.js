@@ -536,6 +536,20 @@ $(document).on('click', '.add-destination-minus', function(){
     }
 });
 
+$(document).on('click', '.destination', function(){
+    var start_id = $(this).attr('start-id');
+    var end_id = $(this).attr('end-id');
+
+    $("#location_from").val(start_id);
+    $('#location_from').trigger('change');
+
+    $("#location_to").val(end_id);
+    $('#location_to').trigger('change');
+
+    
+    $("#trip_days").val(1);
+    $('#trip_days').trigger('change');
+})
 
 $(document).on('click', ".car_li", function(){
     $(".car_li").each(function(){

@@ -180,77 +180,9 @@ include("php/func.php");
             <div class="gap"></div>
             <div class="prepared_states">
                 <h3 class="text-center mb20 popular_destination">პოპულარული მარშრუტები</h3>
-                <div class="category_destination">
-                    <h3 class="text-center mb20 dest_title">ტრანსფერები თბილისის აეროპორტიდან</h3>
-                    <div class="trips">
-                        <div class="destination">
-                            თბილისის აეროპორტი – ბათუმი
-                        </div>
-                        <div class="destination">
-                            თბილისის აეროპორტი – ქუთაისი
-                        </div>
-                        <div class="destination">
-                            თბილისის აეროპორტი – გუდაური
-                        </div>
-                        <div class="destination">
-                            თბილისის აეროპორტი – ბაკურიანი
-                        </div>
-                        <div class="destination">
-                            თბილისის აეროპორტი – მესტია
-                        </div>
-                        <div class="destination">
-                            თბილისის აეროპორტი – სტეფანწმინდა
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div class="category_destination">
-                    <h3 class="text-center mb20 dest_title">ტრანსფერები ქუთაისის აეროპორტიდან</h3>
-                    <div class="trips">
-                        <div class="destination">
-                            ქუთაისის აეროპორტი – თბილისი
-                        </div>
-                        <div class="destination">
-                            ქუთაისის აეროპორტი – ბათუმი
-                        </div>
-                        <div class="destination">
-                            ქუთაისის აეროპორტი – გუდაური
-                        </div>
-                        <div class="destination">
-                            ქუთაისის აეროპორტი – მესტია
-                        </div>
-                        <div class="destination">
-                            ქუთაისის აეროპორტი – სტეფანწმინდა
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div class="category_destination">
-                    <h3 class="text-center mb20 dest_title">ტრანსფერები ერევანში</h3>
-                    <div class="trips">
-                        <div class="destination">
-                            თბილისი – ერევანის აეროპორტი
-                        </div>
-                        <div class="destination">
-                            თბილისი – ერევანი
-                        </div>
-                        <div class="destination">
-                            ქუთაისი – ერევანის აეროპორტი 
-                        </div>
-                        <div class="destination">
-                            ქუთაისი – ერევანი
-                        </div>
-                        <div class="destination">
-                            ბათუმი – ერევანის აეროპორტი
-                        </div>
-                        <div class="destination">
-                            ბათუმი – ერევანი
-                        </div>
-                    </div>
-                    
-                </div>
+                <?php
+                    prepared_transfers();
+                ?>
             </div>
             <div class="gap gap-small"></div>
         </div>
@@ -364,7 +296,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.9"></script>
+        <script src="js/custom.js?v=2.0"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         
