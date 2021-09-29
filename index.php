@@ -51,7 +51,7 @@ include("php/func.php");
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a class="logo" href="index-2.html">
+                            <a class="logo" href="index.php">
                                 <img src="img/logo.jpg" alt="Transfer" title="Image Title" />
                             </a>
                         </div>
