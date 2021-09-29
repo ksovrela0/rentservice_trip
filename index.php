@@ -527,7 +527,7 @@ include("php/func.php");
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
         <script src="js/fotorama.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAfnQE12ExP7zZnj5SirrP9qEvNV0XXO0"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKHmTCzDHpTTBRQ4dTfR9d8xkmO-9OsqA"></script>
         <script src="js/typeahead.js"></script>
         <script src="js/card-payment.js"></script>
         <script src="js/magnific.js"></script>
