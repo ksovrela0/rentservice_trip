@@ -5,6 +5,22 @@ $db = new dbClass();
 $act = $_REQUEST['act'];
 $data = array();
 switch($act){
+    case 'get_cars':
+        $db->setQuery(" SELECT  cars.id,
+                                cars.image,
+                                cars.car_name,
+                                cars.car_type,
+                                cars.seats,
+                                cars.air_conditioner,
+                                cars.wifi,
+                                cars.fuel_per_100,
+                                users.avatar,
+                                users.firstname,
+                                users.languages
+                        FROM 	cars
+                        JOIN	users ON users.id = cars.user_id
+                        WHERE   cars.actived = 1");
+        break;
     case 'get_additional_options':
         $db->setQuery(" SELECT  * 
                         FROM    `locations`
