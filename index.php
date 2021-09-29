@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=2">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=3.03">
+    <link rel="stylesheet" href="css/styles.css?v=3.2">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -262,193 +262,19 @@ include("php/func.php");
             <div class="fleet_filter">
                 <div class="fleet_type">
                     <ul class="car_types">
-                        <li class="car_li actived"><i class="fa fa-car" aria-hidden="true" style="font-size: 36px;"></i>ყველა</li>
-                        <li class="car_li"><img src="img/cartypes/sedan_t.png" >სედანი</li>
-                        <li class="car_li"><img src="img/cartypes/suv_t.png" >ჯიპი</li>
-                        <li class="car_li"><img src="img/cartypes/minivan_t.png" >მინივენი</li>
-                        <li class="car_li"><img src="img/cartypes/minibus_t.png" >მიკ-ავტობუსი</li>
+                        <li class="car_li actived" data-id="0"><i class="fa fa-car" aria-hidden="true" style="font-size: 36px;"></i>ყველა</li>
+                        <li class="car_li" data-id="1"><img src="img/cartypes/sedan_t.png" >სედანი</li>
+                        <li class="car_li" data-id="2"><img src="img/cartypes/suv_t.png" >ჯიპი</li>
+                        <li class="car_li" data-id="3"><img src="img/cartypes/minivan_t.png" >მინივენი</li>
+                        <li class="car_li" data-id="4"><img src="img/cartypes/minibus_t.png" >მიკ-ავტობუსი</li>
                     </ul>
                 </div>
                 
             </div>
             <div class="gap"></div>
             <h5 class="text-center mb20" style="font-weight:bold;color: #ffca18;">ფასი მოიცავს მგზავრობის სრულ ღირებულებას (და არა ერთი მგზავრის საფასურს)</h5>
-            <div class="row">
-                <div class="col-xs-12 col-lg-4">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6 car_descr">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/3XfjaNXCoasrGuMvrtXz9IlCMjfKPl.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">TOYOTA PRIUS</p>
-                                </div>
-                                <div class="price_area">
-                                    <div class="price_gel">123 GEL</div>
-                                    <div class="price_other">123 $</div>
-                                    <div class="price_other">123 €</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6 car_descr">
-                                <div class="driver_data">
-                                    <div class="driver_name"><p>ირაკლი</p></div>
-                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
-                                </div>
-                                <div class="driver_other_data">
-                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
-                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
-                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
-                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
-                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
-                                </div>
-                                <div class="car_btn_area">
-                                    დაჯავშვნა
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-lg-4">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6 car_descr">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/OugMImVfH2xMi0KH8aJb3SUOEJDLva.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">TOYOTA PRIUS</p>
-                                </div>
-                                <div class="price_area">
-                                    <div class="price_gel">123 GEL</div>
-                                    <div class="price_other">123 $</div>
-                                    <div class="price_other">123 €</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6 car_descr">
-                                <div class="driver_data">
-                                    <div class="driver_name"><p>ირაკლი</p></div>
-                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
-                                </div>
-                                <div class="driver_other_data">
-                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
-                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
-                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
-                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
-                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
-                                </div>
-                                <div class="car_btn_area">
-                                    დაჯავშვნა
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-lg-4">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6 car_descr">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/t6KTqW2Zc77zws1b5VEKE5MSeMyISc.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">FORD FUSION</p>
-                                </div>
-                                <div class="price_area">
-                                    <div class="price_gel">123 GEL</div>
-                                    <div class="price_other">123 $</div>
-                                    <div class="price_other">123 €</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6 car_descr">
-                                <div class="driver_data">
-                                    <div class="driver_name"><p>ირაკლი</p></div>
-                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
-                                </div>
-                                <div class="driver_other_data">
-                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
-                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
-                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
-                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
-                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
-                                </div>
-                                <div class="car_btn_area">
-                                    დაჯავშვნა
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-lg-4">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6 car_descr">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/mVxe0V5ha2OFgTd4b0vBw1dUH6wdmP.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">HYNDAI ELANTRA</p>
-                                </div>
-                                <div class="price_area">
-                                    <div class="price_gel">123 GEL</div>
-                                    <div class="price_other">123 $</div>
-                                    <div class="price_other">123 €</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6 car_descr">
-                                <div class="driver_data">
-                                    <div class="driver_name"><p>ირაკლი</p></div>
-                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
-                                </div>
-                                <div class="driver_other_data">
-                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
-                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
-                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
-                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
-                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
-                                </div>
-                                <div class="car_btn_area">
-                                    დაჯავშვნა
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-lg-4">
-                    <div class="car_dest">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6 car_descr">
-                                <div class="car_img_wrapper">
-                                    <img class="car_img_thumb" src="https://startrip.ge/timthumb/thumb.php?src=/upload/mVxe0V5ha2OFgTd4b0vBw1dUH6wdmP.jpg&w=400&h=300&zc=1&q=70" />
-                                    <p class="car_img_title">HYNDAI ELANTRA</p>
-                                </div>
-                                <div class="price_area">
-                                    <div class="price_gel">123 GEL</div>
-                                    <div class="price_other">123 $</div>
-                                    <div class="price_other">123 €</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-md-pull-6 car_descr">
-                                <div class="driver_data">
-                                    <div class="driver_name"><p>ირაკლი</p></div>
-                                    <div class="driver_avatar"><img class="dr_img" src="https://startrip.ge/timthumb/thumb.php?src=/upload/C8DexBZI0NNxk8p72dDZmnJNkLYo6T.jpg&w=50&h=50&zc=1&q=70" /></div>
-                                </div>
-                                <div class="driver_other_data">
-                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> ინგლისური რუსული ივრითი</div>
-                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> ბენზინი</div>
-                                    <div class="dr_seats"><i class="fas fa-chair"></i> 4</div>
-                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> კი</div>
-                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> კი</div>
-                                </div>
-                                <div class="car_btn_area">
-                                    დაჯავშვნა
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="carData">
+                
             </div>
             <div class="gap gap-small"></div>
         </div>
@@ -536,7 +362,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=1.8"></script>
+        <script src="js/custom.js?v=1.9"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         

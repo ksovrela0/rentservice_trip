@@ -6,20 +6,70 @@ $act = $_REQUEST['act'];
 $data = array();
 switch($act){
     case 'get_cars':
+        $trip_distance = $_REQUEST['distance'];
+        $trip_days = $_REQUEST['trip_days'];
+        $car_type = $_REQUEST['car_type'];
+
+        if($car_type != 0){
+            $car_type_filt = " AND cars.car_type = $car_type";
+        }
         $db->setQuery(" SELECT  cars.id,
                                 cars.image,
                                 cars.car_name,
                                 cars.car_type,
                                 cars.seats,
-                                cars.air_conditioner,
-                                cars.wifi,
+                                IF(cars.air_conditioner = 1, 'კი', 'არა') AS air_conditioner,
+                                IF(cars.wifi = 1, 'კი', 'არა') AS wifi,
                                 cars.fuel_per_100,
-                                users.avatar,
-                                users.firstname,
-                                users.languages
+                                IFNULL(users.avatar, 'no-avatar.jpg') AS avatar,
+                                users.firstname_geo,
+                                users.languages_geo,
+                                fuel_type.name_geo AS fuel_type,
+                                users.salary_per_day,
+                                
+                                CASE
+                                    WHEN cars.fuel_type = 1 THEN CEIL(((($trip_distance * 2)*cars.fuel_per_100)/100 * (SELECT fuel_price_benz FROM system WHERE id = 1)) + (users.salary_per_day * $trip_days))
+                                    WHEN cars.fuel_type = 2 THEN CEIL(((($trip_distance * 2)*cars.fuel_per_100)/100 * (SELECT fuel_price_diesel FROM system WHERE id = 1)) + (users.salary_per_day * $trip_days))
+                                    WHEN cars.fuel_type = 3 THEN CEIL(((($trip_distance * 2)*cars.fuel_per_100)/100 * (SELECT fuel_price_gas FROM system WHERE id = 1)) + (users.salary_per_day * $trip_days))
+                                END AS total_price
+
                         FROM 	cars
+                        JOIN	fuel_type ON fuel_type.id = cars.fuel_type
                         JOIN	users ON users.id = cars.user_id
-                        WHERE   cars.actived = 1");
+                        WHERE   cars.actived = 1 $car_type_filt");
+
+        $cars = $db->getResultArray();
+
+        $db->setQuery(" SELECT  cur_dollar,
+                                cur_euro
+                        FROM    system
+                        WHERE   id = 1");
+        $curr = $db->getResultArray();
+
+
+        
+        $carData = array();
+
+        foreach($cars['result'] AS $car){
+            $priceGEL = ceil($car['total_price'] + ($car['total_price'] * 0.2));
+            $priceUSD = ceil(($car['total_price'] + ($car['total_price'] * 0.2))/$curr['result'][0]['cur_dollar']);
+            $priceEUR = ceil(($car['total_price'] + ($car['total_price'] * 0.2))/$curr['result'][0]['cur_euro']);
+            array_push($carData, array( 'id' => $car['id'],
+                                        'image' => $car['image'],
+                                        'car_name' => $car['car_name'],
+                                        'driver_name' => $car['firstname_geo'],
+                                        'driver_avatar' => $car['avatar'],
+                                        'languages' => $car['languages_geo'],
+                                        'seats' => $car['seats'],
+                                        'fuel_type' => $car['fuel_type'],
+                                        'wifi' => $car['wifi'],
+                                        'air_conditioner' => $car['air_conditioner'],
+                                        'price_gel' => $priceGEL,
+                                        'price_usd' => $priceUSD,
+                                        'price_eur' => $priceEUR));
+        }
+
+        $data['cars'] = $carData;
         break;
     case 'get_additional_options':
         $db->setQuery(" SELECT  * 

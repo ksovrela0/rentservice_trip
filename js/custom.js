@@ -542,6 +542,17 @@ $(document).on('click', ".car_li", function(){
         $(this).removeClass('actived');
     });
     $(this).addClass('actived')
+    var origin_base = $("#location_from").val();
+    var destination_base = $("#location_to").val();
+    var trip_days = $("#trip_days").val();
+    var waypoints = [];
+    $(".location_tos").each(function(){
+        waypoints.push($(this).val());
+    })
+
+    if(trip_days > 0 && destination_base > 0 && origin_base > 0){
+        filterCars(origin_base,destination_base,trip_days,waypoints,$(this).attr('data-id'));
+    }
 })
 
 $(document).on('change', '#location_from,#location_to,#trip_days,.location_tos', function(){
@@ -573,10 +584,10 @@ $(document).on('change', '#location_from,#location_to,#trip_days,.location_tos',
 }); */
 
 
-function filterCars(origin_base,destination_base,trip_days,waypoints = 0){
+function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_type = 0){
     $(".prepared_trip").hide();
     $(".cars_area").show();
-    
+    $("#carData").html('');
     $.ajax({
         url: aJaxURL,
         dataType: 'json',
@@ -585,7 +596,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0){
             origin_base: origin_base,
             destination_base: destination_base,
             trip_days: trip_days,
-            waypoints: waypoints
+            waypoints: waypoints,
         },
         success: function(data) {
             $("#tripDistance").html(data.tripDistanceKM);
@@ -593,6 +604,60 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0){
 
             $("#map_area").show();
             drawMap(data.markers);
+
+            $.ajax({
+                url: aJaxURL,
+                dataType: 'json',
+                data: {
+                    act: "get_cars",
+                    distance: data.tripDistanceKM,
+                    trip_days: trip_days,
+                    car_type: car_type
+                },
+                success: function(data) {
+                    $("#carData").html('');
+                    var cars = data.cars;
+                    
+                    for(let i = 0; i < cars.length; i++){
+                        $("#carData").append(`  <div class="col-xs-12 col-lg-4">
+                                                    <div class="car_dest">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-md-push-6 car_descr">
+                                                                <div class="car_img_wrapper">
+                                                                    <img class="car_img_thumb" src="`+cars[i].image+`" />
+                                                                    <p class="car_img_title">`+cars[i].car_name+`</p>
+                                                                </div>
+                                                                <div class="price_area">
+                                                                    <div class="price_gel">`+cars[i].price_gel+` GEL</div>
+                                                                    <div class="price_other">`+cars[i].price_usd+` $</div>
+                                                                    <div class="price_other">`+cars[i].price_eur+` €</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-md-pull-6 car_descr">
+                                                                <div class="driver_data">
+                                                                    <div class="driver_name"><p>`+cars[i].driver_name+`</p></div>
+                                                                    <div class="driver_avatar"><img class="dr_img" src="img/drivers/`+cars[i].driver_avatar+`" /></div>
+                                                                </div>
+                                                                <div class="driver_other_data">
+                                                                    <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> `+cars[i].languages+`</div>
+                                                                    <div class="dr_fuel"><i class="fas fa-gas-pump"></i> `+cars[i].fuel_type+`</div>
+                                                                    <div class="dr_seats"><i class="fas fa-chair"></i> `+cars[i].seats+`</div>
+                                                                    <div class="dr_wifi"><i class="fas fa-wifi"></i> `+cars[i].wifi+`</div>
+                                                                    <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> `+cars[i].air_conditioner+`</div>
+                                                                </div>
+                                                                <div class="car_btn_area">
+                                                                    დაჯავშვნა
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>`);
+                    }
+                    
+                    
+                }
+            });
         }
     });
 }
