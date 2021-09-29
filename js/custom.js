@@ -583,7 +583,40 @@ $(document).on('change', '#location_from,#location_to,#trip_days,.location_tos',
     }
 });
 
+$(document).on('click', '.makeOrder', function(){
+    $("#ordercar").click();
+    $("#car_token").val($(this).attr('data-car'));
+})
 
+$(document).on('click', '.placeOrder', function(){
+    const order = new Object();
+    order.act = 'order_car';
+    order.car = $("#car_token").val();
+    order.fullname = $("#cl_fullname").val();
+    order.phone = $("#cl_phone").val();
+    order.email = $("#cl_email").val(); 
+    order.address = $("#cl_address").val();
+    order.comment = $("#cl_comment").val();
+    order.origin_base = $("#location_from").val();
+    order.destination_base = $("#location_to").val();
+    order.trip_days = $("#trip_days").val();
+    var waypoints = [];
+    $(".location_tos").each(function(){
+        waypoints.push($(this).val());
+    });
+    order.waypoints = waypoints;
+
+    $.ajax({
+        url: aJaxURL,
+        dataType: 'json',
+        data: order,
+        success: function(data) {
+            
+        }
+    });
+
+
+});
 
 /* $.ajax({
     url: aJaxURL,
@@ -659,7 +692,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
                                                                     <div class="dr_wifi"><i class="fas fa-wifi"></i> `+cars[i].wifi+`</div>
                                                                     <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> `+cars[i].air_conditioner+`</div>
                                                                 </div>
-                                                                <div class="car_btn_area">
+                                                                <div class="car_btn_area makeOrder" data-car="`+cars[i].id+`">
                                                                     დაჯავშვნა
                                                                 </div>
                                                             </div>

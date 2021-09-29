@@ -11177,3 +11177,9 @@ img.mfp-img {
   min-width: 44px;
   text-align: center;
 }
+
+.cl_inputs{
+  width: 100%;
+  border-radius: 10px;
+  height: 35px;
+}
