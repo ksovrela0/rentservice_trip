@@ -10921,12 +10921,18 @@ img.mfp-img {
 }
 
 .add-destination-plus{
-  position: absolute;
-  right: -25px;
-  bottom: 8px;
   cursor: pointer;
-  font-size: 18px;
-  padding: 5px;
+  text-align: center;
+  border: 1px solid #383838;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #383838;
+  color: #ffca18;
+  font-size: 19px;
+}
+
+.add-destination-plus:hover{
+  background-color: #000;
 }
 .add-destination-minus{
   position: absolute;

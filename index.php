@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=2">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=3.2">
+    <link rel="stylesheet" href="css/styles.css?v=3.3">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -138,10 +138,12 @@ include("php/func.php");
                                                                 getDefaultLocations();
                                                             ?>
                                                         </select>
-                                                        <i class="fa fa-plus add-destination-plus"></i>
                                                     </div>
                                                     <div id="destinations">
 
+                                                    </div>
+                                                    <div class="add-destination-plus">
+                                                        დაამატეთ მიმართულება <i class="fa fa-plus"></i>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                         <label>თარიღი</label>
