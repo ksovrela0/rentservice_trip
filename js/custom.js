@@ -193,7 +193,6 @@ $(document).ready(
             autoPlay: 4500
         });
 
-
     // footer always on bottom
     var docHeight = $(window).height();
    var footerHeight = $('#main-footer').height();
@@ -203,7 +202,6 @@ $(document).ready(
     $('#main-footer').css('margin-top', (docHeight - footerTop) + 'px');
    }
     }
-
 
 );
 

@@ -77,7 +77,7 @@ function getTours(){
     foreach($tours['result'] AS $tour){
         echo '  <div class="col-md-4">
                     <div class="thumb">
-                        <a class="hover-img" href="#">
+                        <a class="hover-img" href="tour_d.php?id='.$tour['id'].'">
                             <img src="'.$tour['image'].'" alt="Image Alternative text" title="Gaviota en el Top" />
                             <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                                 <div class="text-small">
@@ -89,5 +89,21 @@ function getTours(){
                 </div>';
     }
     
+}
+
+function getTourDetail($detail = 'name', $id = 0){
+    GLOBAL $db;
+    $db->setQuery(" SELECT  id,
+                            name,
+                            image
+                    FROM    tours
+                    WHERE   actived = 1 AND id = '$id'");
+    $tour = $db->getResultArray();
+    if($detail == 'name'){
+        echo $tour['result'][0]['name'];
+    }
+    else if($detail == 'image'){
+        echo $tour['result'][0]['image'];
+    }
 }
 ?>

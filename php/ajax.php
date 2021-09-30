@@ -5,6 +5,30 @@ $db = new dbClass();
 $act = $_REQUEST['act'];
 $data = array();
 switch($act){
+    case 'get_tour':
+        $tour_id = $_REQUEST['tour_id'];
+
+        $db->setQuery(" SELECT  location_id
+                        FROM    tour_locations
+                        WHERE   tour_id = '$tour_id'
+                        ORDER BY position ASC");
+        $locations = $db->getResultArray();
+
+        $data['start_location'] = $locations['result'][0]['location_id'];
+        $data['end_location'] = $locations['result'][0]['location_id'];
+
+        $lastIndex = $locations['count']-1;
+
+        array_shift($locations['result']);
+        array_pop($locations['result']);
+
+        foreach($locations['result'] AS $loc){
+            $data['waypoints'] .= $loc['location_id'].',';
+        }
+
+        $data['waypoints'] = substr($data['waypoints'], 0, -1);
+        
+        break;
     case 'order_car':
         $car_id = $_REQUEST['car'];
         $fullname = $_REQUEST['fullname'];

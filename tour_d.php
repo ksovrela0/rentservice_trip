@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - ტრანსფერი</title>
+    <title>VipTrip - ტური - <?php getTourDetail('name', $_REQUEST['id']); ?></title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=3">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=3.7">
+    <link rel="stylesheet" href="css/styles.css?v=3.6">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -106,22 +106,19 @@ include("php/func.php");
             <div class="bg-mask-darken"></div>
             <div class="bg-parallax"></div>
             <!-- START GRIDROTATOR -->
-            <div class="ri-grid" id="ri-grid">
+            <div class="ri-grid" id="ri-grid" style="background-image: url(<?php getTourDetail('image', $_REQUEST['id']); ?>)">
                 <div class="bg-front full-center">
                     <div class="container container-transfer">
                         <div class="search-tabs search-tabs-bg">
-                            <h1>დაგეგმე შენი ტრანსფერი</h1>
+                            <h5 style="color: #ffca18; font-weight: 800;"><?php getTourDetail('name', $_REQUEST['id']); ?></h5>
                             <div class="tabbable">
-                                <ul class="nav nav-tabs" id="myTab">
-                                    <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-car"></i> <span >ტრანსფერი</span></a>
-                                    </li>
-                                </ul>
+                                
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="tab-1">
                                         <form>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                                    <div class="form-group form-group-lg form-group-icon-left noevents"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>საწყისი ლოკაცია</label>
                                                         <select class="form-control" id="location_from">
                                                             <option value="0">აირჩიეთ ლოკაცია</option>
@@ -130,7 +127,7 @@ include("php/func.php");
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                                    <div class="form-group form-group-lg form-group-icon-left noevents"><i class="fa fa-map-marker input-icon"></i>
                                                         <label>მიმართულება(სად)</label>
                                                         <select class="form-control" id="location_to">
                                                             <option value="0">აირჩიეთ ლოკაცია</option>
@@ -139,10 +136,10 @@ include("php/func.php");
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div id="destinations">
+                                                    <div id="destinations" class="noevents">
 
                                                     </div>
-                                                    <div class="add-destination-plus">
+                                                    <div class="add-destination-plus" style="display:none;">
                                                         დაამატეთ მიმართულება <i class="fa fa-plus"></i>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
@@ -176,7 +173,7 @@ include("php/func.php");
             
         </div>
 
-        <div class="container prepared_trip">
+        <div class="container prepared_trip" style="display:none;">
             <div class="gap"></div>
             <div class="prepared_states">
                 <h3 class="text-center mb20 popular_destination">პოპულარული მარშრუტები</h3>
@@ -278,6 +275,58 @@ include("php/func.php");
 
 
         <script src="js/jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    url: aJaxURL,
+                    dataType: 'json',
+                    data: "act=get_tour&tour_id=<?php echo $_REQUEST['id']; ?>",
+                    success: function(data) {
+                        $("#location_from").val(data.start_location);
+                        $('#location_from').trigger('change');
+                        var end_location = data.end_location;
+                        var waypoints = data.waypoints;
+                        waypoints = waypoints.split(',');
+                        var waypointsLen = waypoints.length;
+                        
+                        $("#location_to").val(waypoints[0]);
+                        $('#location_to').trigger('change');
+                        waypoints.shift();
+                        
+                        console.log(waypoints)
+                        $.ajax({
+                            url: aJaxURL,
+                            dataType: 'json',
+                            data: {
+                                act: "get_additional_options",
+                                type: 1
+                            },
+                            success: function(data) {
+                                options = data.options;
+                                for(let i = 0; i < waypointsLen; i++){
+                                    $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                                                <label>მიმართულება(სად)</label>
+                                                                <select class="form-control location_tos" id="loc_`+waypoints[i]+`">
+                                                                    <option value="0">აირჩიეთ ლოკაცია</option>
+                                                                    `+options+`
+                                                                </select>
+                                                                <i class="fa fa-minus add-destination-minus"></i>
+                                                            </div>`);
+                                    $("#loc_"+waypoints[i]).val(waypoints[i]);
+                                    $("#loc_"+waypoints[i]).trigger('change');
+                                }
+                                $("#loc_undefined").val(end_location);
+                                $('#loc_undefined').trigger('change');
+                                $("#trip_days").val(1);
+                                $('#trip_days').trigger('change');
+                                $(".add-destination-plus").hide();
+                            }
+                        });
+                        
+                    }
+                });
+            });
+        </script>
         <script src="js/bootstrap.js"></script>
         <script src="js/slimmenu.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
@@ -296,10 +345,10 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=2.5"></script>
+        <script src="js/custom.js?v=2.4"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
-        
+       
     </div>
 
     <!-- Button trigger modal -->
@@ -353,6 +402,7 @@ include("php/func.php");
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

@@ -11188,3 +11188,6 @@ img.mfp-img {
   color: green;
   font-size: 22px;
 }
+.noevents{
+  pointer-events: none;
+}
