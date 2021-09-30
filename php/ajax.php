@@ -48,6 +48,34 @@ switch($act){
                         WHERE   cars.actived = 1 AND cars.id = '$car_id'");
 
         $cars = $db->getResultArray();
+        $car = $cars['result'][0];
+        $db->setQuery(" SELECT  cur_dollar,
+                                cur_euro
+                        FROM    system
+                        WHERE   id = 1");
+        $curr = $db->getResultArray();
+
+        $priceGEL = ceil($car['total_price'] + ($car['total_price'] * 0.2));
+        $priceUSD = ceil(($car['total_price'] + ($car['total_price'] * 0.2))/$curr['result'][0]['cur_dollar']);
+        $priceEUR = ceil(($car['total_price'] + ($car['total_price'] * 0.2))/$curr['result'][0]['cur_euro']);
+
+
+        $db->setQuery("INSERT INTO orders SET date = NOW(),
+                                                trip_route = '',
+                                                cl_name = '$fullname',
+                                                cl_phone = '$phone',
+                                                cl_email = '$email',
+                                                cl_address = '$address',
+                                                cl_comment = '$comment',
+                                                car_id = '$car_id',
+                                                trip_start_date = '$trip_start_date',
+                                                trip_days = '$trip_days',
+                                                price_usd = '$priceUSD',
+                                                price_gel = '$priceGEL',
+                                                price_eur = '$priceEUR',
+                                                trip_distance = '$trip_distance',
+                                                trip_duration = '$tripDuration'");
+        $db->execQuery();
         break;
     case 'get_cars':
         $trip_distance = $_REQUEST['distance'];

@@ -81,7 +81,8 @@ $('input.date-pick, .input-daterange, .date-pick-inline').datepicker({
 
 
 $('input[name="start"]').datepicker({
-    startDate: '+0d'
+    startDate: '+0d',
+    format: 'yyyy-mm-dd',
 });
 $('.input-daterange input[name="end"]').datepicker('setDate', '+7d');
 
@@ -584,8 +585,14 @@ $(document).on('change', '#location_from,#location_to,#trip_days,.location_tos',
 });
 
 $(document).on('click', '.makeOrder', function(){
-    $("#ordercar").click();
-    $("#car_token").val($(this).attr('data-car'));
+    if($("#trip_start").val() == ''){
+        alert("დასაჯავშვნად გთხოვთ აირჩიოთ ტრანსფერის თარიღი");
+    }
+    else{
+        $("#ordercar").click();
+        $("#car_token").val($(this).attr('data-car'));
+    }
+    
 })
 
 $(document).on('click', '.placeOrder', function(){
@@ -600,20 +607,29 @@ $(document).on('click', '.placeOrder', function(){
     order.origin_base = $("#location_from").val();
     order.destination_base = $("#location_to").val();
     order.trip_days = $("#trip_days").val();
+    order.trip_start = $("#trip_start").val();
     var waypoints = [];
     $(".location_tos").each(function(){
         waypoints.push($(this).val());
     });
     order.waypoints = waypoints;
+    var itsok = 0;
+    if(order.fullname == '' || order.phone == '' || order.email == '' || order.address == ''){
+        itsok++;
+        alert("გთხოვთ შეავსოთ ყველა ველი");
+    }
 
-    $.ajax({
-        url: aJaxURL,
-        dataType: 'json',
-        data: order,
-        success: function(data) {
-            
-        }
-    });
+    if(itsok == 0){
+        $.ajax({
+            url: aJaxURL,
+            dataType: 'json',
+            data: order,
+            success: function(data) {
+                
+            }
+        });
+    }
+    
 
 
 });

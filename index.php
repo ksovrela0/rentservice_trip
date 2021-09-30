@@ -147,7 +147,7 @@ include("php/func.php");
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                         <label>თარიღი</label>
-                                                        <input class="form-control" name="start" type="text" />
+                                                        <input class="form-control" name="start" type="text" id="trip_start"/>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fas fa-clock input-icon"></i>
                                                         <label>რამდენი დღით ჯავშნით</label>
@@ -296,7 +296,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=2.2"></script>
+        <script src="js/custom.js?v=2.3"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         
