@@ -87,7 +87,7 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li class="active"><a href="#">ტრანსფერი</a>
+                        <li class="active"><a href="index.php">ტრანსფერი</a>
                         </li>
                         <li><a href="tours.php">ტურები</a>
                         </li>
