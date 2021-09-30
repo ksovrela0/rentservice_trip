@@ -63,4 +63,31 @@ function prepared_transfer_locations($transfer_id){
     
 }
 
+
+function getTours(){
+    GLOBAL $db;
+
+    $db->setQuery(" SELECT  id,
+                            name,
+                            image
+                    FROM    tours
+                    WHERE   actived = 1");
+    $tours = $db->getResultArray();
+
+    foreach($tours['result'] AS $tour){
+        echo '  <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="'.$tour['image'].'" alt="Image Alternative text" title="Gaviota en el Top" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>'.$tour['name'].'</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+    }
+    
+}
 ?>

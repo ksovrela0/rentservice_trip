@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=3">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=3.5">
+    <link rel="stylesheet" href="css/styles.css?v=3.6">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -89,7 +89,7 @@ include("php/func.php");
                     <ul class="slimmenu" id="slimmenu">
                         <li class="active"><a href="#">ტრანსფერი</a>
                         </li>
-                        <li><a href="#">ტურები</a>
+                        <li><a href="tours.php">ტურები</a>
                         </li>
                         <li><a href="#">კომენტარები</a>
                         </li>
