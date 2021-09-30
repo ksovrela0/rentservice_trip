@@ -625,7 +625,10 @@ $(document).on('click', '.placeOrder', function(){
             dataType: 'json',
             data: order,
             success: function(data) {
-                
+                if(data.status == '000'){
+                    $(".modal-body").html(`<div class="order_success">თქვენი შეკვეთა მიღებულია!!!</div>`);
+                    $(".modal-footer").hide();
+                }
             }
         });
     }

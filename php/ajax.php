@@ -76,6 +76,10 @@ switch($act){
                                                 trip_distance = '$trip_distance',
                                                 trip_duration = '$tripDuration'");
         $db->execQuery();
+        
+        $data['status'] = '000';
+        
+
         break;
     case 'get_cars':
         $trip_distance = $_REQUEST['distance'];
