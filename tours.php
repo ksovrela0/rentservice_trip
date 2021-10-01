@@ -110,7 +110,7 @@ include("php/func.php");
                     <div class="bg-front full-center">
                         <div class="owl-cap">
 
-                            <h1 class="owl-cap-title fittext">კახეთი</h1>
+                            <h1 class="owl-cap-title fittext">მცხეთა</h1>
                         </div>
                     </div>
                 </div>
