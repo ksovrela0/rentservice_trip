@@ -794,7 +794,7 @@ function drawMap(markers){
           service.route({
             origin: src,
             destination: des,
-            travelMode: google.maps.DirectionsTravelMode.WALKING
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
           }, function(result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
     
