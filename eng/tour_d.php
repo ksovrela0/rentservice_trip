@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - ტური - <?php getTourDetail('name', $_REQUEST['id']); ?></title>
+    <title>VipTrip - Tour - <?php getTourDetail('name', $_REQUEST['id']); ?></title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -61,22 +61,20 @@ include("php/func.php");
                         <div class="col-md-4">
                             <div class="top-user-area clearfix">
                                 <ul class="top-user-area-list list list-horizontal list-border">
-                                    <li class="top-user-area-lang nav-drop">
-                                        <a href="#">
-                                            <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" />GEO<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+                                    <li class="top-user-area-lang">
+                                        <a href="index.php">
+                                            <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
-                                        <ul class="list nav-drop-menu">
-                                            <li>
-                                                <a title="English" href="#">
-                                                    <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" /><span class="right">ENG</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a title="Russian" href="#">
-                                                    <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    </li>
+                                    <li class="top-user-area-lang">
+                                        <a title="Georgian" href="../index.php">
+                                            <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
+                                        </a>
+                                    </li>
+                                    <li class="top-user-area-lang">
+                                        <a title="Russian" href="../rus/index.php">
+                                            <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,13 +85,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li><a href="index.php">ტრანსფერი</a>
+                        <li><a href="index.php">Trip</a>
                         </li>
-                        <li class="active"><a href="tours.php">ტურები</a>
+                        <li class="active"><a href="tours.php">Tours</a>
                         </li>
-                        <li><a href="#">კომენტარები</a>
+                        <li><a href="#">Reviews</a>
                         </li>
-                        <li><a href="#">კონტაქტი</a>
+                        <li><a href="#">Contact</a>
                         </li>
                         
                     </ul>
@@ -118,38 +116,38 @@ include("php/func.php");
                                         <form>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group form-group-lg form-group-icon-left noevents"><i class="fa fa-map-marker input-icon"></i>
-                                                        <label>საწყისი ლოკაცია</label>
+                                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                                        <label>From</label>
                                                         <select class="form-control" id="location_from">
-                                                            <option value="0">აირჩიეთ ლოკაცია</option>
+                                                            <option value="0">Choose Location</option>
                                                             <?php
                                                                 getDefaultLocations();
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group form-group-lg form-group-icon-left noevents"><i class="fa fa-map-marker input-icon"></i>
-                                                        <label>მიმართულება(სად)</label>
+                                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                                        <label>Where</label>
                                                         <select class="form-control" id="location_to">
-                                                            <option value="0">აირჩიეთ ლოკაცია</option>
+                                                            <option value="0">Choose Location</option>
                                                             <?php
                                                                 getDefaultLocations();
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div id="destinations" class="noevents">
+                                                    <div id="destinations">
 
                                                     </div>
-                                                    <div class="add-destination-plus" style="display:none;">
-                                                        დაამატეთ მიმართულება <i class="fa fa-plus"></i>
+                                                    <div class="add-destination-plus">
+                                                        Add location <i class="fa fa-plus"></i>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
-                                                        <label>თარიღი</label>
+                                                        <label>Date</label>
                                                         <input class="form-control" name="start" type="text" id="trip_start"/>
                                                     </div>
                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fas fa-clock input-icon"></i>
-                                                        <label>რამდენი დღით ჯავშნით</label>
+                                                        <label>Number of rental days</label>
                                                         <select class="form-control" id="trip_days">
-                                                            <option value="0">აირჩიეთ დღეები ოდენობა</option>
+                                                            <option value="0">Choose rental days</option>
                                                             <?php
                                                                 for($i = 1; $i <= 30; $i++){
                                                                     echo '<option value="'.$i.'">'.$i.'</option>';
@@ -187,23 +185,23 @@ include("php/func.php");
         </div>
         <div class="container cars_area" style="display:none; border-top: 1px solid black;border-radius: 40px; margin-top:10px;">
             <div class="trip_data">
-                <div class="trip_distance">მარშუტის სიგრძე: <span class="changable_text" id="tripDistance">0</span> კმ</div>
-                <div class="trip_duration">მგზავრობის ხანგრძლივობა: <span class="changable_text" id="tripDuration">00:00</span> სთ</div>
+                <div class="trip_distance">Trip Distance: <span class="changable_text" id="tripDistance">0</span> KM</div>
+                <div class="trip_duration">Trip Duration: <span class="changable_text" id="tripDuration">00:00</span> Hr</div>
             </div>
             <div class="fleet_filter">
                 <div class="fleet_type">
                     <ul class="car_types">
-                        <li class="car_li actived" data-id="0"><i class="fa fa-car" aria-hidden="true" style="font-size: 36px;"></i>ყველა</li>
-                        <li class="car_li" data-id="1"><img src="img/cartypes/sedan_t.png" >სედანი</li>
-                        <li class="car_li" data-id="2"><img src="img/cartypes/suv_t.png" >ჯიპი</li>
-                        <li class="car_li" data-id="3"><img src="img/cartypes/minivan_t.png" >მინივენი</li>
-                        <li class="car_li" data-id="4"><img src="img/cartypes/minibus_t.png" >მიკ-ავტობუსი</li>
+                        <li class="car_li actived" data-id="0"><i class="fa fa-car" aria-hidden="true" style="font-size: 36px;"></i>ALL</li>
+                        <li class="car_li" data-id="1"><img src="img/cartypes/sedan_t.png" >Sedan</li>
+                        <li class="car_li" data-id="2"><img src="img/cartypes/suv_t.png" >Suv</li>
+                        <li class="car_li" data-id="3"><img src="img/cartypes/minivan_t.png" >Minivan</li>
+                        <li class="car_li" data-id="4"><img src="img/cartypes/minibus_t.png" >Minibus</li>
                     </ul>
                 </div>
                 
             </div>
             <div class="gap"></div>
-            <h5 class="text-center mb20" style="font-weight:bold;color: #ffca18;">ფასი მოიცავს მგზავრობის სრულ ღირებულებას (და არა ერთი მგზავრის საფასურს)</h5>
+            <h5 class="text-center mb20" style="font-weight:bold;color: #ffca18;">The price includes the full cost of the trip (and not the cost of one passenger)</h5>
             <div class="row" id="carData">
                 
             </div>
@@ -305,9 +303,9 @@ include("php/func.php");
                                 options = data.options;
                                 for(let i = 0; i < waypointsLen; i++){
                                     $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                                                <label>მიმართულება(სად)</label>
+                                                                <label>Where</label>
                                                                 <select class="form-control location_tos" id="loc_`+waypoints[i]+`">
-                                                                    <option value="0">აირჩიეთ ლოკაცია</option>
+                                                                    <option value="0">Choose location</option>
                                                                     `+options+`
                                                                 </select>
                                                                 <i class="fa fa-minus add-destination-minus"></i>

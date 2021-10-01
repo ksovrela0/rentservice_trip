@@ -61,22 +61,20 @@ include("php/func.php");
                         <div class="col-md-4">
                             <div class="top-user-area clearfix">
                                 <ul class="top-user-area-list list list-horizontal list-border">
-                                    <li class="top-user-area-lang nav-drop">
-                                        <a href="#">
-                                            <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" />GEO<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+                                    <li class="top-user-area-lang">
+                                        <a href="eng/index.php">
+                                            <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
-                                        <ul class="list nav-drop-menu">
-                                            <li>
-                                                <a title="English" href="#">
-                                                    <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" /><span class="right">ENG</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a title="Russian" href="#">
-                                                    <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    </li>
+                                    <li class="top-user-area-lang">
+                                        <a title="Georgian" href="index.php">
+                                            <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
+                                        </a>
+                                    </li>
+                                    <li class="top-user-area-lang">
+                                        <a title="Russian" href="rus/index.php">
+                                            <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
