@@ -68,7 +68,7 @@ function getTours(){
     GLOBAL $db;
 
     $db->setQuery(" SELECT  id,
-                            name,
+                            name_geo,
                             image
                     FROM    tours
                     WHERE   actived = 1");
@@ -81,7 +81,7 @@ function getTours(){
                             <img src="'.$tour['image'].'" alt="Image Alternative text" title="Gaviota en el Top" />
                             <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
                                 <div class="text-small">
-                                    <h5>'.$tour['name'].'</h5>
+                                    <h5>'.$tour['name_geo'].'</h5>
                                 </div>
                             </div>
                         </a>
@@ -94,13 +94,13 @@ function getTours(){
 function getTourDetail($detail = 'name', $id = 0){
     GLOBAL $db;
     $db->setQuery(" SELECT  id,
-                            name,
+                            name_geo,
                             image
                     FROM    tours
                     WHERE   actived = 1 AND id = '$id'");
     $tour = $db->getResultArray();
     if($detail == 'name'){
-        echo $tour['result'][0]['name'];
+        echo $tour['result'][0]['name_geo'];
     }
     else if($detail == 'image'){
         echo $tour['result'][0]['image'];
