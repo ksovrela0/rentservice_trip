@@ -1,0 +1,103 @@
+<?
+include("../db.php");
+$path = dirname(dirname(dirname(__FILE__)));
+?>
+<ul class="sidebar-menu loading">
+
+
+									<li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+                        სლაიდერი                     <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="slider.php">რედაქტირება</a></li>
+
+                                                                                                                        </ul>
+                                    </li>
+					
+									<li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+                        ტურები                   <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="tours.php">რედაქტირება</a></li>
+
+                                                                                                                        </ul>
+                                    </li>
+									<li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+                        მანქანები                  <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="cars.php">რედაქტირება</a></li>
+
+                                                                                                                        </ul>
+                                    </li>
+
+
+
+									<li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+
+                        სასტუმროები <span style="color:red;"></span>                      <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="vacations.php">რედაქტირება <span style="color:red;"></a></li>
+
+                                                                                                                        </ul>
+                                    </li>
+																		<li class="has-sub hidden" >
+									                    <a href="javascript:;" class="">
+									                        <span class="icon-box"><i class="icon-book"></i></span>
+
+									                        შეკვეთები <span style="color:red;"></span>                      <span class="arrow"></span>
+									                    </a>
+									                                            <ul class="sub">
+									                                            <li><a href="orders.php?id=1">ტურების შეკვეთები <span style="color:red;"></a></li>
+																																<li><a href="orders.php?id=2">მანქანების შეკვეთები <span style="color:red;"></a></li>
+																																	<li><a href="orders.php?id=3">სასტუმროების შეკვეთები <span style="color:red;"></a></li>
+
+									                                                                                                                        </ul>
+									                                    </li>
+																											<li class="has-sub hidden" >
+																		                    <a href="javascript:;" class="">
+																		                        <span class="icon-box"><i class="icon-book"></i></span>
+
+																		                        კონტაქტი <span style="color:red;"></span>                      <span class="arrow"></span>
+																		                    </a>
+																		                                            <ul class="sub">
+																		                         <li><a href="contact.php">ნახვა <span style="color:red;"></a></li>
+
+																		                                                                                                                        </ul>
+																		                                    </li>
+
+									<?
+									//$CheckOff = mysql_query("SELECT * FROM addhotel WHERE seen='0'") or die(mysql_error());
+									//$CheckOffC = mysql_num_rows($CheckOff);
+
+									?>
+
+
+
+
+									<li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+                        სისტემა                    <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                                                                                                                        <li><a href="system.php?edit=1">სისტემური პარამეტრები</a></li>
+
+                                                                                                                        </ul>
+                                    </li>
+
+
+
+
+
+
+	</ul>

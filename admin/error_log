@@ -1,0 +1,89 @@
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 23
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Undefined index: id in /home2/traveldesk/public_html/admin/products.php on line 23
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 27
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Undefined index: id in /home2/traveldesk/public_html/admin/products.php on line 27
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 31
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Undefined index: id in /home2/traveldesk/public_html/admin/products.php on line 31
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 35
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Undefined index: id in /home2/traveldesk/public_html/admin/products.php on line 35
+[09-Mar-2018 00:47:28 Asia/Tbilisi] PHP Notice:  Use of undefined constant d - assumed 'd' in /home2/traveldesk/public_html/admin/products.php on line 419
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant name - assumed 'name' in /home2/traveldesk/public_html/admin/products.php on line 464
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Undefined index: name in /home2/traveldesk/public_html/admin/products.php on line 464
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 466
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 469
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 478
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_eng - assumed 'text1_eng' in /home2/traveldesk/public_html/admin/products.php on line 498
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_rus - assumed 'text1_rus' in /home2/traveldesk/public_html/admin/products.php on line 505
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img1 - assumed 'img1' in /home2/traveldesk/public_html/admin/products.php on line 513
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img2 - assumed 'img2' in /home2/traveldesk/public_html/admin/products.php on line 515
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img3 - assumed 'img3' in /home2/traveldesk/public_html/admin/products.php on line 517
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img4 - assumed 'img4' in /home2/traveldesk/public_html/admin/products.php on line 519
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img5 - assumed 'img5' in /home2/traveldesk/public_html/admin/products.php on line 521
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Use of undefined constant img6 - assumed 'img6' in /home2/traveldesk/public_html/admin/products.php on line 523
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Undefined index: name_eng in /home2/traveldesk/public_html/admin/products.php on line 547
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Undefined index: name_rus in /home2/traveldesk/public_html/admin/products.php on line 548
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Undefined index: location_eng in /home2/traveldesk/public_html/admin/products.php on line 549
+[09-Mar-2018 00:47:29 Asia/Tbilisi] PHP Notice:  Undefined index: location_rus in /home2/traveldesk/public_html/admin/products.php on line 550
+[09-Mar-2018 01:15:01 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected ';' in /home2/traveldesk/public_html/admin/products.php on line 301
+[09-Mar-2018 14:05:17 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '}' in /home2/traveldesk/public_html/admin/administration.php on line 14
+[09-Mar-2018 14:05:18 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '}' in /home2/traveldesk/public_html/admin/administration.php on line 14
+[09-Mar-2018 14:27:08 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected $end in /home2/traveldesk/public_html/admin/products.php on line 3265
+[09-Mar-2018 14:27:29 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected $end in /home2/traveldesk/public_html/admin/products.php on line 3265
+[15-Mar-2018 15:08:48 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:08:49 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:08:55 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:12 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:17 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:22 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:26 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:30 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:32 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:33 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:33 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:33 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:33 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[15-Mar-2018 15:09:47 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected '[' in /home2/traveldesk/public_html/admin/orders.php on line 274
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 23
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 27
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 31
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 35
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 175
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant d - assumed 'd' in /home2/traveldesk/public_html/admin/products.php on line 452
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant name - assumed 'name' in /home2/traveldesk/public_html/admin/products.php on line 497
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Undefined index: name in /home2/traveldesk/public_html/admin/products.php on line 497
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 499
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 502
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 511
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_eng - assumed 'text1_eng' in /home2/traveldesk/public_html/admin/products.php on line 531
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_rus - assumed 'text1_rus' in /home2/traveldesk/public_html/admin/products.php on line 538
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img1 - assumed 'img1' in /home2/traveldesk/public_html/admin/products.php on line 546
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img2 - assumed 'img2' in /home2/traveldesk/public_html/admin/products.php on line 548
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img3 - assumed 'img3' in /home2/traveldesk/public_html/admin/products.php on line 550
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img4 - assumed 'img4' in /home2/traveldesk/public_html/admin/products.php on line 552
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img5 - assumed 'img5' in /home2/traveldesk/public_html/admin/products.php on line 554
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant img6 - assumed 'img6' in /home2/traveldesk/public_html/admin/products.php on line 556
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 831
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 1486
+[20-Apr-2018 12:33:18 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 2383
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 23
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 27
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 31
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 35
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 175
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant d - assumed 'd' in /home2/traveldesk/public_html/admin/products.php on line 452
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant name - assumed 'name' in /home2/traveldesk/public_html/admin/products.php on line 497
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Undefined index: name in /home2/traveldesk/public_html/admin/products.php on line 497
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 499
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 502
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant top - assumed 'top' in /home2/traveldesk/public_html/admin/products.php on line 511
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_eng - assumed 'text1_eng' in /home2/traveldesk/public_html/admin/products.php on line 531
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant text1_rus - assumed 'text1_rus' in /home2/traveldesk/public_html/admin/products.php on line 538
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img1 - assumed 'img1' in /home2/traveldesk/public_html/admin/products.php on line 546
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img2 - assumed 'img2' in /home2/traveldesk/public_html/admin/products.php on line 548
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img3 - assumed 'img3' in /home2/traveldesk/public_html/admin/products.php on line 550
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img4 - assumed 'img4' in /home2/traveldesk/public_html/admin/products.php on line 552
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img5 - assumed 'img5' in /home2/traveldesk/public_html/admin/products.php on line 554
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant img6 - assumed 'img6' in /home2/traveldesk/public_html/admin/products.php on line 556
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 831
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 1486
+[20-Apr-2018 12:33:30 Asia/Tbilisi] PHP Notice:  Use of undefined constant id - assumed 'id' in /home2/traveldesk/public_html/admin/products.php on line 2383
