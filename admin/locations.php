@@ -21,7 +21,7 @@ include("../db.php");
 	<meta charset="utf-8" />
     <title><?
 
-		echo 'კატეგორიები';
+		echo 'ლოკაციები';
 
 	?></title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -174,13 +174,16 @@ include("../db.php");
 									<!--BEGIN TABS-->
 									<div class="table table-custom">
 									 <h3>';
-										echo 'სლაიდერი';
+										echo 'ლოკაციის დამატება';
 									 echo '</h3> 
 									 <br />';
-									 echo '<form action="category.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
+									 echo '<form action="locations.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
 									 
-									 <div class="input text"><label for="UserEmail">სახელი GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">სახელი RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>';
+									 <div class="input text"><label for="UserEmail">ლოკაცია GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ლოკაცია RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ლოკაცია ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">კოორდინატები</label><input name="coord" type="text" value="'.$ProductRow3['coordinates'].'" id="UserEmail"/></div>
+									 ';
 
 	/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -195,7 +198,8 @@ include("../db.php");
 									{
 										$name_rus = $_POST[name_rus];
 										$name_geo = $_POST['name_geo'];
-										
+										$name_eng = $_POST['name_eng'];
+										$coord = $_POST['coord'];
 										
 										if(empty($name_geo))
 										{
@@ -203,7 +207,7 @@ include("../db.php");
 										}
 										else
 										{
-												$AddProduct = mysql_query("INSERT INTO category(`name_rus`,`name_geo`) VALUES('$name_rus','$name_geo')");
+												$AddProduct = mysql_query("INSERT INTO locations(`name_rus`,`name_geo`,`name_eng`, `coordinates`) VALUES('$name_rus','$name_geo', '$name_eng', '$coord')");
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';
@@ -213,7 +217,7 @@ include("../db.php");
 													echo 'შეცდომაა';
 												}
 
-												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=category.php">';
+												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=locations.php">';
 												
 										}
 									}
@@ -224,7 +228,7 @@ include("../db.php");
 	if(isset($_GET['del']) and !empty($_GET['del']) and !isset($_GET[comment_id]))
 	{
 	$id = mysql_real_escape_string($_GET['del']);
-	$Product2 = mysql_query("SELECT * FROM cateogry WHERE id='".$id."'");
+	$Product2 = mysql_query("SELECT * FROM locations WHERE id='".$id."'");
 	$ProductRow2 = mysql_fetch_array($Product2);
 	echo '<div class="row-fluid ">
 				<div class="span12">
@@ -238,15 +242,15 @@ include("../db.php");
 									 <h3><b>'.$ProductRow2[name_geo].' წაშლა</b></h3> 
 									 <br />
 										<div class="tab-content">
-											Are you sure?<br> <a href="category.php?del='.$_GET[del].'&yes">Yes, of course</a><br><a href="slider.php" style="color:red;">No</a>                                    </div>
+											Are you sure?<br> <a href="locations.php?del='.$_GET[del].'&yes">Yes, of course</a><br><a href="slider.php" style="color:red;">No</a>                                    </div>
 									</div>
 									</div></div></div></div></div></div>';
 									if(isset($_GET[yes]))
 									{
-										$DelProduct = mysql_query("DELETE FROM category WHERE id='".$id."'");
+										$DelProduct = mysql_query("DELETE FROM locations WHERE id='".$id."'");
 										if($DelProduct == true)
 										{
-											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=category.php"><h2 style="color:green;"><b>'.$ProductRow2[title].' წაშლილია</b></h2>';
+											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=locations.php"><h2 style="color:green;"><b>'.$ProductRow2[title].' წაშლილია</b></h2>';
 											
 										}
 									}
@@ -257,7 +261,7 @@ include("../db.php");
 		$id = mysql_real_escape_string($_GET['edit']);
 		
 	
-	$Product3 = mysql_query("SELECT * FROM category WHERE id='".$id."'");
+	$Product3 = mysql_query("SELECT * FROM locations WHERE id='".$id."'");
 	$ProductRow3 = mysql_fetch_array($Product3);	
 		echo '<div class="row-fluid ">
 				<div class="span12">
@@ -270,10 +274,12 @@ include("../db.php");
 									<div class="table table-custom">
 									 <h3>რედაქტირება <b>'.$ProductRow3[name_geo].'</b></h3> 
 									 <br />';
-									 echo '<form action="category.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
+									 echo '<form action="locations.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
 									 
-									 <div class="input text"><label for="UserEmail">სახელი GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">სახელი RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>';
+									 <div class="input text"><label for="UserEmail">ლოკაცია GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ლოკაცია RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ლოკაცია ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">კოორდინატები</label><input name="coord" type="text" value="'.$ProductRow3['coordinates'].'" id="UserEmail"/></div>';
 									 
 									
 									
@@ -293,15 +299,15 @@ include("../db.php");
 									{
 										$name_rus = $_POST[name_rus];
 										$name_geo = $_POST['name_geo'];
-										
-										
+										$name_eng = $_POST['name_eng'];
+										$coord = $_POST['coord'];
 										if(empty($name_geo))
 										{
 											echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
 										}
 										else
 										{
-												$UpdateProduct = mysql_query("UPDATE category SET name_rus='$name_rus', name_geo='$name_geo' WHERE id='$id'") or die(mysql_error());
+												$UpdateProduct = mysql_query("UPDATE locations SET name_rus='$name_rus', name_geo='$name_geo', name_eng='$name_eng', coordinates='$coord' WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
@@ -311,7 +317,7 @@ include("../db.php");
 													echo 'შეცდომაა';
 												}
 												
-												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=category.php">';
+												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=locations.php">';
 												
 										}
 									}
@@ -331,7 +337,7 @@ include("../db.php");
 										<li class="active">
 						<a href="#">სია</a>                </li>
 								<li >
-						<a href="category.php?add">დამატება</a>                </li>
+						<a href="locations.php?add">დამატება</a>                </li>
 							</ul>
 									 <br />
 									 <div class="tab-content">
@@ -356,6 +362,8 @@ include("../db.php");
 											<a href="/slider.php/index/sort:username/direction:asc">სახელი GEO</a>                                    </th>
 											<th>
 											<a href="/slider.php/index/sort:username/direction:asc">სახელი RUS</a>                                    </th>
+											<th>
+											<a href="/slider.php/index/sort:username/direction:asc">სახელი ENG</a>                                    </th>
 
 																<th>
 										Actions                                </th>
@@ -365,11 +373,11 @@ include("../db.php");
 							<tbody>';
 
 						   
-						   $Product = mysql_query("SELECT * FROM category ORDER BY id DESC") or die(mysql_error());
+						   $Product = mysql_query("SELECT * FROM locations ORDER BY id DESC") or die(mysql_error());
 						   $ProductRow = mysql_fetch_array($Product);
 						   do
 						   {
-							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''>".$ProductRow[name_geo]."</td><td class=''>".$ProductRow[name_rus]."</td>";
+							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''>".$ProductRow[name_geo]."</td><td class=''>".$ProductRow[name_rus]."</td><td class=''>".$ProductRow[name_eng]."</td>";
 							   echo "</td><td style='min-width: 190px;' class='actions'>
 		 <a href='?edit=$ProductRow[id]' class='btn btn-mini btn-success'>Edit</a><a href='?del=$ProductRow[id]' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
 						   }

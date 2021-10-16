@@ -15,7 +15,27 @@ $path = dirname(dirname(dirname(__FILE__)));
 
                                                                                                                         </ul>
                                     </li>
-					
+                                    <li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+                        ტრანსფერი                   <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="transfer_cat.php">ტრანსფერის კატეგორიები</a></li>
+                                            <li><a href="transfer.php">ტრანსფერები</a></li>
+                                                                                                                        </ul>
+                                    </li>
+                                    <li class="has-sub hidden" >
+                    <a href="javascript:;" class="">
+                        <span class="icon-box"><i class="icon-book"></i></span>
+
+                        ლოკაციები <span style="color:red;"></span>                      <span class="arrow"></span>
+                    </a>
+                                            <ul class="sub">
+                                            <li><a href="locations.php">რედაქტირება <span style="color:red;"></a></li>
+
+                                                                                                                        </ul>
+                                    </li>
 									<li class="has-sub hidden" >
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-book"></i></span>
@@ -29,27 +49,17 @@ $path = dirname(dirname(dirname(__FILE__)));
 									<li class="has-sub hidden" >
                     <a href="javascript:;" class="">
                         <span class="icon-box"><i class="icon-book"></i></span>
-                        მანქანები                  <span class="arrow"></span>
+                        მძღოლები                  <span class="arrow"></span>
                     </a>
                                             <ul class="sub">
-                                            <li><a href="cars.php">რედაქტირება</a></li>
+                                            <li><a href="drivers.php">რედაქტირება</a></li>
 
                                                                                                                         </ul>
                                     </li>
 
 
 
-									<li class="has-sub hidden" >
-                    <a href="javascript:;" class="">
-                        <span class="icon-box"><i class="icon-book"></i></span>
-
-                        სასტუმროები <span style="color:red;"></span>                      <span class="arrow"></span>
-                    </a>
-                                            <ul class="sub">
-                                            <li><a href="vacations.php">რედაქტირება <span style="color:red;"></a></li>
-
-                                                                                                                        </ul>
-                                    </li>
+									
 																		<li class="has-sub hidden" >
 									                    <a href="javascript:;" class="">
 									                        <span class="icon-box"><i class="icon-book"></i></span>
