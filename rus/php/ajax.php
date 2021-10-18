@@ -15,7 +15,7 @@ switch($act){
         $locations = $db->getResultArray();
 
         $data['start_location'] = $locations['result'][0]['location_id'];
-        $data['end_location'] = $locations['result'][0]['location_id'];
+        $data['end_location'] = $locations['result'][$locations['count']-1]['location_id'];
 
         $lastIndex = $locations['count']-1;
 

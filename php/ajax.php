@@ -15,7 +15,7 @@ switch($act){
         $locations = $db->getResultArray();
 
         $data['start_location'] = $locations['result'][0]['location_id'];
-        $data['end_location'] = $locations['result'][0]['location_id'];
+        $data['end_location'] = $locations['result'][$locations['count']-1]['location_id'];
 
         $lastIndex = $locations['count']-1;
 
@@ -277,6 +277,7 @@ function calculate_data_between_points($origin, $destination_base, $waypoints){
     $api_key = $db->getResultArray();
     $api_key = $api_key['result'][0]['google_api_key'];
     $fields = 'units=metric&key='.$api_key.'&mode=driving&'.http_build_query($addr);
+    
     $tripData = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/directions/json?'.$fields),true);
 
     $tripDistanceKM = 0;

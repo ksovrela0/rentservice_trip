@@ -442,7 +442,7 @@ include("../db.php");
 														$UpdateProduct = mysql_query("UPDATE cars SET pic4='http://rentservice.ge/cars/$name4' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
 													}
 												}
-												//echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=drivers.php">';
+												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=drivers.php">';
 												
 										}
 									}

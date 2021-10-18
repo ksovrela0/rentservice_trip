@@ -183,59 +183,12 @@ include("../db.php");
 									 <h3>დამატება <b>'.$ProductRow3[name_eng].'</b></h3> 
 									 <br />';
 									 echo '<form action="tours.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
-									 <div class="input text"><label for="UserDateOfBirth">მთავარი საურათი</label><input name="img_m" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><img src="'.$ProductRow3[image].'" height="240" width="120"></div>
+									 <div class="input text"><label for="UserDateOfBirth">მთავარი საურათი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="img_m" type="file" accept="image/*" id="UserUsername"/></div>
 									 
 									 <div class="input text"><label for="UserEmail">დასახელება ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">დასახელება RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserEmail">ტურის დაწყება(ქალაქი)</label><input name="f" type="text" value="'.$ProductRow3['f'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">ტურის დამთავრება(ქალაქი)</label><input name="t" type="text" value="'.$ProductRow3['t'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserEmail">ტურის დაწყების თარიღი (მაგ DD/MM/YY)</label><input name="start" type="text" value="'.$ProductRow3['start'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserFirstName">აღწერა(ENG)</label><textarea name="desc_eng" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc_eng].'</textarea>
-									<script>
-
-										CKEDITOR.replace( "editor3" );
-									</script>
-									</div>
-									
-									
-									<div class="input text"><label for="UserFirstName">აღწერა(RUS)</label><textarea name="desc_rus" id="editor4" rows="10" cols="80" type="text">'.$ProductRow3[desc_rus].'</textarea>
-									<script>
-
-										CKEDITOR.replace( "editor4" );
-									</script>
-									</div>
-									
-									<div class="input text"><label for="UserEmail">ფასი</label><input name="price" type="text" value="'.$ProductRow3['price'].'" id="UserEmail"/></div>
-									
-									 
-									<br>
-									<div class="input text"><label for="UserEmail">აირჩიეთ ტურის ტიპი</label><select name="type">';
-										echo '<option value="1">Group</option>';
-										echo '<option value="2">Family</option>';
-										echo '<option value="3">Individual</option>';
-									
-									
-									echo '</select></div>
-									
-									
-
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 1</label><input name="img1" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 2</label><input name="img2" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 3</label><input name="img3" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 4</label><input name="img4" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-									 
-									
-									
+									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
 									';
 									
 									
@@ -256,20 +209,9 @@ include("../db.php");
 
 										$name_eng = $_POST['name_eng'];
 										$name_rus = $_POST['name_rus'];
+										$name_geo = $_POST['name_geo'];
 										
-										$desc_eng = $_POST['desc_eng'];
-										$desc_rus = $_POST['desc_rus'];
-										
-										$price = $_POST[price];
-										$f = $_POST['f'];
-										$t = $_POST['t'];
-										$start = $_POST['start'];
-										$type = $_POST[type];
 										$filep = $_FILES['img_m']['tmp_name'];
-										$filep1 = $_FILES['img1']['tmp_name'];
-										$filep2 = $_FILES['img2']['tmp_name'];
-										$filep3 = $_FILES['img3']['tmp_name'];
-										$filep4 = $_FILES['img4']['tmp_name'];
 			
 										if(empty($name_eng))
 										{
@@ -284,10 +226,12 @@ include("../db.php");
 												$name3 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name4 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name5 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
-												$AddProduct = mysql_query("INSERT INTO tours(`name_eng`,`name_rus`,`desc_rus`,`desc_eng`,`price`,`start`,`type`,`f`,`t`) VALUES('$name_eng','$name_rus','$desc_rus','$desc_eng','$price','$start','$type','$f','$t')");
+												$AddProduct = mysql_query("INSERT INTO tours(`name_eng`,`name_rus`,`name_geo`,`date`) VALUES('$name_eng','$name_rus','$name_geo',NOW())");
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';
+													$max_id = mysql_query("SELECT MAX(id) AS cc FROM  tours");
+													$maxID = mysql_fetch_array($max_id);
 												}
 												else
 												{
@@ -305,9 +249,9 @@ include("../db.php");
 													}
 													if(is_uploaded_file($_FILES["img_m"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img_m"]["tmp_name"], $path."/tours/".$name);
+														$move = move_uploaded_file($_FILES["img_m"]["tmp_name"], $path."/img/tours/".$name);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE tours SET m_pic='http://rentservice.ge/tours/$name' WHERE name_eng='$name_eng' and desc_eng='$desc_eng' and price='$price' and start='$start'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE tours SET image='https://viptrip.ge/img/tours/$name' WHERE id='$maxID[cc]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep1))
@@ -477,20 +421,9 @@ include("../db.php");
 
 										$name_eng = $_POST['name_eng'];
 										$name_rus = $_POST['name_rus'];
+										$name_geo = $_POST['name_geo'];
 										
-										$desc_eng = $_POST['desc_eng'];
-										$desc_rus = $_POST['desc_rus'];
-										
-										$price = $_POST[price];
-										$f = $_POST['f'];
-										$t = $_POST['t'];
-										$start = $_POST['start'];
-										$type = $_POST[type];
 										$filep = $_FILES['img_m']['tmp_name'];
-										$filep1 = $_FILES['img1']['tmp_name'];
-										$filep2 = $_FILES['img2']['tmp_name'];
-										$filep3 = $_FILES['img3']['tmp_name'];
-										$filep4 = $_FILES['img4']['tmp_name'];
 			
 										if(empty($name_eng))
 										{
@@ -498,7 +431,7 @@ include("../db.php");
 										}
 										else
 										{
-												$UpdateProduct = mysql_query("UPDATE tours SET type='$type', name_eng='$name_eng', duration='$_POST[duration]', name_rus='$name_rus', desc_rus='$desc_rus', desc_eng='$desc_eng', price='$price', start='$start', `f`='$f', `t`='$t' WHERE id='$id'") or die(mysql_error());
+												$UpdateProduct = mysql_query("UPDATE tours SET name_eng='$name_eng', name_rus='$name_rus', name_geo='$name_geo' WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
@@ -525,9 +458,9 @@ include("../db.php");
 													}
 													if(is_uploaded_file($_FILES["img_m"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img_m"]["tmp_name"], $path."/tours/".$name);
+														$move = move_uploaded_file($_FILES["img_m"]["tmp_name"], $path."/img/tours/".$name);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE tours SET m_pic='http://rentservice.ge/tours/$name' WHERE id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE tours SET image='https://viptrip.ge/img/tours/$name' WHERE id='".$id."'") or die(mysql_error());
 													}
 												}
 												
@@ -815,7 +748,25 @@ include("../db.php");
 
 			}
 
-
+			$(document).on('click','#button_trash',function(){
+				var removeIDS = [];
+				var entityGrid = $("#tour_kendo").data("kendoGrid");
+				var rows = entityGrid.select();
+				rows.each(function(index, row) {
+					var selectedItem = entityGrid.dataItem(row);
+					// selectedItem has EntityVersionId and the rest of your model
+					removeIDS.push(selectedItem.id);
+				});
+				$.ajax({
+					url: aJaxURL,
+					type: "POST",
+					data: "act=disable&id=" + removeIDS,
+					dataType: "json",
+					success: function (data) {
+						$("#tour_kendo").data("kendoGrid").dataSource.read();
+					}
+				});
+			});
 			$(document).on('click','#button_add',function(){
 				$.ajax({
 					url: aJaxURL,
@@ -833,7 +784,22 @@ include("../db.php");
 							modal: true,
 							buttons: {
 								"შენახვა": function() {
-									alert(324);
+									$.ajax({
+										url: aJaxURL,
+										type: "POST",
+										data: {
+											act: "save_tour_location",
+											tour_id: <?php echo $_REQUEST['edit']; ?>,
+											locs_id: $("#locs_id").val(),
+											location_id: $("#location_id").val(),
+											loc_position: $("#loc_position").val()
+										},
+										dataType: "json",
+										success: function(data){
+											$('#get_edit_page').dialog( "close" );
+											$("#tour_kendo").data("kendoGrid").dataSource.read();
+										}
+									});
 								},
 								'დახურვა': function() {
 									$( this ).dialog( "close" );

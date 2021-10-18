@@ -16,13 +16,33 @@ switch ($act){
         $id = $_REQUEST['id'];
         $data = array('page' => getPage($id));
     break;
-    
+    case 'save_tour_location':
+        $tour_id = $_REQUEST['tour_id'];
+        $locs_id = $_REQUEST['locs_id'];
+        $location_id = $_REQUEST['location_id'];
+        $loc_position = $_REQUEST['loc_position'];
+
+
+        if($locs_id != ''){
+            $db->setQuery(" UPDATE  tour_locations 
+                            SET     location_id='$location_id',
+                                    position='$loc_position'
+                            WHERE   id = '$locs_id'");
+            $db->execQuery();
+        }
+        else{
+            $db->setQuery("INSERT INTO tour_locations SET tour_id='$tour_id',
+                                                            location_id='$location_id',
+                                                            position='$loc_position'");
+            $db->execQuery();
+        }
+        break;
     case 'disable':
         $ids = $_REQUEST['id'];
         $ids = explode(',',$ids);
 
         foreach($ids AS $id){
-            $db->setQuery("UPDATE products SET actived = 0 WHERE id = '$id'");
+            $db->setQuery("DELETE FROM tour_locations WHERE id = '$id'");
             $db->execQuery();
         }
     break;
@@ -120,7 +140,7 @@ switch ($act){
         
     break;
     case 'get_list':
-        $id          =      $_REQUEST['order_id'];
+        $id          =      $_REQUEST['tour_id'];
 		
         $columnCount = 		$_REQUEST['count'];
 		$cols[]      =      $_REQUEST['cols'];
@@ -130,7 +150,7 @@ switch ($act){
                                     tour_locations.position
                         FROM        tour_locations
                         JOIN		locations ON locations.id = tour_locations.location_id
-                        WHERE       tour_locations.tour_id = '1'
+                        WHERE       tour_locations.tour_id = '$id'
 
                         ORDER BY position");
 
