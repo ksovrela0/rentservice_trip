@@ -60,19 +60,19 @@ include("php/func.php");
                         </div>
                         <div class="col-md-4">
                             <div class="top-user-area clearfix">
-                                <ul class="top-user-area-list list list-horizontal list-border">
+                            <ul class="top-user-area-list list list-horizontal list-border">
                                     <li class="top-user-area-lang">
                                         <a href="index.php">
                                             <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="../index.php">
+                                        <a title="Georgian" href="geo/index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="../rus/index.php">
+                                        <a title="Russian" href="rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>

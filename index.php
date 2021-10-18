@@ -67,12 +67,12 @@ include("php/func.php");
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="../index.php">
+                                        <a title="Georgian" href="geo/index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="../rus/index.php">
+                                        <a title="Russian" href="rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>

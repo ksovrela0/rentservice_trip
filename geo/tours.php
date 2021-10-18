@@ -62,7 +62,7 @@ include("php/func.php");
                             <div class="top-user-area clearfix">
                                 <ul class="top-user-area-list list list-horizontal list-border">
                                     <li class="top-user-area-lang">
-                                        <a href="eng/index.php">
+                                        <a href="../index.php">
                                             <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
                                     </li>
@@ -72,7 +72,7 @@ include("php/func.php");
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="rus/index.php">
+                                        <a title="Russian" href="../rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
