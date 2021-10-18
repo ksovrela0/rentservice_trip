@@ -177,7 +177,7 @@ include("../db.php");
 									 <h3>დამატება <b>'.$ProductRow3[name_eng].'</b></h3> 
 									 <br />';
 									 echo '<form action="drivers.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
-									 <div class="input text"><img src="../img/drivers/'.$ProductRow3[avatar].'" height="120" width="120"></div>
+									 <div class="input text"><img src="'.$ProductRow3[avatar].'" height="120" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">ავატარი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="avatar" type="file" accept="image/*" id="UserUsername"/></div>
 									 
 									 <div class="input text"><label for="UserEmail">სახელი ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['firstname_eng'].'" id="UserEmail"/></div>
@@ -208,7 +208,7 @@ include("../db.php");
                                     $car_data = mysql_fetch_array($car_d);
 
                                     echo '
-                                    <div class="input text"><img src="../img/cars/'.$car_data[image].'" height="120" width="120"></div>
+                                    <div class="input text"><img src="'.$car_data[image].'" height="120" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი</label><input name="car_img" type="file" accept="image/*" id="UserUsername"/></div>
 
                                      <div class="input text"><label for="UserEmail">მანქანის სახელი</label><input name="car_name" type="text" value="'.$car_data['car_name'].'" id="UserEmail"/></div>
@@ -525,7 +525,7 @@ include("../db.php");
 									 <h3>რედაქტირება <b>'.$ProductRow3[name_eng].'</b></h3> 
 									 <br />';
 									 echo '<form action="drivers.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
-									 <div class="input text"><img src="../img/drivers/'.$ProductRow3[avatar].'" height="120" width="120"></div>
+									 <div class="input text"><img src="'.$ProductRow3[avatar].'" height="120" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">ავატარი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="avatar" type="file" accept="image/*" id="UserUsername"/></div>
 									 
 									 <div class="input text"><label for="UserEmail">სახელი ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['firstname_eng'].'" id="UserEmail"/></div>
@@ -556,7 +556,7 @@ include("../db.php");
                                     $car_data = mysql_fetch_array($car_d);
 
                                     echo '
-                                    <div class="input text"><img src="../img/cars/'.$car_data[image].'" height="120" width="120"></div>
+                                    <div class="input text"><img src="'.$car_data[image].'" height="120" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი</label><input name="car_img" type="file" accept="image/*" id="UserUsername"/></div>
 
                                      <div class="input text"><label for="UserEmail">მანქანის სახელი</label><input name="car_name" type="text" value="'.$car_data['car_name'].'" id="UserEmail"/></div>
@@ -888,7 +888,7 @@ include("../db.php");
 						   $ProductRow = mysql_fetch_array($Product);
 						   do
 						   {
-							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='../img/drivers/".$ProductRow[avatar]."' width='200' height='90'></td><td class=''>";
+							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='".$ProductRow[avatar]."' width='200' height='90'></td><td class=''>";
 							   echo $ProductRow[cl_name];
 							   echo "</td>";		
 							   

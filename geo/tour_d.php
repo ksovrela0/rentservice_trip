@@ -343,7 +343,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=2.4"></script>
+        <script src="js/custom.js?v=2.7"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
        

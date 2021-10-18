@@ -141,7 +141,7 @@ else{
                                 $driver = $db->getResultArray();
                                 $driver = $driver['result'][0];
                                 echo '
-                                    <img src="../img/drivers/'.$driver[avatar].'" alt="Image Alternative text" title="AMaze" />
+                                    <img src="'.$driver[avatar].'" alt="Image Alternative text" title="AMaze" />
                                     <h5>'.$driver[name].'</h5>
                                 ';
                             ?>

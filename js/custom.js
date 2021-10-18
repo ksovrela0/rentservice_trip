@@ -700,7 +700,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
                                                             <div class="col-md-6 col-md-pull-6 car_descr">
                                                                 <div class="driver_data">
                                                                     <div class="driver_name"><p>`+cars[i].driver_name+`</p></div>
-                                                                    <div class="driver_avatar"><img class="dr_img" src="img/drivers/`+cars[i].driver_avatar+`" /></div>
+                                                                    <div class="driver_avatar"><img class="dr_img" src="`+cars[i].driver_avatar+`" /></div>
                                                                 </div>
                                                                 <div class="driver_other_data">
                                                                     <div class="dr_language"><i class="fa fa-language" aria-hidden="true"></i> `+cars[i].languages+`</div>
