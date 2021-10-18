@@ -20,18 +20,7 @@ include("../db.php");
 
 	<meta charset="utf-8" />
     <title><?
-		if($_GET[id] == 1)
-		{
-			echo 'ტურების ';
-		}
-		if($_GET[id] == 2)
-		{
-			echo 'მანქანების ';
-		}
-		if($_GET[id] == 3)
-		{
-			echo 'HOME VACATION ';
-		}
+		
 		echo 'შეკვეთებიები';
 
 	?></title>
@@ -170,12 +159,11 @@ include("../db.php");
     <!-- BEGIN PAGE CONTENT-->
     <div id="page" class="dashboard">		
 <?
-if($_GET[id] == 1)	
-{
+
 	if(isset($_GET['del']) and !empty($_GET['del']) and !isset($_GET[comment_id]))
 	{
 	$id = mysql_real_escape_string($_GET['del']);
-	$Product2 = mysql_query("SELECT * FROM booktour WHERE id='".$id."'");
+	$Product2 = mysql_query("SELECT * FROM orders WHERE id='".$id."'");
 	$ProductRow2 = mysql_fetch_array($Product2);
 	echo '<div class="row-fluid ">
 				<div class="span12">
@@ -186,15 +174,15 @@ if($_GET[id] == 1)
 								<div class="span12">
 									<!--BEGIN TABS-->
 									<div class="table table-custom">
-									 <h3><b>'.$ProductRow2[name].' წაშლა</b></h3> 
+									 <h3><b>'.$ProductRow2[trip_route].' წაშლა</b></h3> 
 									 <br />
 										<div class="tab-content">
-											Are you sure?<br> <a href="orders.php?del='.$_GET[del].'&yes&id=1">Yes, of course</a><br><a href="orders.php" style="color:red;">No</a>                                    </div>
+											Are you sure?<br> <a href="orders.php?del='.$_GET[del].'&yes&id=3">Yes, of course</a><br><a href="orders.php?id=3" style="color:red;">No</a>                                    </div>
 									</div>
 									</div></div></div></div></div></div>';
 									if(isset($_GET[yes]))
 									{
-										$DelProduct = mysql_query("DELETE FROM booktour WHERE id='".$id."'");
+										$DelProduct = mysql_query("UPDATE orders SET status = 4 WHERE id='".$id."'");
 										if($DelProduct == true)
 										{
 											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=orders.php?id=1"><h2 style="color:green;"><b>'.$ProductRow2[name].' წაშლილია</b></h2>';
@@ -237,159 +225,32 @@ if($_GET[id] == 1)
 						<table class="table table-hover">
 							<thead>
 							<tr>
+							<th>
+											<a href="/orders.php/index/sort:id/direction:asc" class="desc">ID</a>                                    </th>
 																	<th>
 											<a href="/orders.php/index/sort:id/direction:asc" class="desc">ჯავშნის თარიღი</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:id/direction:asc" class="desc">მძღოლი</a>                                    </th>
 																		<th>
-											<a href="/orders.php/index/sort:username/direction:asc">სახელი</a>                                    </th>
+											<a href="/orders.php/index/sort:username/direction:asc">მარშრუტი</a>                                    </th>
 											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">e-mail</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">მობილური</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">ტური</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">ადამიანთა რაოდენობა</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">თანხა</a>                                    </th>
-											
-									
-											
-									
-																<th>
-										Actions                                </th>
-								
-														</tr>
-							</thead>
-							<tbody>';
-
-						   
-						   $Product = mysql_query("SELECT * FROM booktour ORDER BY id DESC") or die(mysql_error());
-						   $ProductRow = mysql_fetch_array($Product);
-						   do
-						   {
-							   echo "<tr><td class=''>".$ProductRow[datetime]."</td><td class=''>".$ProductRow[fullname]."</td><td class=''>".$ProductRow[email]."</td><td class=''>".$ProductRow[mobile]."</td><td class=''>";
-							   $getTour = mysql_query("SELECT name_eng FROM tours WHERE id='$ProductRow[tourid]' LIMIT 1");
-							   $getTourR = mysql_fetch_array($getTour);
-							   echo $getTourR[name_eng];
-							   echo "</td><td class=''>".$ProductRow['person']."</td><td class=''>".$ProductRow['total']."</td>";
-							   echo "</td><td style='min-width: 190px;' class='actions'>
-		 <a href='?del=$ProductRow[id]&id=1' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
-						   }
-						   while($ProductRow = mysql_fetch_array($Product));
-						   
-
-							
-							
-												   echo ' <tr>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																						<td></td>
-														</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- END TABLE widget-->
-			</div>
-		</div>
-
-									 
-																	  </div>
-									</div></div></div></div></div></div>';	
-	}
-}
-if($_GET[id] == 2)	
-{
-	if(isset($_GET['del']) and !empty($_GET['del']) and !isset($_GET[comment_id]))
-	{
-	$id = mysql_real_escape_string($_GET['del']);
-	$Product2 = mysql_query("SELECT * FROM bookcar WHERE id='".$id."'");
-	$ProductRow2 = mysql_fetch_array($Product2);
-	echo '<div class="row-fluid ">
-				<div class="span12">
-					<!-- BEGIN INLINE TABS PORTLET-->
-					<div class="widget">
-					<div class="widget-body">
-							<div class="row-fluid">
-								<div class="span12">
-									<!--BEGIN TABS-->
-									<div class="table table-custom">
-									 <h3><b>'.$ProductRow2[name].' წაშლა</b></h3> 
-									 <br />
-										<div class="tab-content">
-											Are you sure?<br> <a href="orders.php?del='.$_GET[del].'&yes&id=2">Yes, of course</a><br><a href="orders.php?id=2" style="color:red;">No</a>                                    </div>
-									</div>
-									</div></div></div></div></div></div>';
-									if(isset($_GET[yes]))
-									{
-										$DelProduct = mysql_query("DELETE FROM bookcar WHERE id='".$id."'");
-										if($DelProduct == true)
-										{
-											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=orders.php?id=2"><h2 style="color:green;"><b>'.$ProductRow2[name].' წაშლილია</b></h2>';
-											
-										}
-									}
-									
-	}
-	
-	if(!isset($_GET['edit']) and !isset($_GET['del']) and !isset($_GET['add']))
-	{
-	echo '<div class="row-fluid ">
-				<div class="span12">
-					<!-- BEGIN INLINE TABS PORTLET-->
-					<div class="widget">
-					<div class="widget-body">
-							<div class="row-fluid">
-								<div class="span12">
-									<!--BEGIN TABS-->
-									<div class="table table-custom">
-									 <ul class="nav nav-tabs">
-										<li class="active">
-						<a href="#">სია</a>                </li>
-								
-							</ul>
-									 <br />
-									 <div class="tab-content">
-										
-										<div class="row-fluid">
-			<div class="span12">
-				<!-- BEGIN TABLE widget-->
-				<div class="widget">
-					<div class="widget-title">
-						<h4>
-							<i class="icon-reorder"></i>
-														Data list                                            </h4>
-
-					</div>
-					<div class="widget-body">
-						<table class="table table-hover">
-							<thead>
-							<tr>
-																	<th>
-											<a href="/orders.php/index/sort:id/direction:asc" class="desc">ჯავშნის თარიღი</a>                                    </th>
-																		<th>
-											<a href="/orders.php/index/sort:username/direction:asc">სახელი</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">e-mail</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">მობილური</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">მანქანა</a>                                    </th>
+											<a href="/orders.php/index/sort:username/direction:asc">კლიენტი</a>                                    </th>
 											<th>
 											<a href="/orders.php/index/sort:username/direction:asc">დაწყება</a>                                    </th>
 											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">დამთავრება</a>                                    </th>
+											<a href="/orders.php/index/sort:username/direction:asc">დღეების რ-ბა</a>                                    </th>
 											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">თანხა</a>                                    </th>
-											
+											<a href="/orders.php/index/sort:username/direction:asc">მანძილი</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:username/direction:asc">დრო</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:username/direction:asc">მისამართი</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:username/direction:asc">კომენტარი</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:username/direction:asc">ფასი</a>                                    </th>
+											<th>
+											<a href="/orders.php/index/sort:username/direction:asc">სტატუსი</a>                                    </th>
 									
 											
 									
@@ -401,17 +262,35 @@ if($_GET[id] == 2)
 							<tbody>';
 
 						   
-						   $Product = mysql_query("SELECT * FROM bookcar ORDER BY id DESC") or die(mysql_error());
+						   $Product = mysql_query("SELECT  orders.id,
+															orders.trip_route,
+															orders.date,
+															CONCAT(users.firstname_geo, ' ID: ', users.id) AS driver,
+															CONCAT(orders.cl_name, ' ', orders.cl_phone, ' ', orders.cl_email ) AS client,
+															orders.trip_start_date,
+															orders.trip_days,
+															orders.trip_distance,
+															orders.trip_duration,
+															orders.cl_address,
+															orders.cl_comment,
+															CONCAT(orders.price_gel,'GEL ', orders.price_usd, 'USD ', orders.price_eur, 'EUR') AS price,
+															CASE
+																WHEN orders.status = 1 THEN 'არ დაუდასტურებია'
+																WHEN orders.status = 2 THEN 'დადასტურებულია'
+																WHEN orders.status = 3 THEN 'დასრულებულია'
+																WHEN orders.status = 4 THEN 'გაუქმებულია'
+															END AS status
+													FROM    orders
+													JOIN    cars ON cars.id = orders.car_id
+													JOIN    users ON users.id = cars.user_id") or die(mysql_error());
 						   $ProductRow = mysql_fetch_array($Product);
 						   do
 						   {
-							   echo "<tr><td class=''>".$ProductRow[datetime]."</td><td class=''>".$ProductRow[fullname]."</td><td class=''>".$ProductRow[email]."</td><td class=''>".$ProductRow[mobile]."</td><td class=''>";
-							   $getTour = mysql_query("SELECT name FROM cars WHERE id='$ProductRow[carid]' LIMIT 1");
-							   $getTourR = mysql_fetch_array($getTour);
-							   echo $getTourR[name];
-							   echo "</td><td class=''>".$ProductRow['i']."</td><td class=''>".$ProductRow['o']."</td><td class=''>".$ProductRow['total']."</td>";
+							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''>".$ProductRow[date]."</td><td class=''>".$ProductRow[driver]."</td><td class=''>".$ProductRow[trip_route]."</td><td class=''>".$ProductRow[client]."</td><td class=''>";
+							   echo $ProductRow['trip_start_date'];
+							   echo "</td><td class=''>".$ProductRow['trip_days']."</td><td class=''>".$ProductRow['trip_distance']." KM</td><td class=''>".$ProductRow['trip_duration']."</td><td class=''>".$ProductRow['cl_address']."</td><td class=''>".$ProductRow['cl_comment']."</td><td class=''>".$ProductRow['price']."</td><td class=''>".$ProductRow['status']."</td>";
 							   echo "</td><td style='min-width: 190px;' class='actions'>
-		 <a href='?del=$ProductRow[id]&id=2' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
+		 <a href='?del=$ProductRow[id]&id=3' class='btn btn-mini btn-success'>Cancel</a>  </td>                       </tr>";
 						   }
 						   while($ProductRow = mysql_fetch_array($Product));
 						   
@@ -443,145 +322,7 @@ if($_GET[id] == 2)
 																	  </div>
 									</div></div></div></div></div></div>';	
 	}
-}
-if($_GET[id] == 3)	
-{
-	if(isset($_GET['del']) and !empty($_GET['del']) and !isset($_GET[comment_id]))
-	{
-	$id = mysql_real_escape_string($_GET['del']);
-	$Product2 = mysql_query("SELECT * FROM bookhome WHERE id='".$id."'");
-	$ProductRow2 = mysql_fetch_array($Product2);
-	echo '<div class="row-fluid ">
-				<div class="span12">
-					<!-- BEGIN INLINE TABS PORTLET-->
-					<div class="widget">
-					<div class="widget-body">
-							<div class="row-fluid">
-								<div class="span12">
-									<!--BEGIN TABS-->
-									<div class="table table-custom">
-									 <h3><b>'.$ProductRow2[name_eng].' წაშლა</b></h3> 
-									 <br />
-										<div class="tab-content">
-											Are you sure?<br> <a href="orders.php?del='.$_GET[del].'&yes&id=3">Yes, of course</a><br><a href="orders.php?id=3" style="color:red;">No</a>                                    </div>
-									</div>
-									</div></div></div></div></div></div>';
-									if(isset($_GET[yes]))
-									{
-										$DelProduct = mysql_query("DELETE FROM bookhome WHERE id='".$id."'");
-										if($DelProduct == true)
-										{
-											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=orders.php?id=3"><h2 style="color:green;"><b>'.$ProductRow2[name].' წაშლილია</b></h2>';
-											
-										}
-									}
-									
-	}
-	
-	if(!isset($_GET['edit']) and !isset($_GET['del']) and !isset($_GET['add']))
-	{
-	echo '<div class="row-fluid ">
-				<div class="span12">
-					<!-- BEGIN INLINE TABS PORTLET-->
-					<div class="widget">
-					<div class="widget-body">
-							<div class="row-fluid">
-								<div class="span12">
-									<!--BEGIN TABS-->
-									<div class="table table-custom">
-									 <ul class="nav nav-tabs">
-										<li class="active">
-						<a href="#">სია</a>                </li>
-								
-							</ul>
-									 <br />
-									 <div class="tab-content">
-										
-										<div class="row-fluid">
-			<div class="span12">
-				<!-- BEGIN TABLE widget-->
-				<div class="widget">
-					<div class="widget-title">
-						<h4>
-							<i class="icon-reorder"></i>
-														Data list                                            </h4>
 
-					</div>
-					<div class="widget-body">
-						<table class="table table-hover">
-							<thead>
-							<tr>
-																	<th>
-											<a href="/orders.php/index/sort:id/direction:asc" class="desc">ჯავშნის თარიღი</a>                                    </th>
-																		<th>
-											<a href="/orders.php/index/sort:username/direction:asc">სახელი</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">e-mail</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">მობილური</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">სასტუმრო</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">Check in</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">Check out</a>                                    </th>
-											<th>
-											<a href="/orders.php/index/sort:username/direction:asc">თანხა</a>                                    </th>
-											
-									
-											
-									
-																<th>
-										Actions                                </th>
-								
-														</tr>
-							</thead>
-							<tbody>';
-
-						   
-						   $Product = mysql_query("SELECT * FROM bookhome ORDER BY id DESC") or die(mysql_error());
-						   $ProductRow = mysql_fetch_array($Product);
-						   do
-						   {
-							   echo "<tr><td class=''>".$ProductRow[datetime]."</td><td class=''>".$ProductRow[fullname]."</td><td class=''>".$ProductRow[email]."</td><td class=''>".$ProductRow[mobile]."</td><td class=''>";
-							   $getTour = mysql_query("SELECT name_eng FROM hotels WHERE id='$ProductRow[homeid]' LIMIT 1");
-							   $getTourR = mysql_fetch_array($getTour);
-							   echo $getTourR[name_eng];
-							   echo "</td><td class=''>".$ProductRow['i']."</td><td class=''>".$ProductRow['o']."</td><td class=''>".$ProductRow['total']."</td>";
-							   echo "</td><td style='min-width: 190px;' class='actions'>
-		 <a href='?del=$ProductRow[id]&id=3' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
-						   }
-						   while($ProductRow = mysql_fetch_array($Product));
-						   
-
-							
-							
-												   echo ' <tr>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																<td>
-															   </td>
-																						<td></td>
-														</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- END TABLE widget-->
-			</div>
-		</div>
-
-									 
-																	  </div>
-									</div></div></div></div></div></div>';	
-	}
-}
 	?>
     </div>
     <!-- END PAGE CONTENT-->

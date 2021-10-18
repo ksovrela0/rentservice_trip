@@ -205,18 +205,25 @@ echo json_encode($data);
 function calculate_data_between_points($origin, $destination_base, $waypoints){
     GLOBAL $db;
     $markers = array();
-    $db->setQuery(" SELECT  coordinates
+
+    $route = '';
+
+    $db->setQuery(" SELECT  coordinates,
+                            name_geo
                     FROM    locations
                     WHERE   actived = 1 AND id = '$origin'");
     $originData = $db->getResultArray();
 
-    $db->setQuery(" SELECT  coordinates
+    $db->setQuery(" SELECT  coordinates,
+                            name_geo
                     FROM    locations
                     WHERE   actived = 1 AND id = '$destination_base'");
     $destinationData = $db->getResultArray();
     $addr = array(
         'origin' => $originData['result'][0]['coordinates']
     );
+
+    $route .= $originData['result'][0]['name_geo'].'→';
     
     
     $waypointsData = array();
@@ -238,12 +245,13 @@ function calculate_data_between_points($origin, $destination_base, $waypoints){
         array_pop($waypoints);
 
         foreach($waypoints AS $point){
-            $db->setQuery(" SELECT  coordinates
+            $db->setQuery(" SELECT  coordinates,
+                                    name_geo
                             FROM    locations
                             WHERE   actived = 1 AND id = '$point'");
             $middleData = $db->getResultArray();
             array_push($waypointsData, $middleData['result'][0]['coordinates']);
-
+            $route .= $middleData['result'][0]['name_geo'].'→';
             $waypointsCoord = explode(',', $middleData['result'][0]['coordinates']);
             array_push($markers, array('latitude' => $waypointsCoord[0], 'longitude' => $waypointsCoord[1]));
         }
@@ -255,7 +263,7 @@ function calculate_data_between_points($origin, $destination_base, $waypoints){
             'origin' => $originData['result'][0]['coordinates'],
             'destination' => $destinationData['result'][0]['coordinates']
         );
-
+        $route .= $destinationData['result'][0]['name_geo'].'→';
         $originCoord = explode(',', $originData['result'][0]['coordinates']);
         $destinationCoord = explode(',', $destinationData['result'][0]['coordinates']);
 
@@ -284,6 +292,7 @@ function calculate_data_between_points($origin, $destination_base, $waypoints){
     $toReturn['tripDistanceKM'] = floor($tripDistanceKM/1000);
     $toReturn['tripDuration'] = gmdate("H:i", $tripDuration);
     $toReturn['markers'] = $markers;
+    $toReturn['route'] = rtrim($route,'→');
 
     return $toReturn;
 
