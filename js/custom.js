@@ -508,9 +508,9 @@ $(document).on('click', '.add-destination-plus', function(){
         success: function(data) {
             options = data.options;
             $('#destinations').append(` <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                            <label>მიმართულება(სად)</label>
+                                            <label>Where</label>
                                             <select class="form-control location_tos">
-                                                <option value="0">აირჩიეთ ლოკაცია</option>
+                                                <option value="0">Choose location</option>
                                                 `+options+`
                                             </select>
                                             <i class="fa fa-minus add-destination-minus"></i>
@@ -584,7 +584,7 @@ $(document).on('change', '#location_from,#location_to,#trip_days,.location_tos',
 
 $(document).on('click', '.makeOrder', function(){
     if($("#trip_start").val() == ''){
-        alert("დასაჯავშვნად გთხოვთ აირჩიოთ ტრანსფერის თარიღი");
+        alert("To order trip plese choose trip DATE");
     }
     else{
         $("#ordercar").click();
@@ -614,7 +614,7 @@ $(document).on('click', '.placeOrder', function(){
     var itsok = 0;
     if(order.fullname == '' || order.phone == '' || order.email == '' || order.address == ''){
         itsok++;
-        alert("გთხოვთ შეავსოთ ყველა ველი");
+        alert("Please fill all fields");
     }
 
     if(itsok == 0){
@@ -624,7 +624,7 @@ $(document).on('click', '.placeOrder', function(){
             data: order,
             success: function(data) {
                 if(data.status == '000'){
-                    $(".modal-body").html(`<div class="order_success">თქვენი შეკვეთა მიღებულია!!!</div>`);
+                    $(".modal-body").html(`<div class="order_success">Your order received!!!</div>`);
                     $(".modal-footer").hide();
                 }
             }
@@ -710,7 +710,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
                                                                     <div class="dr_airconditioner"><i class="fas fa-snowflake"></i> `+cars[i].air_conditioner+`</div>
                                                                 </div>
                                                                 <div class="car_btn_area makeOrder" data-car="`+cars[i].id+`">
-                                                                    დაჯავშვნა
+                                                                    Book Now
                                                                 </div>
                                                             </div>
                                                             

@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - Tours</title>
+    <title>VipTrip - ტრანსფერი</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -62,17 +62,17 @@ include("php/func.php");
                             <div class="top-user-area clearfix">
                                 <ul class="top-user-area-list list list-horizontal list-border">
                                     <li class="top-user-area-lang">
-                                        <a href="index.php">
+                                        <a href="eng/index.php">
                                             <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="../index.php">
+                                        <a title="Georgian" href="index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="../rus/index.php">
+                                        <a title="Russian" href="rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
@@ -85,13 +85,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li><a href="index.php">Trip</a>
+                        <li><a href="index.php">ტრანსფერი</a>
                         </li>
-                        <li class="active"><a href="tours.php">Tours</a>
+                        <li class="active"><a href="#">ტურები</a>
                         </li>
-                        <li><a href="#">Reviews</a>
+                        <li><a href="#">კომენტარები</a>
                         </li>
-                        <li><a href="#">Contact</a>
+                        <li><a href="#">კონტაქტი</a>
                         </li>
                         
                     </ul>
@@ -225,7 +225,7 @@ include("php/func.php");
     </div>
     <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
         <ul>
-            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><img src="../img/soc/fb.png" style="margin-bottom:5px; width:38px; height:38px;"></a></li>
+            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><img src="img/soc/fb.png" style="margin-bottom:5px; width:38px; height:38px;"></a></li>
         </ul>
     </div>
 </body>

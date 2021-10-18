@@ -46,19 +46,18 @@ switch($act){
         $googledData = calculate_data_between_points($origin, $destination_base, $waypoints);
         $trip_distance = $googledData['tripDistanceKM'];
         $tripDuration = $googledData['tripDuration'];
-        $tripRoute = $googledData['route'];
         $db->setQuery(" SELECT  cars.id,
                                 cars.image,
                                 cars.car_name,
                                 cars.car_type,
                                 cars.seats,
-                                IF(cars.air_conditioner = 1, 'კი', 'არა') AS air_conditioner,
-                                IF(cars.wifi = 1, 'კი', 'არა') AS wifi,
+                                IF(cars.air_conditioner = 1, 'Yes', 'No') AS air_conditioner,
+                                IF(cars.wifi = 1, 'Yes', 'No') AS wifi,
                                 cars.fuel_per_100,
                                 IFNULL(users.avatar, 'no-avatar.jpg') AS avatar,
-                                users.firstname_geo,
-                                users.languages_geo,
-                                fuel_type.name_geo AS fuel_type,
+                                users.firstname_eng,
+                                users.languages_eng,
+                                fuel_type.name_eng AS fuel_type,
                                 users.salary_per_day,
                                 
                                 CASE
@@ -86,7 +85,7 @@ switch($act){
 
 
         $db->setQuery("INSERT INTO orders SET date = NOW(),
-                                                trip_route = '$tripRoute',
+                                                trip_route = '',
                                                 cl_name = '$fullname',
                                                 cl_phone = '$phone',
                                                 cl_email = '$email',
@@ -119,13 +118,13 @@ switch($act){
                                 cars.car_name,
                                 cars.car_type,
                                 cars.seats,
-                                IF(cars.air_conditioner = 1, 'კი', 'არა') AS air_conditioner,
-                                IF(cars.wifi = 1, 'კი', 'არა') AS wifi,
+                                IF(cars.air_conditioner = 1, 'Yes', 'No') AS air_conditioner,
+                                IF(cars.wifi = 1, 'Yes', 'No') AS wifi,
                                 cars.fuel_per_100,
                                 IFNULL(users.avatar, 'no-avatar.jpg') AS avatar,
-                                users.firstname_geo,
-                                users.languages_geo,
-                                fuel_type.name_geo AS fuel_type,
+                                users.firstname_eng,
+                                users.languages_eng,
+                                fuel_type.name_eng AS fuel_type,
                                 users.salary_per_day,
                                 
                                 CASE
@@ -158,9 +157,9 @@ switch($act){
             array_push($carData, array( 'id' => $car['id'],
                                         'image' => $car['image'],
                                         'car_name' => $car['car_name'],
-                                        'driver_name' => $car['firstname_geo'],
+                                        'driver_name' => $car['firstname_eng'],
                                         'driver_avatar' => $car['avatar'],
-                                        'languages' => $car['languages_geo'],
+                                        'languages' => $car['languages_eng'],
                                         'seats' => $car['seats'],
                                         'fuel_type' => $car['fuel_type'],
                                         'wifi' => $car['wifi'],
@@ -180,7 +179,7 @@ switch($act){
         $locations = $db->getResultArray();
         $options = '';
         foreach($locations['result'] AS $location){
-            $options .= '<option value="'.$location['id'].'">'.$location['name_geo'].'</option>';
+            $options .= '<option value="'.$location['id'].'">'.$location['name_eng'].'</option>';
         }
 
         $data['options'] = $options;
