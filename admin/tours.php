@@ -789,7 +789,7 @@ include("../db.php");
 										type: "POST",
 										data: {
 											act: "save_tour_location",
-											tour_id: <?php echo $_REQUEST['edit']; ?>,
+											tour_id: '<?php echo $_REQUEST['edit']; ?>',
 											locs_id: $("#locs_id").val(),
 											location_id: $("#location_id").val(),
 											loc_position: $("#loc_position").val()
