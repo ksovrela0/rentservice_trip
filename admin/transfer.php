@@ -179,10 +179,54 @@ include("../db.php");
 									 <br />';
 									 echo '<form action="transfer.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
 									 
-									 <div class="input text"><label for="UserEmail">ტრანსფერი GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">ტრანსფერი RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">ტრანსფერი ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
-									 ';
+									 <div class="input text"><label for="UserEmail">ტრანსფერის კატეგორია</label><select name="tranfer_cat">';
+                                        $tr_cat = mysql_query("SELECT id, name_geo
+                                                                FROM prepared_transfers");
+                                        $tr_row = mysql_fetch_array($tr_cat);
+
+                                        do{
+                                            if($ProductRow3[transfer_id] == $tr_row[id]){
+                                                echo '<option value="'.$tr_row[id].'" selected>'.$tr_row[name_geo].'</option>';
+                                            }
+                                            else{
+                                                echo '<option value="'.$tr_row[id].'">'.$tr_row[name_geo].'</option>';
+                                            }
+                                        }
+                                        while($tr_row = mysql_fetch_array($tr_cat));
+                                     echo '</select></div>';
+
+                                     echo '<div class="input text"><label for="UserEmail">საწყისი ლოკაცია</label><select name="loc_start">';
+                                        $tr_cat = mysql_query("SELECT id, name_geo
+                                                                FROM locations");
+                                        $tr_row = mysql_fetch_array($tr_cat);
+
+                                        do{
+                                            if($ProductRow3[start_location] == $tr_row[id]){
+                                                echo '<option value="'.$tr_row[id].'" selected>'.$tr_row[name_geo].'</option>';
+                                            }
+                                            else{
+                                                echo '<option value="'.$tr_row[id].'">'.$tr_row[name_geo].'</option>';
+                                            }
+                                        }
+                                        while($tr_row = mysql_fetch_array($tr_cat));
+                                     echo '</select></div>';
+
+                                     echo '<div class="input text"><label for="UserEmail">საბოლოო ლოკაცია</label><select name="loc_end">';
+                                        $tr_cat = mysql_query("SELECT id, name_geo
+                                                                FROM locations");
+                                        $tr_row = mysql_fetch_array($tr_cat);
+
+                                        do{
+                                            if($ProductRow3[end_location] == $tr_row[id]){
+                                                echo '<option value="'.$tr_row[id].'" selected>'.$tr_row[name_geo].'</option>';
+                                            }
+                                            else{
+                                                echo '<option value="'.$tr_row[id].'">'.$tr_row[name_geo].'</option>';
+                                            }
+                                        }
+                                        while($tr_row = mysql_fetch_array($tr_cat));
+                                     echo '</select></div>';
+									 
 
 	/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -193,19 +237,18 @@ include("../db.php");
 									
 									
 	<div class="submit"><input  class="btn" style="margin-top: 15px;" type="submit" value="Submit"/></div></form>';
-									if(isset($_POST['name_geo']))
-									{
-										$name_rus = $_POST[name_rus];
-										$name_geo = $_POST['name_geo'];
-										$name_eng = $_POST['name_eng'];
-										
-										if(empty($name_geo))
+										if(isset($_POST['tranfer_cat']))
 										{
-											echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
-										}
+											$tranfer_cat = $_POST[tranfer_cat];
+											$loc_start = $_POST['loc_start'];
+											$loc_end = $_POST['loc_end'];
+											if(empty($tranfer_cat))
+											{
+												echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
+											}
 										else
 										{
-												$AddProduct = mysql_query("INSERT INTO prepared_transfers(`name_rus`,`name_geo`,`name_eng`) VALUES('$name_rus','$name_geo', '$name_eng')");
+												$AddProduct = mysql_query("INSERT INTO transfer_locations SET start_location='$loc_start', end_location='$loc_end', transfer_id='$tranfer_cat'");
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';

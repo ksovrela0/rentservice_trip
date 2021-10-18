@@ -107,3 +107,4 @@ function getTourDetail($detail = 'name', $id = 0){
     }
 }
 ?>
+

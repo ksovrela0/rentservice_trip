@@ -347,19 +347,23 @@ include("../db.php");
                                                                                     email='$email',
                                                                                     username='$username',
                                                                                     password='$password'");
-                                                $user = mysql_query("SELECT MAX(id) AS dd FROM users");
-                                                $ma = mysql_fetch_array($user);
-                                                mysql_query("INSERT INTO cars SET car_type = '$car_type',
-                                                                car_name ='$car_name',
-                                                                fuel_per_100 = '$fuel_100',
-                                                                seats = '$seats',
-                                                                fuel_type='$fuel_type',
-                                                                air_conditioner = '$air',
-                                                                wifi='$wifi',
-                                                                user_id='$ma[dd]'");
+                                                
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';
+													$user = mysql_query("SELECT MAX(id) AS dd FROM users");
+													$ma = mysql_fetch_array($user);
+													mysql_query("INSERT INTO cars SET car_type = '$car_type',
+																	car_name ='$car_name',
+																	fuel_per_100 = '$fuel_100',
+																	seats = '$seats',
+																	fuel_type='$fuel_type',
+																	air_conditioner = '$air',
+																	wifi='$wifi',
+																	user_id='$ma[dd]'");
+													$carrr = mysql_query("SELECT MAX(id) AS cc FROM cars");
+													$cr = mysql_fetch_array($carrr);
+													
 												}
 												else
 												{
@@ -370,30 +374,30 @@ include("../db.php");
 												
 												if(!empty($filep))
 												{
-													if($_FILES["img_m"]["size"] > 1024*10*1024)
+													if($_FILES["avatar"]["size"] > 1024*10*1024)
 													{
 														echo ("Размер файла превышает три мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img_m"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["avatar"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img_m"]["tmp_name"], $path."/cars/".$name);
+														$move = move_uploaded_file($_FILES["avatar"]["tmp_name"], $path."/img/cars/".$name);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET m_pic='http://rentservice.ge/cars/$name' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE users SET avatar='https://viptrip.ge/img/cars/$name' WHERE id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep1))
 												{
-													if($_FILES["img1"]["size"] > 1024*10*1024)
+													if($_FILES["car_img"]["size"] > 1024*10*1024)
 													{
 														echo ("Размер файла превышает три мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img1"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img1"]["tmp_name"], $path."/cars/".$name1);
+														$move = move_uploaded_file($_FILES["car_img"]["tmp_name"], $path."/img/cars/".$name1);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic1='http://rentservice.ge/cars/$name1' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET `image`='https://viptrip.ge/img/cars/$name1' WHERE user_id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep2))
@@ -438,7 +442,7 @@ include("../db.php");
 														$UpdateProduct = mysql_query("UPDATE cars SET pic4='http://rentservice.ge/cars/$name4' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
 													}
 												}
-												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=drivers.php">';
+												//echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=drivers.php">';
 												
 										}
 									}

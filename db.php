@@ -1,5 +1,5 @@
 <?
-//error_reporting(E_ALL);
+error_reporting(0);
 $db = mysql_connect("83.136.232.153","root","Gl-1114!");
 mysql_select_db("trip",$db);
 mysql_set_charset(utf8);

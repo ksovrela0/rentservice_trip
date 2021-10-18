@@ -180,13 +180,24 @@ include("../db.php");
 									 <h3>რედაქტირება <b>'.$ProductRow3[name].'</b></h3> 
 									 <br />';
 									 echo '<form action="system.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
-									 <div class="input text"><label for="UserEmail">მობილური2</label><input name="mobile2" type="text" value="'.$ProductRow3['mobile2'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">მობილური</label><input name="mobile" type="text" value="'.$ProductRow3['mobile'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">E-mail</label><input name="email" type="text" value="'.$ProductRow3['email'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">E-mail 2</label><input name="email2" type="text" value="'.$ProductRow3['email2'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">copyright</label><input name="copyright" type="text" value="'.$ProductRow3['copyright'].'" id="UserEmail"/></div>
+
+									 <div class="input text"><label for="UserEmail">ფასი დიზელი</label><input name="fuel_price_diesel" type="text" value="'.$ProductRow3['fuel_price_diesel'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ფასი გაზი</label><input name="fuel_price_gas" type="text" value="'.$ProductRow3['fuel_price_gas'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">ფასი ბენზინი</label><input name="fuel_price_benz" type="text" value="'.$ProductRow3['fuel_price_benz'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">კურსი დოლარი</label><input name="cur_dollar" type="text" value="'.$ProductRow3['cur_dollar'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">კურსი ევრო</label><input name="cur_euro" type="text" value="'.$ProductRow3['cur_euro'].'" id="UserEmail"/></div>
 									 
-									 <div class="input text"><label for="UserFirstName">ჩვენს შესახებ(GEO)</label><textarea name="about" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[about_us_eng_l].'</textarea>
+									 
+									
+									 ';
+									
+									 
+									/*
+									
+									<div class="input text"><label for="UserFirstName">ჩვენს შესახებ(GEO)</label><textarea name="about" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[about_us_eng_l].'</textarea>
 									<script>
 										// Replace the <textarea id="editor1"> with a CKEditor
 										// instance, using default configuration.
@@ -200,11 +211,7 @@ include("../db.php");
 										CKEDITOR.replace( "editor4" );
 									</script>
 									</div>
-									
-									 ';
-									
-									 
-									/*<div class="input text"><label for="UserFirstName">ჩვენ შესახებ(ENG)</label><textarea name="text1_eng" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[text1_eng].'</textarea>
+									<div class="input text"><label for="UserFirstName">ჩვენ შესახებ(ENG)</label><textarea name="text1_eng" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[text1_eng].'</textarea>
 									<script>
 					// Replace the <textarea id="editor1"> with a CKEditor
 					// instance, using default configuration.
@@ -243,18 +250,32 @@ include("../db.php");
 										$email2 = $_POST['email2'];
 										$copy = $_POST['copyright'];
 
+										$fuel_price_diesel = $_POST['fuel_price_diesel'];
+										$fuel_price_gas = $_POST['fuel_price_gas'];
+										$fuel_price_benz = $_POST['fuel_price_benz'];
+										$cur_dollar = $_POST['cur_dollar'];
+										$cur_euro = $_POST['cur_euro'];
+
 										
 										$about = $_POST[about];
 										$about_rus = $_POST[about_rus];
 										
-										if(empty($mobile2))
+										if(empty($mobile))
 										{
 											echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
 										}
 										else
 										{
 												
-												$UpdateProduct = mysql_query("UPDATE system SET mobile2='$mobile2', mobile='$mobile', email='$email', email2='$email2', about_us_eng_l='$about', about_us_rus_l='$about_rus', copyright='$copy' WHERE id='$id'") or die(mysql_error());
+												$UpdateProduct = mysql_query("UPDATE system SET mobile='$mobile', 
+																								email='$email',   
+																								copyright='$copy',
+																								fuel_price_diesel='$fuel_price_diesel',
+																								fuel_price_gas='$fuel_price_gas',
+																								fuel_price_benz='$fuel_price_benz',
+																								cur_dollar='$cur_dollar',
+																								cur_euro='$cur_euro'
+																								WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
