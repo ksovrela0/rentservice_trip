@@ -43,6 +43,12 @@ include("../db.php");
     <link href="Admin/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
     <link href="Admin/assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" rel="stylesheet" type="text/css" />
 
+	<link href="assets/css/kendoUI/kendo.common.min.css" rel="stylesheet" type="text/css"/>
+	<link href="assets/css/kendoUI/kendo.default.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+	<link href="assets/plugins/jquery-ui/chosen.css" rel="stylesheet" type="text/css"/>
+
     
 	<script type="text/javascript" src="Admin/js/jquery-1.8.3.min.js"></script>
 </head>
@@ -443,79 +449,14 @@ include("../db.php");
 									 <h3>რედაქტირება <b>'.$ProductRow3[name_eng].'</b></h3> 
 									 <br />';
 									 echo '<form action="tours.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
-									 <div class="input text"><img src="'.$ProductRow3[m_pic].'" height="240" width="120"></div>
+									 <div class="input text"><img src="'.$ProductRow3[image].'" height="240" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">მთავარი საურათი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="img_m" type="file" accept="image/*" id="UserUsername"/></div>
 									 
 									 <div class="input text"><label for="UserEmail">დასახელება ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">დასახელება RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
 									 
-									 <div class="input text"><label for="UserEmail">ტურის დაწყება(ქალაქი)</label><input name="f" type="text" value="'.$ProductRow3['f'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">ტურის დამთავრება(ქალაქი)</label><input name="t" type="text" value="'.$ProductRow3['t'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserEmail">ტურის დაწყების თარიღი (მაგ DD/MM/YY)</label><input name="start" type="text" value="'.$ProductRow3['start'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserEmail">ტურის ხანგძლივობა (შეიყვანეთ მინიმუმ 1)</label><input name="duration" type="text" value="'.$ProductRow3['duration'].'" id="UserEmail"/></div>
-									 
-									 <div class="input text"><label for="UserFirstName">აღწერა(ENG)</label><textarea name="desc_eng" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc_eng].'</textarea>
-									<script>
-
-										CKEDITOR.replace( "editor3" );
-									</script>
-									</div>
-									
-									
-									<div class="input text"><label for="UserFirstName">აღწერა(RUS)</label><textarea name="desc_rus" id="editor4" rows="10" cols="80" type="text">'.$ProductRow3[desc_rus].'</textarea>
-									<script>
-
-										CKEDITOR.replace( "editor4" );
-									</script>
-									</div>
-									
-									<div class="input text"><label for="UserEmail">ფასი</label><input name="price" type="text" value="'.$ProductRow3['price'].'" id="UserEmail"/></div>
-									
-									 
-									<br>
-									<div class="input text"><label for="UserEmail">აირჩიეთ ტურის ტიპი</label><select name="type">';
-								    if($ProductRow3[type] == 1)
-									{
-										echo '<option value="1">Group</option>';
-										echo '<option value="2">Family</option>';
-										echo '<option value="3">Individual</option>';
-									}
-									if($ProductRow3[type] == 2)
-									{
-										echo '<option value="2">Family</option>';
-										echo '<option value="1">Group</option>';
-										
-										echo '<option value="3">Individual</option>';
-									}
-									if($ProductRow3[type] == 3)
-									{
-										echo '<option value="3">Individual</option>';
-										echo '<option value="1">Group</option>';
-										echo '<option value="2">Family</option>';
-										
-									}
-									
-									
-									echo '</select></div>
-									
-									
-									<div class="input text"><img src="'.$ProductRow3[pic1].'" height="240" width="120"></div>
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 1(<a href="?edit='.$id.'&d=2" style="color:red;">წაშლა</a>)</label><input name="img1" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-									 <div class="input text"><img src="'.$ProductRow3[pic2].'" height="240" width="120"></div>
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 2(<a href="?edit='.$id.'&d=3" style="color:red;">წაშლა</a>)</label><input name="img2" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-									 <div class="input text"><img src="'.$ProductRow3[pic3].'" height="240" width="120"></div>
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 3(<a href="?edit='.$id.'&d=4" style="color:red;">წაშლა</a>)</label><input name="img3" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-									 <div class="input text"><img src="'.$ProductRow3[pic4].'" height="240" width="120"></div>
-									 <div class="input text"><label for="UserDateOfBirth">სურათი 4(<a href="?edit='.$id.'&d=5" style="color:red;">წაშლა</a>)</label><input name="img4" type="file" accept="image/*" id="UserUsername"/></div>
-									 
-									 
-									
-									
+									<div id="tour_kendo" style="width: 700px;"></div>
 									';
 									
 									
@@ -695,10 +636,7 @@ include("../db.php");
 											<a href="/users.php/index/sort:username/direction:asc">დასახელება ENG</a>                                    </th>
 											<th>
 											<a href="/users.php/index/sort:username/direction:asc">დასახელება RUS</a>                                    </th>
-											<th>
-											<a href="/users.php/index/sort:username/direction:asc">ტიპი</a>                                    </th> 
-											<th>
-											<a href="/users.php/index/sort:username/direction:asc">ფასი</a>                                    </th>   
+											
 											
 											
 											
@@ -717,27 +655,13 @@ include("../db.php");
 						   $ProductRow = mysql_fetch_array($Product);
 						   do
 						   {
-							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='".$ProductRow[m_pic]."' width='90' height='90'></td><td class=''>";
+							   echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='".$ProductRow[image]."' width='90' height='90'></td><td class=''>";
 							   echo $ProductRow[name_eng];
 							   echo "</td>";		
 							   echo "<td class=''>";
 							   echo $ProductRow[name_rus];
 							   echo "</td>";
-							   echo "<td class=''>";
-								if($ProductRow[type] == 1)
-								{
-									echo 'Group';
-								}
-								if($ProductRow[type] == 2)
-								{
-									echo 'Family';
-								}
-								if($ProductRow[type] == 3)
-								{
-									echo 'Individual';
-								}
-							   echo "</td>";
-							   echo "<td class=''>".$ProductRow[price]."</td>";
+							   
 							  echo "<td style='min-width: 190px;' class='actions'>
 		<a href='?edit=$ProductRow[id]' class='btn btn-mini btn-primary'>Edit</a> <a href='?del=$ProductRow[id]' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
 						   }
@@ -786,6 +710,8 @@ include("../db.php");
 		</div>
 		<!-- END PAGE -->
 	</div>
+
+	<div title="ტურის აწყობა" id="get_edit_page"></div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
 	<!-- END FOOTER -->
@@ -832,6 +758,11 @@ include("../db.php");
     <script type="text/javascript" src="Admin/assets/fancybox/source/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="Admin/assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
     <script type="text/javascript" src="Admin/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/plugins/jquery-ui/chosen.jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/js/kendoUI/kendo.all.min.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/js/kendoUI/kendo.main.class.js"></script>
+	<script type="text/javascript" language="javascript" src="assets/js/kendoUI/pako_deflate.min.js"></script>  
 
     <!--[if lte IE 8]>
     <script language="javascript" type="text/javascript" src="https://demo.betscheme.com/theme/Admin/assets/flot/excanvas.min.js"></script>
@@ -845,7 +776,73 @@ include("../db.php");
 			// initiate layout and plugins
 			App.setMainPage(true);
 			App.init();
+			var hid = "&tour_id=<?php echo $_REQUEST['edit']; ?>";
+			LoadKendoTable_incomming(hid);
 		});
+
+		var aJaxURL	        =   "server-side/tours.action.php";
+		function LoadKendoTable_incomming(hidden){
+
+			//KendoUI CLASS CONFIGS BEGIN
+			
+			var gridName        = 	'tour_kendo';
+			var actions         = 	'<div class="btn btn-list"><a id="button_add" style="color:white;" class="btn ripple btn-primary"><i class="fas fa-plus-square"></i> დამატება</a><a id="button_trash" style="color:white;" class="btn ripple btn-primary"><i class="fas fa-trash"></i> წაშლა</a></div>';
+			var editType        =   "popup"; // Two types "popup" and "inline"
+			var itemPerPage     = 	20;
+			var columnsCount    =	3;
+			var columnsSQL      = 	[
+										"id:string",
+										"location:string",
+										"position:string"
+									];
+			var columnGeoNames  = 	[
+										"ID", 
+										"ლოკაცია",
+										"პოზიცია"
+									];
+
+			var showOperatorsByColumns  =   [0,0,0]; 
+			var selectors               =   [0,0,0]; 
+
+			var locked                  =   [0,0,0];
+			var lockable                =   [0,0,0];
+
+			var filtersCustomOperators = '{"date":{"start":"-დან","ends":"-მდე","eq":"ზუსტი"}, "number":{"start":"-დან","ends":"-მდე","eq":"ზუსტი"}}';
+			//KendoUI CLASS CONFIGS END
+				
+			const kendo = new kendoUI();
+			kendo.loadKendoUI(aJaxURL,'get_list',itemPerPage,columnsCount,columnsSQL,gridName,actions,editType,columnGeoNames,filtersCustomOperators,showOperatorsByColumns,selectors,hidden, 1, locked, lockable);
+
+			}
+
+
+			$(document).on('click','#button_add',function(){
+				$.ajax({
+					url: aJaxURL,
+					type: "POST",
+					data: {
+						act: "get_add_page"
+					},
+					dataType: "json",
+					success: function(data){
+						$('#get_edit_page').html(data.page);
+						$("#get_edit_page").dialog({
+							resizable: false,
+							height: "auto",
+							width: 350,
+							modal: true,
+							buttons: {
+								"შენახვა": function() {
+									alert(324);
+								},
+								'დახურვა': function() {
+									$( this ).dialog( "close" );
+								}
+							}
+						});
+					}
+				});
+			});
 	</script>
 <?
 if(isset($_GET['exit']))

@@ -67,23 +67,11 @@ $path = dirname(dirname(dirname(__FILE__)));
 									                        შეკვეთები <span style="color:red;"></span>                      <span class="arrow"></span>
 									                    </a>
 									                                            <ul class="sub">
-									                                            <li><a href="orders.php?id=1">ტურების შეკვეთები <span style="color:red;"></a></li>
-																																<li><a href="orders.php?id=2">მანქანების შეკვეთები <span style="color:red;"></a></li>
-																																	<li><a href="orders.php?id=3">სასტუმროების შეკვეთები <span style="color:red;"></a></li>
-
+									                                            <li><a href="orders.php?id=1">რედაქტირება <span style="color:red;"></a></li>
+																																
 									                                                                                                                        </ul>
 									                                    </li>
-																											<li class="has-sub hidden" >
-																		                    <a href="javascript:;" class="">
-																		                        <span class="icon-box"><i class="icon-book"></i></span>
-
-																		                        კონტაქტი <span style="color:red;"></span>                      <span class="arrow"></span>
-																		                    </a>
-																		                                            <ul class="sub">
-																		                         <li><a href="contact.php">ნახვა <span style="color:red;"></a></li>
-
-																		                                                                                                                        </ul>
-																		                                    </li>
+																											
 
 									<?
 									//$CheckOff = mysql_query("SELECT * FROM addhotel WHERE seen='0'") or die(mysql_error());
