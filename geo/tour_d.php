@@ -402,9 +402,24 @@ include("php/func.php");
     </div>
     <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
         <ul>
-            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><img src="img/soc/fb.png" style="margin-bottom:5px; width:38px; height:38px;"></a></li>
+            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
         </ul>
     </div>
+    <style>
+        .social-fb{
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            text-align: center;
+            border: 1px solid #ffca18;
+            transition: all 1s ease;
+        }
+        .social-fb:hover{
+            color:  #fff;
+            background-color: #007bff;
+        }
+    </style>
 </body>
 
 </html>
