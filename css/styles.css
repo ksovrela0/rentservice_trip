@@ -11017,6 +11017,7 @@ img.mfp-img {
   border-radius: 8px;
   display: inherit;
   transition: all .5s ease-in-out;
+  max-height: 100px
 }
 .price_area{
   display: flex;
