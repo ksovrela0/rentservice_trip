@@ -76,6 +76,17 @@ include("php/func.php");
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
+                                    <?php
+                                        if(isMobile()){
+                                            echo '  <li>
+                                                        <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
+                                                            <ul>
+                                                                <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>';
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -223,11 +234,15 @@ include("php/func.php");
             </div>
         </div>
     </div>
-    <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
-        <ul>
-            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
-        </ul>
-    </div>
+    <?php
+        if(!isMobile()){
+            echo '  <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
+                        <ul>
+                            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>';
+        }
+    ?>
     <style>
         .social-fb{
             width: 40px;
