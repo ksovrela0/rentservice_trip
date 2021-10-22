@@ -22,7 +22,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css?v=3">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css?v=3.5">
+    <link rel="stylesheet" href="css/styles.css?v=4.0">
     <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
@@ -113,34 +113,25 @@ include("php/func.php");
 
         <div class="top-area show-onload">
             <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(https://www.turebi.ge/uploads/photos/tours1/large/43067_1.jpg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
+                <?php
+                    $db->setQuery(" SELECT *
+                                    FROM slider
+                                    ORDER BY id DESC");
+                    $slider = $db->getResultArray();
 
-                            <h1 class="owl-cap-title fittext">მცხეთა</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(https://asea.ge/wp-content/uploads/2020/07/165A8053-scaled.jpg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
-                            <h1 class="owl-cap-title fittext">ბათუმი</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-holder full text-center text-white">
-                    <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(https://pia.ge/files/2020/08/14/8449/kazbegi_w_h.jpeg);"></div>
-                    <div class="bg-front full-center">
-                        <div class="owl-cap">
-                            <h1 class="owl-cap-title fittext">ყაზბეგი</h1>
-                        </div>
-                    </div>
-                </div>
+                    foreach($slider['result'] AS $slide){
+                        echo '  <div class="bg-holder full text-center text-white">
+                                    <div class="bg-mask"></div>
+                                    <div class="bg-img" style="background-image:url('.$slide['img'].');"></div>
+                                    <div class="bg-front full-center">
+                                        <div class="owl-cap">
+                
+                                            <h1 class="owl-cap-title fittext">'.$slide['name_rus'].'</h1>
+                                        </div>
+                                    </div>
+                                </div>';
+                    }
+                ?>
             </div>
         </div>
 

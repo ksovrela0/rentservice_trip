@@ -1299,6 +1299,8 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
+  object-fit: cover;
+  height: 260px;
 }
 .hover-img .hover-icon-group,
 .hover-img .hover-icon-group-top-right,
