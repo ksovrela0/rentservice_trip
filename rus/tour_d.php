@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - Tour - <?php getTourDetail('name', $_REQUEST['id']); ?></title>
+    <title>VipTrip - Тур - <?php getTourDetail('name', $_REQUEST['id']); ?></title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">

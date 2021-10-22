@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - ტრანსფერი</title>
+    <title>VipTrip - ტურები</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
