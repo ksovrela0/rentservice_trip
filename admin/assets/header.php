@@ -71,6 +71,17 @@ $path = dirname(dirname(dirname(__FILE__)));
 																																
 									                                                                                                                        </ul>
 									                                    </li>
+                                                                        <li class="has-sub hidden" >
+									                    <a href="javascript:;" class="">
+									                        <span class="icon-box"><i class="icon-book"></i></span>
+
+									                        კომენტარები <span style="color:red;"></span>                      <span class="arrow"></span>
+									                    </a>
+									                                            <ul class="sub">
+									                                            <li><a href="reviews.php">რედაქტირება <span style="color:red;"></a></li>
+																																
+									                                                                                                                        </ul>
+									                                    </li>
 																											
 
 									<?
