@@ -56,7 +56,7 @@ include("../db.php");
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="administration.php">
-                    <img src="" width="200px" height="200px" alt="">
+				<img src="../img/logo.jpg" width="100px" height="100px" alt="">
                     
                 </a>
 				<!-- END LOGO -->
@@ -189,6 +189,7 @@ include("../db.php");
 									 <div class="input text"><label for="UserEmail">ფასი ბენზინი</label><input name="fuel_price_benz" type="text" value="'.$ProductRow3['fuel_price_benz'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">კურსი დოლარი</label><input name="cur_dollar" type="text" value="'.$ProductRow3['cur_dollar'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">კურსი ევრო</label><input name="cur_euro" type="text" value="'.$ProductRow3['cur_euro'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">Google API</label><input name="google_api" type="text" value="'.$ProductRow3['google_api_key'].'" id="UserEmail"/></div>
 									 
 									 
 									
@@ -255,6 +256,7 @@ include("../db.php");
 										$fuel_price_benz = $_POST['fuel_price_benz'];
 										$cur_dollar = $_POST['cur_dollar'];
 										$cur_euro = $_POST['cur_euro'];
+										$google_api = $_POST['google_api'];
 
 										
 										$about = $_POST[about];
@@ -274,7 +276,8 @@ include("../db.php");
 																								fuel_price_gas='$fuel_price_gas',
 																								fuel_price_benz='$fuel_price_benz',
 																								cur_dollar='$cur_dollar',
-																								cur_euro='$cur_euro'
+																								cur_euro='$cur_euro',
+																								google_api_key='$google_api'
 																								WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{

@@ -56,7 +56,7 @@ include("../db.php");
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="administration.php">
-                    <img src="../images/logo2.png" width="100px" height="100px" alt="">
+                    <img src="../img/logo.jpg" width="100px" height="100px" alt="">
                     
                 </a>
 				<!-- END LOGO -->
