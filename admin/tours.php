@@ -767,6 +767,56 @@ include("../db.php");
 					}
 				});
 			});
+			$(document).on("dblclick", "#tour_kendo tr.k-state-selected", function () {
+				var grid = $("#tour_kendo").data("kendoGrid");
+				var dItem = grid.dataItem($(this));
+				
+				if(dItem.id == ''){
+					return false;
+				}
+				
+				$.ajax({
+					url: aJaxURL,
+					type: "POST",
+					data: {
+						act: "get_edit_page",
+						id: dItem.id
+					},
+					dataType: "json",
+					success: function(data){
+						$('#get_edit_page').html(data.page);
+						$("#get_edit_page").dialog({
+							resizable: false,
+							height: "auto",
+							width: 350,
+							modal: true,
+							buttons: {
+								"შენახვა": function() {
+									$.ajax({
+										url: aJaxURL,
+										type: "POST",
+										data: {
+											act: "save_tour_location",
+											tour_id: '<?php echo $_REQUEST['edit']; ?>',
+											locs_id: $("#locs_id").val(),
+											location_id: $("#location_id").val(),
+											loc_position: $("#loc_position").val()
+										},
+										dataType: "json",
+										success: function(data){
+											$('#get_edit_page').dialog( "close" );
+											$("#tour_kendo").data("kendoGrid").dataSource.read();
+										}
+									})
+								},
+								'დახურვა': function() {
+									$( this ).dialog( "close" );
+								}
+							}
+						});
+					}
+				});
+			});
 			$(document).on('click','#button_add',function(){
 				$.ajax({
 					url: aJaxURL,

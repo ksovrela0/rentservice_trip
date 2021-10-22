@@ -10,11 +10,11 @@ $group_id   = $_SESSION['GRPID'];
 switch ($act){
     case 'get_add_page':
         $id = $_REQUEST['id'];
-        $data = array('page' => getPage(getTour($id)));
+        $data = array('page' => getPage());
     break;
     case 'get_edit_page':
         $id = $_REQUEST['id'];
-        $data = array('page' => getPage($id));
+        $data = array('page' => getPage(getTour($id)));
     break;
     case 'save_tour_location':
         $tour_id = $_REQUEST['tour_id'];
@@ -187,7 +187,10 @@ function getTour($id = 0){
                             location_id,
                             position
                     FROM    tour_locations
-                    WHERE   tour_id = '$id'");
+                    WHERE   id = '$id'");
+    $tour_det = $db->getResultArray();
+
+    return $tour_det['result'][0];
 }
 function locations($id = 0){
     GLOBAL $db;
