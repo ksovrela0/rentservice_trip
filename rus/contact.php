@@ -1,12 +1,11 @@
 <?php
 include("php/func.php");
 ?>
-
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>VipTrip - ტურები</title>
+    <title>VipTrip - Контакты</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -19,13 +18,13 @@ include("php/func.php");
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
     <!-- /GOOGLE FONTS -->
-    <link rel="stylesheet" href="css/bootstrap.css?v=3">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/styles.css?v=4.0">
-    <link rel="stylesheet" href="css/select2.css?v=1.3"/>
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
+
     <link rel="stylesheet" href="css/switcher.css" />
     <link rel="alternate stylesheet" type="text/css" href="css/schemes/bright-turquoise.css" title="bright-turquoise" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="css/schemes/turkish-rose.css" title="turkish-rose" media="all" />
@@ -45,14 +44,29 @@ include("php/func.php");
 </head>
 
 <body style="background-image: url('img/patterns/binding_dark.png');" class="boxed">
+
+    <!-- FACEBOOK WIDGET -->
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- /FACEBOOK WIDGET -->
     <div class="global-wrap">
-        <header id="main-header">
+        
+    <header id="main-header">
             <div class="header-top">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
                             <a class="logo" href="index.php">
-                                <img src="../img/logo.jpg" alt="Transfer" title="Image Title" />
+                                <img src="img/logo.jpg" alt="Transfer" title="Image Title" />
                             </a>
                         </div>
                         <div class="col-md-3 col-md-offset-2">
@@ -61,18 +75,18 @@ include("php/func.php");
                         <div class="col-md-4">
                             <div class="top-user-area clearfix">
                                 <ul class="top-user-area-list list list-horizontal list-border">
-                                    <li class="top-user-area-lang">
+                                <li class="top-user-area-lang">
                                         <a href="../index.php">
                                             <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="index.php">
+                                        <a title="Georgian" href="../geo/index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="../rus/index.php">
+                                        <a title="Russian" href="index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
@@ -96,13 +110,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li><a href="index.php">ტრანსფერი</a>
+                    <li><a href="index.php">Трансфер</a>
                         </li>
-                        <li class="active"><a href="#">ტურები</a>
+                        <li><a href="tours.php">Туры</a>
                         </li>
-                        <li><a href="#">კომენტარები</a>
+                        <li><a href="#">Отзывы</a>
                         </li>
-                        <li><a href="contact.php">კონტაქტი</a>
+                        <li class="active"><a href="contact.php">Контакт</a>
                         </li>
                         
                     </ul>
@@ -110,56 +124,73 @@ include("php/func.php");
             </div>
         </header>
 
-
-        <div class="top-area show-onload">
-            <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
-                <?php
-                    $db->setQuery(" SELECT *
-                                    FROM slider
-                                    ORDER BY id DESC");
-                    $slider = $db->getResultArray();
-
-                    foreach($slider['result'] AS $slide){
-                        echo '  <div class="bg-holder full text-center text-white">
-                                    <div class="bg-mask"></div>
-                                    <div class="bg-img" style="background-image:url('.$slide['img'].');"></div>
-                                    <div class="bg-front full-center">
-                                        <div class="owl-cap">
-                
-                                            <h1 class="owl-cap-title fittext">'.$slide['name_geo'].'</h1>
-                                        </div>
-                                    </div>
-                                </div>';
-                    }
-                ?>
-            </div>
+        <div class="container">
+            <h1 class="page-title" style="color:white; ">Свяжитесь с нами</h1>
         </div>
+
+
+
+
 
         <div class="container">
             <div class="gap"></div>
-            <div class="row row-wrap">
-                <?php
-                    getTours();
-                ?>
-                
+            <div class="row">
+                <div class="col-md-12">
+                <ul class="address-list list">
+                            <?php
+                                $db->setQuery("SELECT * FROM system");
+                                $data = $db->getResultArray();
+                            ?>
+                            <li>
+                                <h2 style="color">Email</h2><a href="mailto:<?php echo $data['result'][0]['email']; ?>" style="font-size: 19px;"><?php echo $data['result'][0]['email']; ?></a>
+                            </li>
+                            <li>
+                                <h2>Телефон</h2><a href="#" style="font-size: 19px;"><?php echo $data['result'][0]['mobile']; ?></a>
+                            </li>
+                        </ul>
+                </div>
                 
             </div>
-            <div class="gap gap-small"></div>
+            <div class="gap"></div>
         </div>
 
-
+        <?php
+            if(!isMobile()){
+                echo '  <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
+                            <ul>
+                                <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>';
+            }
+        ?>
+        <style>
+            .social-fb{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 18px;
+                text-align: center;
+                border: 1px solid #ffca18;
+                transition: all 1s ease;
+            }
+            .social-fb:hover{
+                color:  #fff;
+                background-color: #007bff;
+            }
+        </style>
+        
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/slimmenu.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/bootstrap-timepicker.js"></script>
+        <script src="js/nicescroll.js"></script>
         <script src="js/dropit.js"></script>
-        <script src="js/select2.js"></script>
         <script src="js/ionrangeslider.js"></script>
         <script src="js/icheck.js"></script>
         <script src="js/fotorama.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKHmTCzDHpTTBRQ4dTfR9d8xkmO-9OsqA"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
         <script src="js/typeahead.js"></script>
         <script src="js/card-payment.js"></script>
         <script src="js/magnific.js"></script>
@@ -168,87 +199,9 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=2.7"></script>
+        <script src="js/custom.js"></script>
         <script src="js/switcher.js"></script>
-        <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
-        
     </div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" id="ordercar" data-toggle="modal" data-target="#exampleModal" style="display:none;">
-    Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">დაჯავშვნა</h5>
-                    <button type="button" style="opacity:1!important;margin-top: -25px;" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="სახელი და გვარი" id="cl_fullname">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="ტელეფონი" id="cl_phone">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="E-mail" id="cl_email">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="აყვანის მისამართი" id="cl_address">
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <textarea class="form-control cl_inputs" placeholder="კომენტარი" id="cl_comment"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer" style="text-align:center!important;">
-                    <button style="width:100%" type="button" class="btn btn-primary placeOrder">დაჯავშვნა</button>
-                </div>
-                <input type="hidden" value="0" id="car_token">
-            </div>
-        </div>
-    </div>
-    <?php
-        if(!isMobile()){
-            echo '  <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
-                        <ul>
-                            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>';
-        }
-    ?>
-    <style>
-        .social-fb{
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            font-size: 18px;
-            text-align: center;
-            border: 1px solid #ffca18;
-            transition: all 1s ease;
-        }
-        .social-fb:hover{
-            color:  #fff;
-            background-color: #007bff;
-        }
-    </style>
 </body>
 
 </html>

@@ -102,7 +102,7 @@ include("php/func.php");
                         </li>
                         <li><a href="#">Отзывы</a>
                         </li>
-                        <li><a href="#">Контакт</a>
+                        <li><a href="contact.php">Контакт</a>
                         </li>
                         
                     </ul>

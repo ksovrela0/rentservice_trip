@@ -21,7 +21,7 @@ include("php/func.php");
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=4.0">
     <link rel="stylesheet" href="css/mystyles.css">
     <script src="js/modernizr.js"></script>
 
@@ -90,6 +90,17 @@ include("php/func.php");
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
+                                    <?php
+                                    if(isMobile()){
+                                        echo '  <li>
+                                                    <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
+                                                        <ul>
+                                                            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>';
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -99,13 +110,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li class="active"><a href="index.php">Trips</a>
+                        <li><a href="index.php">Trips</a>
                         </li>
                         <li><a href="tours.php">Tours</a>
                         </li>
                         <li><a href="#">Reviews</a>
                         </li>
-                        <li><a href="#">Contact</a>
+                        <li class="active"><a href="contact.php">Contact</a>
                         </li>
                         
                     </ul>
@@ -124,51 +135,49 @@ include("php/func.php");
         <div class="container">
             <div class="gap"></div>
             <div class="row">
-                <div class="col-md-7">
-                    <form class="mt30">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Send Message" />
-                    </form>
-                </div>
-                <div class="col-md-4">
-                    <aside class="sidebar-right">
-                        <ul class="address-list list">
+                <div class="col-md-12">
+                <ul class="address-list list">
                             <?php
                                 $db->setQuery("SELECT * FROM system");
                                 $data = $db->getResultArray();
                             ?>
                             <li>
-                                <h5 style="color">Email</h5><a href="#"><?php echo $data['result'][0]['email']; ?></a>
+                                <h2 style="color">Email</h2><a href="mailto:<?php echo $data['result'][0]['email']; ?>" style="font-size: 19px;"><?php echo $data['result'][0]['email']; ?></a>
                             </li>
                             <li>
-                                <h5>Phone Number</h5><a href="#">+1 (286) 929-1739</a>
+                                <h2>Phone Number</h2><a href="#" style="font-size: 19px;"><?php echo $data['result'][0]['mobile']; ?></a>
                             </li>
                         </ul>
-                    </aside>
                 </div>
+                
             </div>
             <div class="gap"></div>
         </div>
 
-
-
+        <?php
+            if(!isMobile()){
+                echo '  <div style="position:fixed; color:white; margin-top:100px; padding-right:10px; left:0; top:0; z-index:99999999;">
+                            <ul>
+                                <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>';
+            }
+        ?>
+        <style>
+            .social-fb{
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 18px;
+                text-align: center;
+                border: 1px solid #ffca18;
+                transition: all 1s ease;
+            }
+            .social-fb:hover{
+                color:  #fff;
+                background-color: #007bff;
+            }
+        </style>
         
 
         <script src="js/jquery.js"></script>

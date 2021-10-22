@@ -102,7 +102,7 @@ include("php/func.php");
                         </li>
                         <li><a href="#">კომენტარები</a>
                         </li>
-                        <li><a href="#">კონტაქტი</a>
+                        <li><a href="contact.php">კონტაქტი</a>
                         </li>
                         
                     </ul>
