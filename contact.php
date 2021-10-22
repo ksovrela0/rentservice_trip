@@ -114,7 +114,7 @@ include("php/func.php");
                         </li>
                         <li><a href="tours.php">Tours</a>
                         </li>
-                        <li><a href="#">Reviews</a>
+                        <li><a href="reviews.php">Reviews</a>
                         </li>
                         <li class="active"><a href="contact.php">Contact</a>
                         </li>

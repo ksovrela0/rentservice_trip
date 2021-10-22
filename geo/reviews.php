@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - Tours</title>
+    <title>VipTrip - კომენტარები</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -52,7 +52,7 @@ include("php/func.php");
                     <div class="row">
                         <div class="col-md-3">
                             <a class="logo" href="index.php">
-                                <img src="img/logo.jpg" alt="Transfer" title="Image Title" />
+                                <img src="../img/logo.jpg" alt="Transfer" title="Image Title" />
                             </a>
                         </div>
                         <div class="col-md-3 col-md-offset-2">
@@ -60,33 +60,34 @@ include("php/func.php");
                         </div>
                         <div class="col-md-4">
                             <div class="top-user-area clearfix">
-                            <ul class="top-user-area-list list list-horizontal list-border">
-                                    <li class="top-user-area-lang">
-                                        <a href="index.php">
+                                <ul class="top-user-area-list list list-horizontal list-border">
+                                <li class="top-user-area-lang">
+                                        <a href="../index.php">
                                             <img src="img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="geo/index.php">
+                                        <a title="Georgian" href="index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="rus/index.php">
+                                        <a title="Russian" href="../rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
                                     <?php
-                                        if(isMobile()){
-                                            echo '  <li>
-                                                        <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
-                                                            <ul>
-                                                                <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>';
-                                        }
+                                    if(isMobile()){
+                                        echo '  <li>
+                                                    <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
+                                                        <ul>
+                                                            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>';
+                                    }
                                     ?>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -96,13 +97,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li><a href="index.php">Trip</a>
+                    <li><a href="index.php">ტრანსფერი</a>
                         </li>
-                        <li class="active"><a href="tours.php">Tours</a>
+                        <li><a href="tours.php">ტურები</a>
                         </li>
-                        <li><a href="reviews.php">Reviews</a>
+                        <li class="active"><a href="reviews.php">კომენტარები</a>
                         </li>
-                        <li><a href="contact.php">Contact</a>
+                        <li><a href="contact.php">კონტაქტი</a>
                         </li>
                         
                     </ul>
@@ -110,47 +111,31 @@ include("php/func.php");
             </div>
         </header>
 
-
-        <div class="top-area show-onload">
-            <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
-                <?php
-                    $db->setQuery(" SELECT *
-                                    FROM slider
-                                    ORDER BY id DESC");
-                    $slider = $db->getResultArray();
-
-                    foreach($slider['result'] AS $slide){
-                        echo '  <div class="bg-holder full text-center text-white">
-                                    <div class="bg-mask"></div>
-                                    <div class="bg-img" style="background-image:url('.$slide['img'].');"></div>
-                                    <div class="bg-front full-center">
-                                        <div class="owl-cap">
-                
-                                            <h1 class="owl-cap-title fittext">'.$slide['name_eng'].'</h1>
-                                        </div>
-                                    </div>
-                                </div>';
-                    }
-                ?>
-                
-                
-            </div>
-        </div>
-
-        <div class="container">
+        <div class="container prepared_trip">
             <div class="gap"></div>
-            <div class="row row-wrap">
-                <?php
-                    getTours();
-                ?>
-                
-                
-            </div>
+            <h3 class="text-center mb20 popular_destination">კომენტარები</h3>
+            <?php
+                $db->setQuery("SELECT *
+                                FROM reviews
+                                ORDER BY date DESC");
+                $revs = $db->getResultArray();
+
+                foreach($revs['result'] AS $rev){
+                    echo '  <div class="col-md-12">
+                                <div class="comment_rev">
+                                    <p style="color:#ffca18">'.$rev[name].' ('.$rev[date].')</p>
+                                    <div class="rev_desc">
+                                        '.$rev[desc].'       
+                                    </div>
+                                    
+                                </div>
+                            </div>';
+                }
+            ?>
+            
             <div class="gap gap-small"></div>
         </div>
-
-
-
+       
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/slimmenu.js"></script>
@@ -186,7 +171,7 @@ include("php/func.php");
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">დაჯავშვნა</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Order</h5>
                     <button type="button" style="opacity:1!important;margin-top: -25px;" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -195,12 +180,12 @@ include("php/func.php");
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="სახელი და გვარი" id="cl_fullname">
+                                <input class="form-control cl_inputs" placeholder="Fullname" id="cl_fullname">
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="ტელეფონი" id="cl_phone">
+                                <input class="form-control cl_inputs" placeholder="Phone" id="cl_phone">
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-12">
@@ -210,18 +195,18 @@ include("php/func.php");
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group">
-                                <input class="form-control cl_inputs" placeholder="აყვანის მისამართი" id="cl_address">
+                                <input class="form-control cl_inputs" placeholder="Pickup address" id="cl_address">
                             </div>
                         </div>
                         <div class="col-md-12 col-xs-12">
                             <div class="form-group">
-                                <textarea class="form-control cl_inputs" placeholder="კომენტარი" id="cl_comment"></textarea>
+                                <textarea class="form-control cl_inputs" placeholder="Comment" id="cl_comment"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer" style="text-align:center!important;">
-                    <button style="width:100%" type="button" class="btn btn-primary placeOrder">დაჯავშვნა</button>
+                    <button style="width:100%" type="button" class="btn btn-primary placeOrder">Book Now</button>
                 </div>
                 <input type="hidden" value="0" id="car_token">
             </div>
@@ -236,6 +221,7 @@ include("php/func.php");
                     </div>';
         }
     ?>
+    
     <style>
         .social-fb{
             width: 40px;
@@ -249,6 +235,13 @@ include("php/func.php");
         .social-fb:hover{
             color:  #fff;
             background-color: #007bff;
+        }
+        .comment_rev{
+            padding: 7px;
+            border: 1px solid #ffca18;
+            margin: 4px;
+            color: #fff;
+            background-color: #484848;
         }
     </style>
 </body>

@@ -100,7 +100,7 @@ include("php/func.php");
                         </li>
                         <li class="active"><a href="tours.php">Туры</a>
                         </li>
-                        <li><a href="#">Отзывы</a>
+                        <li><a href="reviews.php">Отзывы</a>
                         </li>
                         <li><a href="contact.php">Контакт</a>
                         </li>

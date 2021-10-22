@@ -100,7 +100,7 @@ include("php/func.php");
                         </li>
                         <li><a href="tours.php">ტურები</a>
                         </li>
-                        <li><a href="#">კომენტარები</a>
+                        <li><a href="reviews.php">კომენტარები</a>
                         </li>
                         <li><a href="contact.php">კონტაქტი</a>
                         </li>

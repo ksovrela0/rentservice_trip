@@ -110,7 +110,7 @@ else{
                     </li>
                     <li><a href="#">ტურები</a>
                     </li>
-                    <li><a href="#">კომენტარები</a>
+                    <li><a href="reviews.php">კომენტარები</a>
                     </li>
                     <li><a href="#">კონტაქტი</a>
                     </li>
