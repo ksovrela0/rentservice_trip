@@ -172,6 +172,7 @@ else{
                                 <th>მისამართი</th>
                                 <th>კომენტარი</th>
                                 <th>ფასი</th>
+                                <th>სტატუსი</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -185,11 +186,16 @@ else{
                                                         orders.trip_duration,
                                                         orders.cl_address,
                                                         orders.cl_comment,
-                                                        CONCAT(orders.price_gel,'GEL ', orders.price_usd, 'USD ', orders.price_eur, 'EUR') AS price
+                                                        CONCAT(orders.price_gel,'GEL ', orders.price_usd, 'USD ', orders.price_eur, 'EUR') AS price,
+                                                        CASE
+                                                            WHEN orders.status = 1 THEN CONCAT('<button class=\"confirmOrder\" data-id=\"',orders.id,'\">დადასტურება</button>')
+                                                            WHEN orders.status = 2 THEN '<span style=\"color:#fff;background-color:green;padding:5px; border-radius:8px; font-size: 15px;\">OK</span>'
+                                                            WHEN orders.status = 4 THEN '<span style=\"color:#fff;background-color:red;padding:5px; border-radius:8px; font-size: 15px;\">გაუქმ.</span>'
+                                                        END AS status
                                                 FROM    orders
                                                 JOIN    cars ON cars.id = orders.car_id
                                                 JOIN    users ON users.id = cars.user_id
-                                                WHERE   orders.status = 1 AND users.id = '$user_id'");
+                                                WHERE   orders.status IN (1,2) AND users.id = '$user_id'");
                                 $orders = $db->getResultArray();
 
                                 foreach($orders['result'] AS $item){
@@ -206,6 +212,7 @@ else{
                                         <td>'.$item['cl_address'].'</td>
                                         <td>'.$item['cl_comment'].'</td>
                                         <td>'.$item['price'].'</td>
+                                        <td>'.$item['status'].'</td>
                                     </tr>
                                     
                                     ';
@@ -242,6 +249,22 @@ else{
         <script src="../js/gridrotator.js"></script>
         <script src="../js/custom.js"></script>
         <script src="../js/switcher.js"></script>
+
+        <script>
+            $(document).on('click','.confirmOrder', function(){
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: '../php/ajax.php',
+                    dataType: 'json',
+                    data: "act=confirmOrder&orderID="+id,
+                    success: function(data) {
+                        if(data.status == '000'){
+                            location.reload();
+                        }
+                    }
+                });
+            })
+        </script>
     </div>
 </body>
 

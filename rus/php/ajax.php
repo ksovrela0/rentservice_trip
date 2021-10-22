@@ -46,6 +46,7 @@ switch($act){
         $googledData = calculate_data_between_points($origin, $destination_base, $waypoints);
         $trip_distance = $googledData['tripDistanceKM'];
         $tripDuration = $googledData['tripDuration'];
+        $tripRoute = $googledData['route'];
         $db->setQuery(" SELECT  cars.id,
                                 cars.image,
                                 cars.car_name,
@@ -85,7 +86,7 @@ switch($act){
 
 
         $db->setQuery("INSERT INTO orders SET date = NOW(),
-                                                trip_route = '',
+                                                trip_route = '$tripRoute',
                                                 cl_name = '$fullname',
                                                 cl_phone = '$phone',
                                                 cl_email = '$email',
