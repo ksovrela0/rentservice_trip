@@ -181,6 +181,10 @@ include("../db.php");
 									 
 									 <div class="input text"><img src="'.$ProductRow3[pic1].'" height="240" width="120"></div>
 									 <div class="input text"><label for="UserDateOfBirth">საურათი</label><input name="img1" type="file" accept="image/*" id="UserUsername"/></div>
+
+									 <div class="input text"><label for="UserEmail">დასახელება ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">დასახელება RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
 									 ';
 									
 									
@@ -193,34 +197,52 @@ include("../db.php");
 									
 									
 	<div class="submit"><input name="sub" class="btn" style="margin-top: 15px;" type="submit" value="Submit"/></div></form>';
-									if(isset($_POST['sub']))
+								if(isset($_POST['name_eng']))
+								{
+
+									$name_eng = $_POST['name_eng'];
+									$name_rus = $_POST['name_rus'];
+									$name_geo = $_POST['name_geo'];
+									
+									$filep = $_FILES['img1']['tmp_name'];
+
+									if(empty($name_eng))
 									{
-										$filep1 = $_FILES['img1']['tmp_name'];
-			
+										echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
+									}
+									else
+									{
+										mysql_query("INSERT INTO slider SET name_geo='$name_geo',
+																			name_eng='$name_eng',
+																			name_rus='$name_rus'");
 										
-												
-												$name1 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
-												
-												if(!empty($filep1))
-												{
-													if($_FILES["img1"]["size"] > 1024*10*1024)
-													{
-														echo ("Размер файла превышает три мегабайта");
-														exit;
-													}
-													if(is_uploaded_file($_FILES["img1"]["tmp_name"]))
-													{
-														$move = move_uploaded_file($_FILES["img1"]["tmp_name"], $path."/slider/".$name1);
-														echo $move;
-														$AddProduct = mysql_query("INSERT INTO slider(`pic1`) VALUES('http://rentservice.ge/slider/$name1')") or die(mysql_error());
-													}
-												}
-												
-												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=slider.php">';
+
+
+										$slid = mysql_query("SELECT MAX(id) AS cc FROM slider");
+										$sliderID = mysql_fetch_array($slid);
+										$sliderID = $sliderID['cc'];
+										$name1 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+										
+										if(!empty($filep))
+										{
+											if($_FILES["img1"]["size"] > 1024*10*1024)
+											{
+												echo ("Размер файла превышает три мегабайта");
+												exit;
+											}
+											if(is_uploaded_file($_FILES["img1"]["tmp_name"]))
+											{
+												$move = move_uploaded_file($_FILES["img1"]["tmp_name"], $path."/img/slider/".$name1);
+												echo $move;
+												$AddProduct = mysql_query("UPDATE slider SET img='https://viptrip.ge/img/slider/$name1' WHERE id='$sliderID'") or die(mysql_error());
+											}
+										}
+										
+										echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=slider.php">';
 												
 										
 									}
-									
+								}
 									 echo '                                 </div>
 									</div></div></div></div></div></div>';
 	}
@@ -249,7 +271,7 @@ include("../db.php");
 										$DelProduct = mysql_query("DELETE FROM slider WHERE id='".$id."'");
 										if($DelProduct == true)
 										{
-											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=slider.php"><h2 style="color:green;"><b>სლაიდერი '.$ProductRow2[title].' წაშლილია</b></h2>';
+											echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=slider.php"><h2 style="color:green;"><b>სლაიდერი '.$ProductRow2[name_eng].' წაშლილია</b></h2>';
 											
 										}
 									}
@@ -282,8 +304,13 @@ include("../db.php");
 									 <br />';
 									 echo '<form action="slider.php?edit='.$ProductRow3[id].'" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
 									 
-									 <div class="input text"><img src="'.$ProductRow3[pic1].'" height="240" width="200"></div>
-									 <div class="input text"><label for="UserDateOfBirth">სურათი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="img1" type="file" accept="image/*" id="UserUsername"/></div>';
+									 <div class="input text"><img src="'.$ProductRow3[img].'" height="240" width="200"></div>
+									 <div class="input text"><label for="UserDateOfBirth">სურათი(<a href="?edit='.$id.'&d=1" style="color:red;">წაშლა</a>)</label><input name="img1" type="file" accept="image/*" id="UserUsername"/></div>
+									 
+									 <div class="input text"><label for="UserEmail">დასახელება ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">დასახელება RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
+									 ';
 									 
 									 
 									
@@ -302,9 +329,22 @@ include("../db.php");
 									</div></div></div></div></div></div>';
 
 										$filep1 = $_FILES['img1']['tmp_name'];
-										if(isset($_POST[sub]))
+										if(isset($_POST['name_eng']))
+									{
+
+										$name_eng = $_POST['name_eng'];
+										$name_rus = $_POST['name_rus'];
+										$name_geo = $_POST['name_geo'];
+										
+										$filep = $_FILES['img_m']['tmp_name'];
+			
+										if(empty($name_eng))
 										{
-												$name1 = rand(1000,99999).rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+											echo '<h2 style="color:red;"><b>თქვენ გამოტოვეთ საჭირო ველები!!!</b></h2>';
+										}
+										else
+										{
+												$UpdateProduct = mysql_query("UPDATE slider SET name_eng='$name_eng', name_rus='$name_rus', name_geo='$name_geo' WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
@@ -313,23 +353,35 @@ include("../db.php");
 												{
 													echo 'შეცდომაა';
 												}
+
+
+												$name = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												
+												$name1 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												$name2 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												$name3 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												$name4 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												// загружаем файл
 												if(!empty($filep1))
 												{
 													if($_FILES["img1"]["size"] > 1024*5*1024)
 													{
-														echo ("Размер файла превышает 5 мегабайт");
+														echo ("Размер файла превышает 5 мегабайта");
 														exit;
 													}
 													if(is_uploaded_file($_FILES["img1"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img1"]["tmp_name"], $path."/slider/".$name1);
-														echo $path;
-														$UpdateProduct = mysql_query("UPDATE slider SET pic1='http://rentservice.ge/slider/$name1' WHERE id='".$id."'") or die(mysql_error());
+														$move = move_uploaded_file($_FILES["img1"]["tmp_name"], $path."/img/slider/".$name);
+														echo $move;
+														$UpdateProduct = mysql_query("UPDATE slider SET img='https://viptrip.ge/img/slider/$name' WHERE id='".$id."'") or die(mysql_error());
 													}
 												}
 												
+												
 												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=slider.php">';
+												
 										}
+									}
 										
 									
 	}
@@ -389,7 +441,7 @@ include("../db.php");
 						   $ProductRow = mysql_fetch_array($Product);
 						   do
 						   {
-								echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='".$ProductRow[pic1]."' width='180' height='90'></td>";
+								echo "<tr><td class=''>".$ProductRow[id]."</td><td class=''><img src='".$ProductRow[img]."' width='180' height='90'></td>";
 								echo "<td style='min-width: 190px;' class='actions'>
 		<a href='?edit=$ProductRow[id]' class='btn btn-mini btn-primary'>Edit</a> <a href='?del=$ProductRow[id]' class='btn btn-mini btn-success'>Delete</a>  </td>                       </tr>";
 						   }
