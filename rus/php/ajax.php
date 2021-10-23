@@ -110,6 +110,7 @@ switch($act){
         $trip_distance = $_REQUEST['distance'];
         $trip_days = $_REQUEST['trip_days'];
         $car_type = $_REQUEST['car_type'];
+        $start_date = $_REQUEST['start_date'];
 
         if($car_type != 0){
             $car_type_filt = " AND cars.car_type = $car_type";
@@ -138,7 +139,7 @@ switch($act){
                         FROM 	cars
                         JOIN	fuel_type ON fuel_type.id = cars.fuel_type
                         JOIN	users ON users.id = cars.user_id
-                        WHERE   cars.actived = 1 $car_type_filt");
+                        WHERE   cars.actived = 1 AND (SELECT COUNT(*) FROM disabled_dates WHERE driver_id = cars.user_id AND dis_date BETWEEN '$start_date' AND DATE_ADD('$start_date', INTERVAL $trip_days DAY)) = 0 $car_type_filt");
 
         $cars = $db->getResultArray();
 

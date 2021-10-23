@@ -2,11 +2,11 @@
 include("../class.Mysqli.php");
 GLOBAL $db;
 $db = new dbClass();
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['driver_id'])){
     header("Location: index.php");
 }
 else{
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['driver_id'];
 }
 ?>
 <!DOCTYPE HTML>
@@ -150,10 +150,9 @@ else{
                         <ul class="list user-profile-nav">
                             <li><a href="orders.php"><i class="fa fa-clock-o"></i>შეკვეთები</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>დღეების გამორთვა</a>
+                            <li><a href="dayoff.php"><i class="fa fa-calendar"></i>დღეების გამორთვა</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-cog"></i>მანქანა</a>
-                            </li>
+                            
                             
                         </ul>
                     </aside>

@@ -29,6 +29,25 @@ switch($act){
         $data['waypoints'] = substr($data['waypoints'], 0, -1);
         
         break;
+    case 'disable_date':
+        $driver_id  = $_REQUEST['driver_id'];
+        $date       = $_REQUEST['date'];
+
+        $db->setQuery("INSERT INTO disabled_dates SET   dis_date = '$date',
+                                                        driver_id = '$driver_id'");
+        $db->execQuery();
+        
+        break;
+    case 'get_disabled_dates':
+        $driver_id  = $_REQUEST['driver_id'];
+        $db->setQuery(" SELECT  DATE_FORMAT(dis_date, '%e-%m-%Y') AS dis_date
+                        FROM    disabled_dates
+                        WHERE   driver_id = '$driver_id'
+                        GROUP BY dis_date");
+        $dates = $db->getResultArray();
+
+        $data['dates'] = $dates['result'];
+        break;
     case 'order_car':
         $car_id = $_REQUEST['car'];
         $fullname = $_REQUEST['fullname'];
@@ -110,7 +129,7 @@ switch($act){
         $trip_distance = $_REQUEST['distance'];
         $trip_days = $_REQUEST['trip_days'];
         $car_type = $_REQUEST['car_type'];
-
+        $start_date = $_REQUEST['start_date'];
         if($car_type != 0){
             $car_type_filt = " AND cars.car_type = $car_type";
         }
@@ -138,7 +157,7 @@ switch($act){
                         FROM 	cars
                         JOIN	fuel_type ON fuel_type.id = cars.fuel_type
                         JOIN	users ON users.id = cars.user_id
-                        WHERE   cars.actived = 1 $car_type_filt");
+                        WHERE   cars.actived = 1 AND (SELECT COUNT(*) FROM disabled_dates WHERE driver_id = cars.user_id AND dis_date BETWEEN '$start_date' AND DATE_ADD('$start_date', INTERVAL $trip_days DAY)) = 0 $car_type_filt");
 
         $cars = $db->getResultArray();
 

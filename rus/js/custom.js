@@ -568,7 +568,7 @@ $(document).on('click', ".car_li", function(){
     }
 })
 
-$(document).on('change', '#location_from,#location_to,#trip_days,.location_tos', function(){
+$(document).on('change', '#location_from,#location_to,#trip_days,.location_tos,#trip_start', function(){
     var origin_base = $("#location_from").val();
     var destination_base = $("#location_to").val();
     var trip_days = $("#trip_days").val();
@@ -652,6 +652,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
     $(".prepared_trip").hide();
     $(".cars_area").show();
     $("#carData").html('');
+    var start_date = $("#trip_start").val();
     $.ajax({
         url: aJaxURL,
         dataType: 'json',
@@ -676,7 +677,8 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
                     act: "get_cars",
                     distance: data.tripDistanceKM,
                     trip_days: trip_days,
-                    car_type: car_type
+                    car_type: car_type,
+                    start_date: start_date
                 },
                 success: function(data) {
                     $("#carData").html('');

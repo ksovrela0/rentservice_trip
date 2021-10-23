@@ -2,34 +2,18 @@
 include("../class.Mysqli.php");
 GLOBAL $db;
 $db = new dbClass();
-if(isset($_SESSION['driver_id'])){
-    header("Location: orders.php");
+if(!isset($_SESSION['driver_id'])){
+    header("Location: index.php");
 }
-
-if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
-    $username = $_REQUEST['username'];
-    $password = md5($_REQUEST['password']);
-
-    
-
-    $db->setQuery(" SELECT  id
-                    FROM    users
-                    WHERE   username = '$username' AND password = '$password'");
-
-    $user = $db->getResultArray();
-
-    if($user['count'] > 0){
-        $_SESSION['driver_id'] = $user['result'][0]['id'];
-        header("Location: orders.php");
-    }
+else{
+    $user_id = $_SESSION['driver_id'];
 }
-
 ?>
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>VipTrip - შესვლა</title>
+    <title>VipTrip - დღეების გამორთვა</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -47,6 +31,7 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/mystyles.css">
+    <link rel="stylesheet" href="../css/ui.css">
     <script src="../js/modernizr.js"></script>
 
     <link rel="stylesheet" href="../css/switcher.css" />
@@ -83,7 +68,6 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
     </script>
     <!-- /FACEBOOK WIDGET -->
     <div class="global-wrap">
-        
     <header id="main-header">
         <div class="header-top">
             <div class="container">
@@ -138,30 +122,44 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
     </header>
 
         <div class="container">
-            <h1 class="page-title" style="color:white;font-weight: bold;">ავტორიზაცია VIPTRIP.GE</h1>
+            <h1 class="page-title" style="color:white; ">შეკვეთები</h1>
         </div>
 
-        <div class="container">
-            <div class="row" data-gutter="60">
-                <div class="col-md-4">
 
-                </div>
-                <div class="col-md-4">
-                    <h3 style="color:white; ">შესვლა</h3>
-                    <form action="index.php" method="POST">
-                        <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-                            <label>ლოგინი</label>
-                            <input class="form-control" type="text" name="username" required/>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            <?php
+                                $db->setQuery(" SELECT  CONCAT(firstname_geo, ' ', lastname) AS name,
+                                                        IFNULL(users.avatar, 'no-avatar.jpg') AS avatar
+
+                                                FROM    users
+                                                WHERE   id = '$user_id'");
+                                $driver = $db->getResultArray();
+                                $driver = $driver['result'][0];
+                                echo '
+                                    <img src="'.$driver[avatar].'" alt="Image Alternative text" title="AMaze" />
+                                    <h5>'.$driver[name].'</h5>
+                                ';
+                            ?>
+                            
                         </div>
-                        <div class="form-group form-group-icon-left"><i class="fa fa-lock input-icon input-icon-show"></i>
-                            <label>პაროლი</label>
-                            <input class="form-control" type="password" name="password" placeholder="********" required/>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Sign in" />
-                    </form>
+                        <ul class="list user-profile-nav">
+                            <li><a href="orders.php"><i class="fa fa-clock-o"></i>შეკვეთები</a>
+                            </li>
+                            <li><a href="dayoff.php"><i class="fa fa-calendar"></i>დღეების გამორთვა</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </aside>
                 </div>
-                <div class="col-md-4">
-                    
+                <div class="col-md-9">
+                    <div id="dayoff"></div>
                 </div>
             </div>
         </div>
@@ -169,7 +167,6 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
 
 
         <div class="gap"></div>
-        
 
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.js"></script>
@@ -181,7 +178,7 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
         <script src="../js/ionrangeslider.js"></script>
         <script src="../js/icheck.js"></script>
         <script src="../js/fotorama.js"></script>
-        <script src="../https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
         <script src="../js/typeahead.js"></script>
         <script src="../js/card-payment.js"></script>
         <script src="../js/magnific.js"></script>
@@ -190,8 +187,85 @@ if(isset($_REQUEST['username']) AND isset($_REQUEST['password'])){
         <script src="../js/tweet.js"></script>
         <script src="../js/countdown.js"></script>
         <script src="../js/gridrotator.js"></script>
-        <script src="../js/custom.js"></script>
         <script src="../js/switcher.js"></script>
+        <script src="../js/ui.js"></script>
+        <script>
+            $(document).on('click','.confirmOrder', function(){
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: '../php/ajax.php',
+                    dataType: 'json',
+                    data: "act=confirmOrder&orderID="+id,
+                    success: function(data) {
+                        if(data.status == '000'){
+                            location.reload();
+                        }
+                    }
+                });
+            })
+
+
+
+            $(document).ready(function(){
+                $.ajax({
+                    url: '../php/ajax.php',
+                    dataType: 'json',
+                    data: 'act=get_disabled_dates&driver_id=<?php echo $user_id; ?>',
+                    success: function(data) {
+
+                        var unavailableDates = [];
+
+                        var dates = data.dates;
+                        if(dates != null){
+                            dates.forEach(function(item){
+                                var splited_date = item.dis_date.split('-');
+                                if(splited_date[1][0] == '0'){
+                                    splited_date[1].slice(1)
+                                    splited_date[1] = splited_date[1].slice(1);
+
+                                    item.dis_date = splited_date[0]+'-'+splited_date[1]+'-'+splited_date[2];
+                                }
+
+                                
+                                unavailableDates.push(item.dis_date)
+                            })
+                        }
+
+                        
+
+                        function unavailable(date) {
+                            dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                            if ($.inArray(dmy, unavailableDates) == -1) {
+                                return [true, ""];
+                            } else {
+                                return [false, "", "Unavailable"];
+                            }
+                        }
+
+
+                        $("#dayoff").datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            beforeShowDay: unavailable,
+                            startDate: new Date(),
+                            onSelect: function (date) {
+                                $.ajax({
+                                    url: '../php/ajax.php',
+                                    dataType: 'json',
+                                    data: 'act=disable_date&driver_id=<?php echo $user_id; ?>&date='+date,
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                            
+                        });
+                        
+                    }
+                });
+
+                
+            });
+        </script>
     </div>
 </body>
 
