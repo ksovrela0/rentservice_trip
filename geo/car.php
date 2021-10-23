@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - Туры</title>
+    <title>VipTrip - მანქანა</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -52,7 +52,7 @@ include("php/func.php");
                     <div class="row">
                         <div class="col-md-3">
                             <a class="logo" href="index.php">
-                                <img src="img/logo.jpg" alt="Transfer" title="Image Title" />
+                                <img src="../img/logo.jpg" alt="Transfer" title="Image Title" />
                             </a>
                         </div>
                         <div class="col-md-3 col-md-offset-2">
@@ -67,25 +67,25 @@ include("php/func.php");
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Georgian" href="../geo/index.php">
+                                        <a title="Georgian" href="index.php">
                                             <img src="img/flags/32/ge.png" alt="Image Alternative text" title="Image Title" /><span class="right">GEO</span>
                                         </a>
                                     </li>
                                     <li class="top-user-area-lang">
-                                        <a title="Russian" href="index.php">
+                                        <a title="Russian" href="../rus/index.php">
                                             <img src="img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
                                         </a>
                                     </li>
                                     <?php
-                                    if(isMobile()){
-                                        echo '  <li>
-                                                    <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
-                                                        <ul>
-                                                            <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>';
-                                    }
+                                        if(isMobile()){
+                                            echo '  <li>
+                                                        <div style="color:white; padding-right:10px; left:0; top:0; z-index:99999999;">
+                                                            <ul>
+                                                                <li style="list-style-type:none; margin-bottom:10px; display:block;"><a href="https://www.facebook.com/viptrip.ge" target="_blank"><i class="fa fa-facebook social-fb" aria-hidden="true"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>';
+                                        }
                                     ?>
                                 </ul>
                             </div>
@@ -96,13 +96,13 @@ include("php/func.php");
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li><a href="index.php">Трансфер</a>
+                        <li><a href="index.php">ტრანსფერი</a>
                         </li>
-                        <li class="active"><a href="tours.php">Туры</a>
+                        <li><a href="tours.php">ტურები</a>
                         </li>
-                        <li><a href="reviews.php">Отзывы</a>
+                        <li><a href="reviews.php">კომენტარები</a>
                         </li>
-                        <li><a href="contact.php">Контакт</a>
+                        <li><a href="contact.php">კონტაქტი</a>
                         </li>
                         
                     </ul>
@@ -114,36 +114,68 @@ include("php/func.php");
         <div class="top-area show-onload">
             <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
                 <?php
-                    $db->setQuery(" SELECT *
-                                    FROM slider
-                                    ORDER BY id DESC");
-                    $slider = $db->getResultArray();
+                    $car_user = $_GET['id'];
 
-                    foreach($slider['result'] AS $slide){
-                        echo '  <div class="bg-holder full text-center text-white">
-                                    <div class="bg-mask"></div>
-                                    <div class="bg-img" style="background-image:url('.$slide['img'].');"></div>
-                                    <div class="bg-front full-center">
-                                        <div class="owl-cap">
-                
-                                            <h1 class="owl-cap-title fittext">'.$slide['name_rus'].'</h1>
-                                        </div>
+
+                    $db->setQuery(" SELECT *
+                                    FROM cars
+                                    JOIN    users ON users.id = cars.user_id
+                                    WHERE user_id = '$car_user'");
+                    $slider = $db->getResultArray();
+                    echo '  <div class="bg-holder full text-center text-white">
+                                <div class="bg-mask"></div>
+                                <div class="bg-img" style="background-image:url('.$slider['result'][0]['image'].');"></div>
+                                <div class="bg-front full-center">
+                                    <div class="owl-cap">
                                     </div>
-                                </div>';
+                                </div>
+                            </div>';
+                    for($i=1;$i<=4;$i++){
+
+                        if(!empty($slider['result'][0]['car'.$i])){
+                            echo '  <div class="bg-holder full text-center text-white">
+                                        <div class="bg-mask"></div>
+                                        <div class="bg-img" style="background-image:url('.$slider['result'][0]['car'.$i].');"></div>
+                                        <div class="bg-front full-center">
+                                            <div class="owl-cap">
+                                            </div>
+                                        </div>
+                                    </div>';
+                        }
+                        
                     }
+                        
+                    
                 ?>
+                
+                
             </div>
         </div>
 
         <div class="container">
             <div class="gap"></div>
-            <div class="row row-wrap">
-                <?php
-                    getTours();
-                ?>
-                
-                
-            </div>
+            <h3 class="text-center mb20 popular_destination"><?php echo $slider['result'][0]['car_name']; ?> - <?php echo $slider['result'][0]['firstname_geo']; ?></h3>
+            <hr>
+            <h4 class="text-center mb20 popular_destination">კომენტარები</h4>
+            <?php
+                $db->setQuery("SELECT *
+                                FROM reviews
+                                WHERE driver_id = '$car_user'
+                                ORDER BY date DESC");
+                $revs = $db->getResultArray();
+
+                foreach($revs['result'] AS $rev){
+                    echo '  <div class="col-md-12">
+                                <div class="comment_rev">
+                                    <p style="color:#ffca18">'.$rev[name].' ('.$rev[date].')</p>
+                                    <div class="rev_desc">
+                                        '.$rev[desc].'       
+                                    </div>
+                                    
+                                </div>
+                            </div>';
+                }
+            ?>
             <div class="gap gap-small"></div>
         </div>
 
@@ -247,6 +279,13 @@ include("php/func.php");
         .social-fb:hover{
             color:  #fff;
             background-color: #007bff;
+        }
+        .comment_rev{
+            padding: 7px;
+            border: 1px solid #ffca18;
+            margin: 4px;
+            color: #fff;
+            background-color: #484848;
         }
     </style>
 </body>

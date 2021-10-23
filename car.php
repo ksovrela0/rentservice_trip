@@ -6,7 +6,7 @@ include("php/func.php");
 <html>
 
 <head>
-    <title>VipTrip - Tours</title>
+    <title>VipTrip - Car</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -98,7 +98,7 @@ include("php/func.php");
                     <ul class="slimmenu" id="slimmenu">
                         <li><a href="index.php">Trip</a>
                         </li>
-                        <li class="active"><a href="tours.php">Tours</a>
+                        <li><a href="tours.php">Tours</a>
                         </li>
                         <li><a href="reviews.php">Reviews</a>
                         </li>
@@ -114,23 +114,38 @@ include("php/func.php");
         <div class="top-area show-onload">
             <div class="owl-carousel owl-slider owl-carousel-area" id="owl-carousel-slider">
                 <?php
-                    $db->setQuery(" SELECT *
-                                    FROM slider
-                                    ORDER BY id DESC");
-                    $slider = $db->getResultArray();
+                    $car_user = $_GET['id'];
 
-                    foreach($slider['result'] AS $slide){
-                        echo '  <div class="bg-holder full text-center text-white">
-                                    <div class="bg-mask"></div>
-                                    <div class="bg-img" style="background-image:url('.$slide['img'].');"></div>
-                                    <div class="bg-front full-center">
-                                        <div class="owl-cap">
-                
-                                            <h1 class="owl-cap-title fittext">'.$slide['name_eng'].'</h1>
-                                        </div>
+
+                    $db->setQuery(" SELECT *
+                                    FROM cars
+                                    JOIN    users ON users.id = cars.user_id
+                                    WHERE user_id = '$car_user'");
+                    $slider = $db->getResultArray();
+                    echo '  <div class="bg-holder full text-center text-white">
+                                <div class="bg-mask"></div>
+                                <div class="bg-img" style="background-image:url('.$slider['result'][0]['image'].');"></div>
+                                <div class="bg-front full-center">
+                                    <div class="owl-cap">
                                     </div>
-                                </div>';
+                                </div>
+                            </div>';
+                    for($i=1;$i<=4;$i++){
+
+                        if(!empty($slider['result'][0]['car'.$i])){
+                            echo '  <div class="bg-holder full text-center text-white">
+                                        <div class="bg-mask"></div>
+                                        <div class="bg-img" style="background-image:url('.$slider['result'][0]['car'.$i].');"></div>
+                                        <div class="bg-front full-center">
+                                            <div class="owl-cap">
+                                            </div>
+                                        </div>
+                                    </div>';
+                        }
+                        
                     }
+                        
+                    
                 ?>
                 
                 
@@ -139,13 +154,28 @@ include("php/func.php");
 
         <div class="container">
             <div class="gap"></div>
-            <div class="row row-wrap">
-                <?php
-                    getTours();
-                ?>
-                
-                
-            </div>
+            <h3 class="text-center mb20 popular_destination"><?php echo $slider['result'][0]['car_name']; ?> - <?php echo $slider['result'][0]['firstname_eng']; ?></h3>
+            <hr>
+            <h4 class="text-center mb20 popular_destination">REVIEWS</h4>
+            <?php
+                $db->setQuery("SELECT *
+                                FROM reviews
+                                WHERE driver_id = '$car_user'
+                                ORDER BY date DESC");
+                $revs = $db->getResultArray();
+
+                foreach($revs['result'] AS $rev){
+                    echo '  <div class="col-md-12">
+                                <div class="comment_rev">
+                                    <p style="color:#ffca18">'.$rev[name].' ('.$rev[date].')</p>
+                                    <div class="rev_desc">
+                                        '.$rev[desc].'       
+                                    </div>
+                                    
+                                </div>
+                            </div>';
+                }
+            ?>
             <div class="gap gap-small"></div>
         </div>
 
@@ -170,7 +200,7 @@ include("php/func.php");
         <script src="js/tweet.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/gridrotator.js"></script>
-        <script src="js/custom.js?v=2.7"></script>
+        <script src="js/custom.js?v=2.8"></script>
         <script src="js/switcher.js"></script>
         <script src="https://kit.fontawesome.com/dcb8a1d54e.js" crossorigin="anonymous"></script>
         
@@ -249,6 +279,13 @@ include("php/func.php");
         .social-fb:hover{
             color:  #fff;
             background-color: #007bff;
+        }
+        .comment_rev{
+            padding: 7px;
+            border: 1px solid #ffca18;
+            margin: 4px;
+            color: #fff;
+            background-color: #484848;
         }
     </style>
 </body>

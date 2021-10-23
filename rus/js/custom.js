@@ -688,7 +688,7 @@ function filterCars(origin_base,destination_base,trip_days,waypoints = 0,car_typ
                                                         <div class="row">
                                                             <div class="col-md-6 col-md-push-6 car_descr">
                                                                 <div class="car_img_wrapper">
-                                                                    <img class="car_img_thumb" src="`+cars[i].image+`" />
+                                                                    <a target="_blank" href="car.php?id=`+cars[i].user_id+`"><img class="car_img_thumb" src="`+cars[i].image+`" /></a>
                                                                     <p class="car_img_title">`+cars[i].car_name+`</p>
                                                                 </div>
                                                                 <div class="price_area">

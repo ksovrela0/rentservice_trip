@@ -119,6 +119,7 @@ switch($act){
                                 cars.car_name,
                                 cars.car_type,
                                 cars.seats,
+                                cars.user_id,
                                 IF(cars.air_conditioner = 1, 'Yes', 'No') AS air_conditioner,
                                 IF(cars.wifi = 1, 'Yes', 'No') AS wifi,
                                 cars.fuel_per_100,
@@ -157,6 +158,7 @@ switch($act){
             $priceEUR = ceil(($car['total_price'] + ($car['total_price'] * 0.2))/$curr['result'][0]['cur_euro']);
             array_push($carData, array( 'id' => $car['id'],
                                         'image' => $car['image'],
+                                        'user_id' => $car['user_id'],
                                         'car_name' => $car['car_name'],
                                         'driver_name' => $car['firstname_rus'],
                                         'driver_avatar' => $car['avatar'],
