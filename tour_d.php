@@ -182,13 +182,11 @@ include("php/func.php");
             
         </div>
 
-        <div class="container prepared_trip" style="display:none;">
+        <div class="container">
             <div class="gap"></div>
-            <div class="prepared_states">
-                <h3 class="text-center mb20 popular_destination">პოპულარული მარშრუტები</h3>
-                <?php
-                    prepared_transfers();
-                ?>
+            <h3 class="text-center mb20 popular_destination"><?php getTourDetail('name', $_REQUEST['id']); ?></h3>
+            <div class="tour_desc">
+                <?php getTourDetail('desc', $_REQUEST['id']); ?>
             </div>
             <div class="gap gap-small"></div>
         </div>
@@ -433,6 +431,13 @@ include("php/func.php");
         .social-fb:hover{
             color:  #fff;
             background-color: #007bff;
+        }
+        .tour_desc{
+            border: 1px solid #ffca18;
+            padding: 7px;
+            color: #fff;
+            background-color: #484848;
+            border-radius: 15px;
         }
     </style>
 </body>

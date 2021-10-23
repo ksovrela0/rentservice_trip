@@ -96,7 +96,8 @@ function getTourDetail($detail = 'name', $id = 0){
     GLOBAL $db;
     $db->setQuery(" SELECT  id,
                             name_eng,
-                            image
+                            image,
+                            desc_eng AS `desc`
                     FROM    tours
                     WHERE   actived = 1 AND id = '$id'");
     $tour = $db->getResultArray();
@@ -105,6 +106,9 @@ function getTourDetail($detail = 'name', $id = 0){
     }
     else if($detail == 'image'){
         echo $tour['result'][0]['image'];
+    }
+    else if($detail == 'desc'){
+        echo $tour['result'][0]['desc'];
     }
 }
 ?>
