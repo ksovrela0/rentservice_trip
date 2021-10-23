@@ -648,10 +648,10 @@ include("../db.php");
                                             }
                                      echo '</select></div>
 									 
-									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 1(<a href="?edit='.$id.'&d=3" style="color:red;">წაშლა</a>)</label><input name="car_img1" type="file" accept="image/*" id="UserUsername"/></div>
-									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 2(<a href="?edit='.$id.'&d=4" style="color:red;">წაშლა</a>)</label><input name="car_img2" type="file" accept="image/*" id="UserUsername"/></div>
-									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 3(<a href="?edit='.$id.'&d=5" style="color:red;">წაშლა</a>)</label><input name="car_img3" type="file" accept="image/*" id="UserUsername"/></div>
-									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 4(<a href="?edit='.$id.'&d=6" style="color:red;">წაშლა</a>)</label><input name="car_img4" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><div class="input text"><img src="'.$car_data[car1].'" height="120" width="120"></div><label for="UserDateOfBirth">მანქანის სურათი 1(<a href="?edit='.$id.'&d=3" style="color:red;">წაშლა</a>)</label><input name="car_img1" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><div class="input text"><img src="'.$car_data[car2].'" height="120" width="120"></div><label for="UserDateOfBirth">მანქანის სურათი 2(<a href="?edit='.$id.'&d=4" style="color:red;">წაშლა</a>)</label><input name="car_img2" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><div class="input text"><img src="'.$car_data[car3].'" height="120" width="120"></div><label for="UserDateOfBirth">მანქანის სურათი 3(<a href="?edit='.$id.'&d=5" style="color:red;">წაშლა</a>)</label><input name="car_img3" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><div class="input text"><img src="'.$car_data[car4].'" height="120" width="120"></div><label for="UserDateOfBirth">მანქანის სურათი 4(<a href="?edit='.$id.'&d=6" style="color:red;">წაშლა</a>)</label><input name="car_img4" type="file" accept="image/*" id="UserUsername"/></div>
 									 ';
 									
 									
