@@ -181,10 +181,25 @@ include("../db.php");
 									 echo '<form action="reviews.php?add" id="UserAdminEditForm" enctype="multipart/form-data" method="POST" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="PUT"/></div><fieldset>
 									 
 									 <div class="input text"><label for="UserEmail">სახელი</label><input name="name" type="text" value="'.$ProductRow3['name'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">თარიღი</label><input name="date" type="text" value="'.$ProductRow3['date'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">თარიღი</label><input name="date" type="text" value="'.$ProductRow3['date'].'" id="UserEmail"/></div>';
 									 
+									 echo '<div class="input text"><label for="UserEmail">მძღოლი</label><select name="driver_id">';
+                                        $tr_cat = mysql_query("SELECT id, CONCAT(firstname_geo,' ID:', id) AS firstname_geo
+                                                                FROM users");
+                                        $tr_row = mysql_fetch_array($tr_cat);
+
+                                        do{
+                                            if($ProductRow3[driver_id] == $tr_row[id]){
+                                                echo '<option value="'.$tr_row[id].'" selected>'.$tr_row[firstname_geo].'</option>';
+                                            }
+                                            else{
+                                                echo '<option value="'.$tr_row[id].'">'.$tr_row[firstname_geo].'</option>';
+                                            }
+                                        }
+                                        while($tr_row = mysql_fetch_array($tr_cat));
+                                     echo '</select></div>';
 									 
-									 <div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc].'</textarea>
+									 echo '<div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc].'</textarea>
 									<script>
 
 										CKEDITOR.replace( "editor3" );
@@ -210,6 +225,7 @@ include("../db.php");
                                         $date = $_POST['date'];
                                         
                                         $desc = $_POST['desc'];
+										$driver_id = $_POST['driver_id'];
                                         
 
                                         if(empty($name))
@@ -218,7 +234,7 @@ include("../db.php");
                                         }
                                         else
                                         {
-												$AddProduct = mysql_query("INSERT INTO reviews(`name`,`date`,`desc`) VALUES('$name','$date','$desc')");
+												$AddProduct = mysql_query("INSERT INTO reviews(`name`,`date`,`desc`,`driver_id`) VALUES('$name','$date','$desc','$driver_id')");
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';
@@ -318,10 +334,25 @@ include("../db.php");
 									 
 									 
 									 <div class="input text"><label for="UserEmail">სახელი</label><input name="name" type="text" value="'.$ProductRow3['name'].'" id="UserEmail"/></div>
-									 <div class="input text"><label for="UserEmail">თარიღი</label><input name="date" type="text" value="'.$ProductRow3['date'].'" id="UserEmail"/></div>
+									 <div class="input text"><label for="UserEmail">თარიღი</label><input name="date" type="text" value="'.$ProductRow3['date'].'" id="UserEmail"/></div>';
 									 
+									 echo '<div class="input text"><label for="UserEmail">მძღოლი</label><select name="driver_id">';
+                                        $tr_cat = mysql_query("SELECT id, CONCAT(firstname_geo,' ID:', id) AS firstname_geo
+                                                                FROM users");
+                                        $tr_row = mysql_fetch_array($tr_cat);
+
+                                        do{
+                                            if($ProductRow3[driver_id] == $tr_row[id]){
+                                                echo '<option value="'.$tr_row[id].'" selected>'.$tr_row[firstname_geo].'</option>';
+                                            }
+                                            else{
+                                                echo '<option value="'.$tr_row[id].'">'.$tr_row[firstname_geo].'</option>';
+                                            }
+                                        }
+                                        while($tr_row = mysql_fetch_array($tr_cat));
+                                     echo '</select></div>';
 									 
-									 <div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc].'</textarea>
+									 echo '<div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc].'</textarea>
 									<script>
 
 										CKEDITOR.replace( "editor3" );
@@ -353,6 +384,7 @@ include("../db.php");
 										$date = $_POST['date'];
 										
 										$desc = $_POST['desc'];
+										$driver_id = $_POST['driver_id'];
 										
 			
 										if(empty($name))
@@ -361,7 +393,7 @@ include("../db.php");
 										}
 										else
 										{
-												$UpdateProduct = mysql_query("UPDATE reviews SET name='$name', `date`='$date', `desc`='$desc' WHERE id='$id'") or die(mysql_error());
+												$UpdateProduct = mysql_query("UPDATE reviews SET name='$name', `date`='$date', `desc`='$desc', driver_id='$driver_id' WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
