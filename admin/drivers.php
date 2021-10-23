@@ -268,7 +268,14 @@ include("../db.php");
                                                 echo '<option value="1" >კი</option>';
                                                 echo '<option value="0" selected>არა</option>';
                                             }
-                                     echo '</select></div>';
+                                     echo '</select></div>
+									 
+									 
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 1</label><input name="car_img1" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 2</label><input name="car_img2" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 3</label><input name="car_img3" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 4</label><input name="car_img4" type="file" accept="image/*" id="UserUsername"/></div>
+									 ';
 									
 									
 	/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -318,6 +325,11 @@ include("../db.php");
 
 										$filep = $_FILES['avatar']['tmp_name'];
 										$filep1 = $_FILES['car_img']['tmp_name'];
+
+										$filep2 = $_FILES['car_img1']['tmp_name'];
+										$filep3 = $_FILES['car_img2']['tmp_name'];
+										$filep4 = $_FILES['car_img3']['tmp_name'];
+										$filep5 = $_FILES['car_img4']['tmp_name'];
 
 			
 										if(empty($name_eng))
@@ -383,7 +395,7 @@ include("../db.php");
 													{
 														$move = move_uploaded_file($_FILES["avatar"]["tmp_name"], $path."/img/cars/".$name);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE users SET avatar='https://viptrip.ge/img/cars/$name' WHERE id = '$ma[dd]'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE users SET avatar='https://viptrip.ge/img/drivers/$name' WHERE id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep1))
@@ -402,44 +414,58 @@ include("../db.php");
 												}
 												if(!empty($filep2))
 												{
-													if($_FILES["img2"]["size"] > 1024*10*1024)
+													if($_FILES["car_img1"]["size"] > 1024*10*1024)
 													{
 														echo ("Размер файла превышает три мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img2"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img1"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img2"]["tmp_name"], $path."/cars/".$name2);
+														$move = move_uploaded_file($_FILES["car_img1"]["tmp_name"], $path."/img/cars/".$name2);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic2='http://rentservice.ge/cars/$name2' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car1='https://viptrip.ge/img/cars/$name2' WHERE user_id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep3))
 												{
-													if($_FILES["img3"]["size"] > 1024*10*1024)
+													if($_FILES["car_img2"]["size"] > 1024*10*1024)
 													{
 														echo ("Размер файла превышает три мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img3"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img2"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img3"]["tmp_name"], $path."/cars/".$name3);
+														$move = move_uploaded_file($_FILES["car_img2"]["tmp_name"], $path."/img/cars/".$name3);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic3='http://rentservice.ge/cars/$name3' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car2='https://viptrip.ge/img/cars/$name3' WHERE user_id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep4))
 												{
-													if($_FILES["img4"]["size"] > 1024*10*1024)
+													if($_FILES["car_img3"]["size"] > 1024*10*1024)
 													{
 														echo ("Размер файла превышает три мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img4"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img3"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img4"]["tmp_name"], $path."/cars/".$name4);
+														$move = move_uploaded_file($_FILES["car_img3"]["tmp_name"], $path."/img/cars/".$name4);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic4='http://rentservice.ge/cars/$name4' WHERE name='$name_eng' and desc_eng='$desc_eng' and `3-4`='$b' and `27-31`='$j'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car3='https://viptrip.ge/img/cars/$name4' WHERE user_id = '$ma[dd]'") or die(mysql_error());
+													}
+												}
+												if(!empty($filep5))
+												{
+													if($_FILES["car_img4"]["size"] > 1024*10*1024)
+													{
+														echo ("Размер файла превышает три мегабайта");
+														exit;
+													}
+													if(is_uploaded_file($_FILES["car_img4"]["tmp_name"]))
+													{
+														$move = move_uploaded_file($_FILES["car_img4"]["tmp_name"], $path."/img/cars/".$name5);
+														echo $move;
+														$UpdateProduct = mysql_query("UPDATE cars SET car4='https://viptrip.ge/img/cars/$name5' WHERE user_id = '$ma[dd]'") or die(mysql_error());
 													}
 												}
 												echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=drivers.php">';
@@ -489,24 +515,28 @@ include("../db.php");
 			$d = $_GET[d];
 			if($d == '1')
 			{
-				$Up = mysql_query("UPDATE cars SET m_pic='' WHERE id='$id'");
+				$Up = mysql_query("UPDATE users SET avatar='' WHERE id='$id'");
 			}
 			
 			if($d == '2')
 			{
-				$Up = mysql_query("UPDATE cars SET pic1='' WHERE id='$id'");
+				$Up = mysql_query("UPDATE cars SET image='' WHERE user_id='$id'");
 			}
 			if($d == '3')
 			{
-				$Up = mysql_query("UPDATE cars SET pic2='' WHERE id='$id'");
+				$Up = mysql_query("UPDATE cars SET car1='' WHERE user_id='$id'");
 			}
 			if($d == '4')
 			{
-				$Up = mysql_query("UPDATE cars SET pic3='' WHERE id='$id'");
+				$Up = mysql_query("UPDATE cars SET car2='' WHERE user_id='$id'");
 			}
 			if($d == '5')
 			{
-				$Up = mysql_query("UPDATE cars SET pic4='' WHERE id='$id'");
+				$Up = mysql_query("UPDATE cars SET car3='' WHERE user_id='$id'");
+			}
+			if($d == '6')
+			{
+				$Up = mysql_query("UPDATE cars SET car4='' WHERE user_id='$id'");
 			}
 
 		}
@@ -557,7 +587,7 @@ include("../db.php");
 
                                     echo '
                                     <div class="input text"><img src="'.$car_data[image].'" height="120" width="120"></div>
-									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი</label><input name="car_img" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი(<a href="?edit='.$id.'&d=2" style="color:red;">წაშლა</a>)</label><input name="car_img" type="file" accept="image/*" id="UserUsername"/></div>
 
                                      <div class="input text"><label for="UserEmail">მანქანის სახელი</label><input name="car_name" type="text" value="'.$car_data['car_name'].'" id="UserEmail"/></div>
                                      <div class="input text"><label for="UserEmail">წვა 100კმ-ზე</label><input name="fuel_100" type="text" value="'.$car_data['fuel_per_100'].'" id="UserEmail"/></div>';
@@ -616,7 +646,13 @@ include("../db.php");
                                                 echo '<option value="1" >კი</option>';
                                                 echo '<option value="0" selected>არა</option>';
                                             }
-                                     echo '</select></div>';
+                                     echo '</select></div>
+									 
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 1(<a href="?edit='.$id.'&d=3" style="color:red;">წაშლა</a>)</label><input name="car_img1" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 2(<a href="?edit='.$id.'&d=4" style="color:red;">წაშლა</a>)</label><input name="car_img2" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 3(<a href="?edit='.$id.'&d=5" style="color:red;">წაშლა</a>)</label><input name="car_img3" type="file" accept="image/*" id="UserUsername"/></div>
+									 <div class="input text"><label for="UserDateOfBirth">მანქანის სურათი 4(<a href="?edit='.$id.'&d=6" style="color:red;">წაშლა</a>)</label><input name="car_img4" type="file" accept="image/*" id="UserUsername"/></div>
+									 ';
 									
 									
 	/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -666,6 +702,11 @@ include("../db.php");
 
 										$filep = $_FILES['avatar']['tmp_name'];
 										$filep1 = $_FILES['car_img']['tmp_name'];
+
+										$filep2 = $_FILES['car_img1']['tmp_name'];
+										$filep3 = $_FILES['car_img2']['tmp_name'];
+										$filep4 = $_FILES['car_img3']['tmp_name'];
+										$filep5 = $_FILES['car_img4']['tmp_name'];
 
 			
 										if(empty($name_eng))
@@ -724,6 +765,7 @@ include("../db.php");
 												$name2 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name3 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name4 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
+												$name5 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												// загружаем файл
 												if(!empty($filep))
 												{
@@ -736,7 +778,7 @@ include("../db.php");
 													{
 														$move = move_uploaded_file($_FILES["avatar"]["tmp_name"], $path."/img/drivers/".$name);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE users SET avatar='http://viptrip.ge/img/drivers/$name' WHERE id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE users SET avatar='https://viptrip.ge/img/drivers/$name' WHERE id='".$id."'") or die(mysql_error());
 													}
 												}
 												
@@ -751,49 +793,63 @@ include("../db.php");
 													{
 														$move = move_uploaded_file($_FILES["car_img"]["tmp_name"], $path."/img/cars/".$name1);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET image='http://viptrip.ge/img/cars/$name1' WHERE user_id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET image='https://viptrip.ge/img/cars/$name1' WHERE user_id='".$id."'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep2))
 												{
-													if($_FILES["img2"]["size"] > 1024*5*1024)
+													if($_FILES["car_img1"]["size"] > 1024*5*1024)
 													{
 														echo ("Размер файла превышает 5 мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img2"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img1"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img2"]["tmp_name"], $path."/cars/".$name2);
+														$move = move_uploaded_file($_FILES["car_img1"]["tmp_name"], $path."/img/cars/".$name2);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic2='http://rentservice.ge/cars/$name2' WHERE id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car1='https://viptrip.ge/img/cars/$name2' WHERE user_id='".$id."'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep3))
 												{
-													if($_FILES["img3"]["size"] > 1024*5*1024)
+													if($_FILES["car_img2"]["size"] > 1024*5*1024)
 													{
 														echo ("Размер файла превышает 5 мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img3"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img2"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img3"]["tmp_name"], $path."/cars/".$name3);
+														$move = move_uploaded_file($_FILES["car_img2"]["tmp_name"], $path."/img/cars/".$name3);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic3='http://rentservice.ge/cars/$name3' WHERE id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car2='https://viptrip.ge/img/cars/$name3' WHERE user_id='".$id."'") or die(mysql_error());
 													}
 												}
 												if(!empty($filep4))
 												{
-													if($_FILES["img4"]["size"] > 1024*5*1024)
+													if($_FILES["car_img3"]["size"] > 1024*5*1024)
 													{
 														echo ("Размер файла превышает 5 мегабайта");
 														exit;
 													}
-													if(is_uploaded_file($_FILES["img4"]["tmp_name"]))
+													if(is_uploaded_file($_FILES["car_img3"]["tmp_name"]))
 													{
-														$move = move_uploaded_file($_FILES["img4"]["tmp_name"], $path."/cars/".$name4);
+														$move = move_uploaded_file($_FILES["car_img3"]["tmp_name"], $path."/img/cars/".$name4);
 														echo $move;
-														$UpdateProduct = mysql_query("UPDATE cars SET pic4='http://rentservice.ge/cars/$name4' WHERE id='".$id."'") or die(mysql_error());
+														$UpdateProduct = mysql_query("UPDATE cars SET car3='https://viptrip.ge/img/cars/$name4' WHERE user_id='".$id."'") or die(mysql_error());
+													}
+												}
+												if(!empty($filep5))
+												{
+													if($_FILES["car_img4"]["size"] > 1024*5*1024)
+													{
+														echo ("Размер файла превышает 5 мегабайта");
+														exit;
+													}
+													if(is_uploaded_file($_FILES["car_img4"]["tmp_name"]))
+													{
+														$move = move_uploaded_file($_FILES["car_img4"]["tmp_name"], $path."/img/cars/".$name5);
+														echo $move;
+														$UpdateProduct = mysql_query("UPDATE cars SET car4='https://viptrip.ge/img/cars/$name5' WHERE user_id='".$id."'") or die(mysql_error());
 													}
 												}
 												

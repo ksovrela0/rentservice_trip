@@ -189,7 +189,31 @@ include("../db.php");
 									 <div class="input text"><label for="UserEmail">დასახელება ENG</label><input name="name_eng" type="text" value="'.$ProductRow3['name_eng'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">დასახელება RUS</label><input name="name_rus" type="text" value="'.$ProductRow3['name_rus'].'" id="UserEmail"/></div>
 									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
-									';
+									
+									 <div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc_geo" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc_geo].'</textarea>
+									 <script>
+ 
+										 CKEDITOR.replace( "editor3" );
+									 </script>
+									 </div>
+ 
+ 
+									 <div class="input text"><label for="UserFirstName">ტექსტი(RUS)</label><textarea name="desc_rus" id="editor4" rows="10" cols="80" type="text">'.$ProductRow3[desc_rus].'</textarea>
+									 <script>
+ 
+										 CKEDITOR.replace( "editor4" );
+									 </script>
+									 </div>
+ 
+ 
+									 <div class="input text"><label for="UserFirstName">ტექსტი(ENG)</label><textarea name="desc_eng" id="editor5" rows="10" cols="80" type="text">'.$ProductRow3[desc_eng].'</textarea>
+									 <script>
+ 
+										 CKEDITOR.replace( "editor5" );
+									 </script>
+									 </div>
+									
+									 ';
 									
 									
 	/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -210,6 +234,10 @@ include("../db.php");
 										$name_eng = $_POST['name_eng'];
 										$name_rus = $_POST['name_rus'];
 										$name_geo = $_POST['name_geo'];
+
+										$desc_eng = $_POST['desc_eng'];
+										$desc_rus = $_POST['desc_rus'];
+										$desc_geo = $_POST['desc_geo'];
 										
 										$filep = $_FILES['img_m']['tmp_name'];
 			
@@ -226,7 +254,7 @@ include("../db.php");
 												$name3 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name4 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
 												$name5 = rand(1000,99999).rand(1000,99999).rand(1000,99999).'.jpg';
-												$AddProduct = mysql_query("INSERT INTO tours(`name_eng`,`name_rus`,`name_geo`,`date`) VALUES('$name_eng','$name_rus','$name_geo',NOW())");
+												$AddProduct = mysql_query("INSERT INTO tours(`name_eng`,`name_rus`,`name_geo`,`date`,`desc_geo`,`desc_rus`,`desc_eng`) VALUES('$name_eng','$name_rus','$name_geo',NOW(), '$desc_geo','$desc_rus','$desc_eng')");
 												if($AddProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> დამატებულია!!!</b></h2>';
@@ -401,6 +429,29 @@ include("../db.php");
 									 <div class="input text"><label for="UserEmail">დასახელება GEO</label><input name="name_geo" type="text" value="'.$ProductRow3['name_geo'].'" id="UserEmail"/></div>
 									 
 									<div id="tour_kendo" style="width: 700px;"></div>
+
+									<div class="input text"><label for="UserFirstName">ტექსტი(GEO)</label><textarea name="desc_geo" id="editor3" rows="10" cols="80" type="text">'.$ProductRow3[desc_geo].'</textarea>
+									<script>
+
+										CKEDITOR.replace( "editor3" );
+									</script>
+									</div>
+
+
+									<div class="input text"><label for="UserFirstName">ტექსტი(RUS)</label><textarea name="desc_rus" id="editor4" rows="10" cols="80" type="text">'.$ProductRow3[desc_rus].'</textarea>
+									<script>
+
+										CKEDITOR.replace( "editor4" );
+									</script>
+									</div>
+
+
+									<div class="input text"><label for="UserFirstName">ტექსტი(ENG)</label><textarea name="desc_eng" id="editor5" rows="10" cols="80" type="text">'.$ProductRow3[desc_eng].'</textarea>
+									<script>
+
+										CKEDITOR.replace( "editor5" );
+									</script>
+									</div>
 									';
 									
 									
@@ -422,6 +473,11 @@ include("../db.php");
 										$name_eng = $_POST['name_eng'];
 										$name_rus = $_POST['name_rus'];
 										$name_geo = $_POST['name_geo'];
+
+
+										$desc_eng = $_POST['desc_eng'];
+										$desc_rus = $_POST['desc_rus'];
+										$desc_geo = $_POST['desc_geo'];
 										
 										$filep = $_FILES['img_m']['tmp_name'];
 			
@@ -431,7 +487,7 @@ include("../db.php");
 										}
 										else
 										{
-												$UpdateProduct = mysql_query("UPDATE tours SET name_eng='$name_eng', name_rus='$name_rus', name_geo='$name_geo' WHERE id='$id'") or die(mysql_error());
+												$UpdateProduct = mysql_query("UPDATE tours SET name_eng='$name_eng', name_rus='$name_rus', name_geo='$name_geo', desc_eng='$desc_eng', desc_rus='$desc_rus', desc_geo='$desc_geo' WHERE id='$id'") or die(mysql_error());
 												if($UpdateProduct == true)
 												{
 													echo '<h2 style="color:green;"><b> შესწორებულია!!!</b></h2>';
