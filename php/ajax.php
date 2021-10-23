@@ -29,6 +29,14 @@ switch($act){
         $data['waypoints'] = substr($data['waypoints'], 0, -1);
         
         break;
+    case 'turn_on':
+        $driver_id  = $_REQUEST['driver_id'];
+        $date       = $_REQUEST['date'];
+
+        $db->setQuery("DELETE FROM disabled_dates WHERE dis_date = '$date' AND driver_id='$driver_id'");
+        $db->execQuery();
+        
+        break;
     case 'disable_date':
         $driver_id  = $_REQUEST['driver_id'];
         $date       = $_REQUEST['date'];

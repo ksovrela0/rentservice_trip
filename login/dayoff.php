@@ -204,7 +204,7 @@ else{
                 });
             })
 
-
+            
 
             $(document).ready(function(){
                 $.ajax({
@@ -263,9 +263,67 @@ else{
                     }
                 });
 
-                
+                $(document).on('click', 'td.ui-state-disabled', function(){
+                    var day = $(this).find('span').html();
+                    var month = $(".ui-datepicker-month").html();
+                    var year = $(".ui-datepicker-year").html();
+
+                    if(month == 'January'){
+                        month = '01';
+                    }
+                    else if(month == 'February'){
+                        month = '02';
+                    }
+                    else if(month == 'March'){
+                        month = '03';
+                    }
+                    else if(month == 'April'){
+                        month = '04';
+                    }
+                    else if(month == 'May'){
+                        month = '05';
+                    }
+                    else if(month == 'June'){
+                        month = '06';
+                    }
+                    else if(month == 'July'){
+                        month = '07';
+                    }
+                    else if(month == 'August'){
+                        month = '08';
+                    }
+                    else if(month == 'September'){
+                        month = '09';
+                    }
+                    else if(month == 'October'){
+                        month = '10';
+                    }
+                    else if(month == 'November'){
+                        month = '11';
+                    }
+                    else if(month == 'December'){
+                        month = '12';
+                    }
+                    var disabled_date = year+'-'+month+'-'+day;
+                    $.ajax({
+                        url: '../php/ajax.php',
+                        dataType: 'json',
+                        data: 'act=turn_on&driver_id=<?php echo $user_id; ?>&date='+disabled_date,
+                        success: function(data) {
+                            location.reload();
+                        }
+                    });
+
+                })
             });
         </script>
+
+        <style>
+            .ui-state-disabled {
+                cursor: pointer!important;
+                pointer-events: all!important;
+            }
+        </style>
     </div>
 </body>
 
